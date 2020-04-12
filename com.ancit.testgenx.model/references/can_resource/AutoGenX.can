@@ -1,0 +1,63 @@
+/*@!Encoding:1252*/
+// Written for automatic generation of the CAPL function from dbc...
+// devloper: saravanan 
+// Date: 10.09.2019
+includes
+{   
+  //include the StartSignalValues.cin file, declare all intial values for the siganls at the seperate file, it will be useful for developer to edit it later if they want it.
+  #include "StartSignalValues.cin"
+}
+
+variables
+{
+  //declare the message name from dbc
+  //Syntax: message messageName msg_messageName
+  message CentralLockingSystemState msg_CentralLockingSystemState;  
+  message LockingRemoteControlRequest msg_LockingRemoteControlRequest;  
+
+  //declare the timer name based on the messagename
+  //declare the timer based on the cyclic time Unit(eg. millisec/sec time)
+  //syntax: mstimer/timer messagename_timer cycletime value
+  msTimer CentralLockingSystemState_timer;  
+  msTimer LockingRemoteControlRequest_timer;  
+  //declare the cyclic time of the message
+  int CentralLockingSystemState_cycle = 100;
+  int LockingRemoteControlRequest_cycle = 100;
+  
+  //timeout flag for error injection
+  char CentralLockingSystemState_Timeout = 0;
+  char LockingRemoteControlRequest_Timeout = 0;
+}
+
+//use the same timer name for timer function declaration
+on timer CentralLockingSystemState_timer
+{
+  //want to cyclically transmit the message,restart the timer as below
+  setTimer(CentralLockingSystemState_timer,CentralLockingSystemState_cycle);
+  //declare the DLC from the dbc
+  msg_CentralLockingSystemState.dlc = 1;
+  //declare the timeout flag and use it later for timeout error injection
+  if(CentralLockingSystemState_Timeout!=1)
+    output(msg_CentralLockingSystemState);  
+}
+
+//use the same timer name for timer function declaration
+on timer LockingRemoteControlRequest_timer
+{
+  //want to cyclically transmit the message,restart the timer as below
+  setTimer(LockingRemoteControlRequest_timer,LockingRemoteControlRequest_cycle);
+    //declare the DLC from the dbc
+  msg_LockingRemoteControlRequest.dlc = 8;
+  //declare the timeout flag and use it later for timeout error injection
+  if(LockingRemoteControlRequest_Timeout!=1)
+    output(msg_LockingRemoteControlRequest);  
+}
+
+//start the message transmission at the start of the messurement
+on start
+{
+  //start the each message timer
+  setTimer(CentralLockingSystemState_timer,CentralLockingSystemState_cycle);
+  setTimer(LockingRemoteControlRequest_timer,LockingRemoteControlRequest_cycle);  
+}
+

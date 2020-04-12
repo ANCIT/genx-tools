@@ -1,0 +1,242 @@
+VERSION ""
+
+
+NS_ : 
+	NS_DESC_
+	CM_
+	BA_DEF_
+	BA_
+	VAL_
+	CAT_DEF_
+	CAT_
+	FILTER
+	BA_DEF_DEF_
+	EV_DATA_
+	ENVVAR_DATA_
+	SGTYPE_
+	SGTYPE_VAL_
+	BA_DEF_SGTYPE_
+	BA_SGTYPE_
+	SIG_TYPE_REF_
+	VAL_TABLE_
+	SIG_GROUP_
+	SIG_VALTYPE_
+	SIGTYPE_VALTYPE_
+	BO_TX_BU_
+	BA_DEF_REL_
+	BA_REL_
+	BA_DEF_DEF_REL_
+	BU_SG_REL_
+	BU_EV_REL_
+	BU_BO_REL_
+	SG_MUL_VAL_
+
+BS_:
+
+BU_: TestNode
+
+
+BO_ 3221225472 VECTOR__INDEPENDENT_SIG_MSG: 0 Vector__XXX
+ SG_ failure_symptom : 0|64@0+ (1,0) [0|0] "bit" Vector__XXX
+
+BO_ 260 Sample5: 8 TestNode
+ SG_ Sens_undervoltage_failure : 23|1@0+ (1,0) [0|0] "bit" Vector__XXX
+ SG_ USEN_Short2Batt : 28|1@0+ (1,0) [0|0] "bit" Vector__XXX
+ SG_ Sens_failure11 : 2|1@0+ (1,0) [0|0] "bit" Vector__XXX
+ SG_ Sens_failure12 : 3|1@0+ (1,0) [0|0] "bit" Vector__XXX
+ SG_ Sens_failure10 : 1|1@0+ (1,0) [0|0] "bit" Vector__XXX
+ SG_ Sens_failure : 0|1@0+ (1,0) [0|0] "bit" Vector__XXX
+ SG_ Sens_failure8 : 15|1@0+ (1,0) [0|0] "bit" Vector__XXX
+ SG_ Sens_failure7 : 14|1@0+ (1,0) [0|0] "bit" Vector__XXX
+ SG_ Sens_failure6 : 13|1@0+ (1,0) [0|0] "bit" Vector__XXX
+ SG_ Sens_failure5 : 12|1@0+ (1,0) [0|0] "bit" Vector__XXX
+ SG_ Sens_failure4 : 11|1@0+ (1,0) [0|0] "bit" Vector__XXX
+ SG_ Sens_failure3 : 10|1@0+ (1,0) [0|0] "bit" Vector__XXX
+ SG_ Sens_failure2 : 9|1@0+ (1,0) [0|0] "bit" Vector__XXX
+ SG_ Sens_failure1 : 8|1@0+ (1,0) [0|0] "bit" Vector__XXX
+ SG_ Button_internal_failure : 22|1@0+ (1,0) [0|0] "bit" Vector__XXX
+ SG_ Button_S2B : 21|1@0+ (1,0) [0|0] "bit" Vector__XXX
+ SG_ LED_OC : 20|1@0+ (1,0) [0|0] "bit" Vector__XXX
+ SG_ LED_S2B : 19|1@0+ (1,0) [0|0] "bit" Vector__XXX
+ SG_ R_OC : 16|1@0+ (1,0) [0|0] "bit" Vector__XXX
+ SG_ SideR_S2B : 31|1@0+ (1,0) [0|0] "bit" Vector__XXX
+ SG_ OC_failure : 30|1@0+ (1,0) [0|0] "bit" Vector__XXX
+ SG_ L_S2B : 29|1@0+ (1,0) [0|0] "bit" Vector__XXX
+ SG_ USEN_Short2GND_failure : 27|1@0+ (1,0) [0|0] "bit" Vector__XXX
+ SG_ USEN_overvoltagefailure : 26|1@0+ (1,0) [0|0] "bit" Vector__XXX
+ SG_ Ubatt_undervoltage_failure : 25|1@0+ (1,0) [0|0] "bit" Vector__XXX
+ SG_ Ubatt_overvoltage_failure : 24|1@0+ (1,0) [0|0] "bit" Vector__XXX
+
+BO_ 259 Sample4: 8 TestNode
+
+BO_ 258 Sample3: 8 TestNode
+
+BO_ 257 Sample2: 8 TestNode
+
+BO_ 256 Sample1: 8 TestNode
+ SG_ Sideutton_press : 39|8@0+ (1,0) [0|0] "bit" Vector__XXX
+ SG_ button_press : 47|8@0+ (1,0) [0|0] "bit" Vector__XXX
+ SG_ Dist_button_press : 55|8@0+ (1,0) [0|0] "bit" Vector__XXX
+ SG_ A_mode_active : 63|8@0+ (1,0) [0|0] "bit" Vector__XXX
+ SG_ mode_active : 15|8@0+ (1,0) [0|0] "bit" Vector__XXX
+ SG_ Distc_mode_active : 7|8@0+ (1,0) [0|0] "bit" Vector__XXX
+ SG_ UBatt : 23|16@0+ (0.0211377,0.7) [0|0] "v" Vector__XXX
+
+BO_ 132 Sample6: 8 Vector__XXX
+ SG_ TrqSts_AliveCounter : 51|4@0+ (1,0) [0|15] "bit"  TestNode
+ SG_ TrqSts_Checksum : 63|8@0+ (1,0) [0|255] "bit"  TestNode
+ SG_ PedalPosition : 23|8@0+ (0.4,0) [0|100] "%"  TestNode
+ SG_ PedalPositionInvalid : 14|1@0+ (1,0) [0|1] "bit"  TestNode
+
+BO_ 133 Sample7: 8 Vector__XXX
+ SG_ EngStatus : 47|3@0+ (1,0) [0|7] "bit"  TestNode
+ SG_ SSMStatus : 42|3@0+ (1,0) [0|7] "bit"  TestNode
+
+
+
+CM_ " ";
+CM_ BO_ 3221225472 "This is a message for not used signals, created by Vector CANdb++ DBC OLE DB Provider.";
+CM_ SG_ 3221225472 failure_symptom "if any failure occurs, then bit is set to 1, otherwise set to 0.";
+CM_ BO_ 260 "EMC test";
+CM_ BO_ 259 "EMC test";
+CM_ BO_ 258 "EMC test";
+CM_ BO_ 257 "EMC test";
+CM_ BO_ 256 "EMC test";
+CM_ SG_ 256 UBatt "ADC RAW value ";
+CM_ BO_ 132 "Transmitted by EMS, including engine torque relating information";
+CM_ SG_ 132 TrqSts_AliveCounter "alive counter";
+CM_ SG_ 132 TrqSts_Checksum "check sum of this message";
+CM_ SG_ 132 PedalPosition "Real_PedalPosition";
+CM_ SG_ 132 PedalPositionInvalid "Real_PedalPositionInvalid";
+CM_ BO_ 133 "Transmitted by EMS, including RPM and accel. padel position status";
+CM_ SG_ 133 EngStatus "Engine running status";
+CM_ SG_ 133 SSMStatus "0-Reset Start/Stop not active(any engine condition possible)
+1-StandbyS/S active, engine off(waiting for initial keybutton start)
+2- StoppedS/S active, engine standstill
+3- Starter RestartSS/ active starter engine is turning 
+4 - Engine RestartS/S active, engine runs up
+5 - OperationS/S active, engine is running
+6 - Auto StoppingS/S active, engine is turning but no fuel injection anymore";
+BA_DEF_ BO_  "NmMessage" ENUM  "No","Yes";
+BA_DEF_ BO_  "DiagState" ENUM  "No","Yes";
+BA_DEF_ BO_  "DiagRequest" ENUM  "No","Yes";
+BA_DEF_ BO_  "DiagResponse" ENUM  "No","Yes";
+BA_DEF_ BO_  "GenMsgSendType" ENUM  "Cycle","NoSendType","IfActive","CycleEvent";
+BA_DEF_ BO_  "GenMsgCycleTime" INT 0 0;
+BA_DEF_ SG_  "GenSigSendType" ENUM  "Cycle","OnChange","OnWrite","IfActive","OnChangeWithRepetition","OnWriteWithRepetition","IfActiveWithRepetition";
+BA_DEF_ SG_  "GenSigStartValue" INT 0 0;
+BA_DEF_ SG_  "GenSigInactiveValue" INT 0 0;
+BA_DEF_ BO_  "GenMsgCycleTimeFast" INT 0 0;
+BA_DEF_ BO_  "GenMsgNrOfRepetition" INT 0 0;
+BA_DEF_ BO_  "GenMsgDelayTime" INT 0 0;
+BA_DEF_  "DBName" STRING ;
+BA_DEF_ BU_  "NodeLayerModules" STRING ;
+BA_DEF_ SG_  "GenSigTimeoutValue" INT 0 1000000000;
+BA_DEF_ BO_  "GenMsgCycleTimeActive" INT 0 0;
+BA_DEF_ BU_  "ILUsed" ENUM  "No","Yes";
+BA_DEF_ BU_  "DiagStationAddress" HEX 0 255;
+BA_DEF_ BU_  "NmNode" ENUM  "Not","Yes";
+BA_DEF_ BU_  "NmStationAddress" HEX 0 65535;
+BA_DEF_ BU_  "NmCAN" INT 0 2;
+BA_DEF_  "Manufacturer" STRING ;
+BA_DEF_  "NmType" STRING ;
+BA_DEF_  "NmBaseAddress" HEX 0 2047;
+BA_DEF_  "NmMessageCount" INT 0 255;
+BA_DEF_ BO_  "_Cdb_Sc_CTm_FAW_v3_0" INT 0 0;
+BA_DEF_ BO_  "_Cdb_Sc_CTm_FAW_v2_3" INT 0 0;
+BA_DEF_ BO_  "_Cdb_Sc_CTm_FAW_v3_1" INT 0 0;
+BA_DEF_ BO_  "_Cdb_Sc_CTm_FAW_v2_2" INT 0 0;
+BA_DEF_ BO_  "_Cdb_Sc_CTm_FAW_v2_1" INT 0 0;
+BA_DEF_ BO_  "GenMsgILSupport" ENUM  "No","Yes";
+BA_DEF_ BO_  "GenMsgStartDelayTime" INT 0 65535;
+BA_DEF_  "BusType" STRING ;
+BA_DEF_DEF_  "NmMessage" "No";
+BA_DEF_DEF_  "DiagState" "No";
+BA_DEF_DEF_  "DiagRequest" "No";
+BA_DEF_DEF_  "DiagResponse" "No";
+BA_DEF_DEF_  "GenMsgSendType" "Cycle";
+BA_DEF_DEF_  "GenMsgCycleTime" 0;
+BA_DEF_DEF_  "GenSigSendType" "Cycle";
+BA_DEF_DEF_  "GenSigStartValue" 0;
+BA_DEF_DEF_  "GenSigInactiveValue" 0;
+BA_DEF_DEF_  "GenMsgCycleTimeFast" 0;
+BA_DEF_DEF_  "GenMsgNrOfRepetition" 0;
+BA_DEF_DEF_  "GenMsgDelayTime" 0;
+BA_DEF_DEF_  "DBName" "";
+BA_DEF_DEF_  "NodeLayerModules" "CANoeILNLVector.dll";
+BA_DEF_DEF_  "GenSigTimeoutValue" 0;
+BA_DEF_DEF_  "GenMsgCycleTimeActive" 0;
+BA_DEF_DEF_  "ILUsed" "Yes";
+BA_DEF_DEF_  "DiagStationAddress" 0;
+BA_DEF_DEF_  "NmNode" "Not";
+BA_DEF_DEF_  "NmStationAddress" 0;
+BA_DEF_DEF_  "NmCAN" 0;
+BA_DEF_DEF_  "Manufacturer" "";
+BA_DEF_DEF_  "NmType" "";
+BA_DEF_DEF_  "NmBaseAddress" 1024;
+BA_DEF_DEF_  "NmMessageCount" 128;
+BA_DEF_DEF_  "_Cdb_Sc_CTm_FAW_v3_0" 0;
+BA_DEF_DEF_  "_Cdb_Sc_CTm_FAW_v2_3" 0;
+BA_DEF_DEF_  "_Cdb_Sc_CTm_FAW_v3_1" 0;
+BA_DEF_DEF_  "_Cdb_Sc_CTm_FAW_v2_2" 0;
+BA_DEF_DEF_  "_Cdb_Sc_CTm_FAW_v2_1" 0;
+BA_DEF_DEF_  "GenMsgILSupport" "Yes";
+BA_DEF_DEF_  "GenMsgStartDelayTime" 0;
+BA_DEF_DEF_  "BusType" "CAN";
+BA_ "DBName" "AncitCAN";
+BA_ "NodeLayerModules" BU_ TestNode "CANoeILNLVector.dll";
+BA_ "GenMsgCycleTime" BO_ 260 100;
+BA_ "GenMsgSendType" BO_ 260 3;
+BA_ "GenMsgCycleTime" BO_ 259 100;
+BA_ "GenMsgCycleTime" BO_ 258 100;
+BA_ "GenMsgCycleTime" BO_ 257 100;
+BA_ "GenMsgCycleTime" BO_ 256 100;
+BA_ "GenMsgStartDelayTime" BO_ 256 0;
+BA_ "GenMsgCycleTime" BO_ 132 10;
+BA_ "GenMsgCycleTime" BO_ 133 10;
+BA_ "GenSigSendType" SG_ 3221225472 failure_symptom 0;
+BA_ "GenSigSendType" SG_ 132 TrqSts_AliveCounter 2;
+BA_ "GenSigSendType" SG_ 132 TrqSts_Checksum 2;
+BA_ "GenSigSendType" SG_ 132 PedalPosition 2;
+BA_ "GenSigSendType" SG_ 132 PedalPositionInvalid 2;
+BA_ "GenSigSendType" SG_ 133 EngStatus 2;
+BA_ "GenSigStartValue" SG_ 133 SSMStatus 1;
+BA_ "GenSigSendType" SG_ 133 SSMStatus 2;
+VAL_ 260 Sens_undervoltage_failure 1 "Failed" 0 "Not Failed" ;
+VAL_ 260 USEN_Short2Batt 1 "Failed" 0 "Not Failed" ;
+VAL_ 260 Sens_failure11 1 "Failed" 0 "Not Failed" ;
+VAL_ 260 Sens_failure12 1 "Failed" 0 "Not Failed" ;
+VAL_ 260 Sens_failure10 1 "Failed" 0 "Not Failed" ;
+VAL_ 260 Sens_failure 1 "Failed" 0 "Not Failed" ;
+VAL_ 260 Sens_failure8 1 "Failed" 0 "Not Failed" ;
+VAL_ 260 Sens_failure7 1 "Failed" 0 "Not Failed" ;
+VAL_ 260 Sens_failure6 1 "Failed" 0 "Not Failed" ;
+VAL_ 260 Sens_failure5 1 "Failed" 0 "Not Failed" ;
+VAL_ 260 Sens_failure4 1 "Failed" 0 "Not Failed" ;
+VAL_ 260 Sens_failure3 1 "Failed" 0 "Not Failed" ;
+VAL_ 260 Sens_failure2 1 "Failed" 0 "Not Failed" ;
+VAL_ 260 Sens_failure1 1 "Failed" 0 "Not Failed" ;
+VAL_ 260 Button_internal_failure 1 "Failed" 0 "Not Failed" ;
+VAL_ 260 Button_S2B 1 "Failed" 0 "Not Failed" ;
+VAL_ 260 LED_OC 1 "Failed" 0 "Not Failed" ;
+VAL_ 260 LED_S2B 1 "Failed" 0 "Not Failed" ;
+VAL_ 260 R_OC 1 "Failed" 0 "Not Failed" ;
+VAL_ 260 SideR_S2B 1 "Failed" 0 "Not Failed" ;
+VAL_ 260 OC_failure 1 "Failed" 0 "Not Failed" ;
+VAL_ 260 L_S2B 1 "Failed" 0 "Not Failed" ;
+VAL_ 260 USEN_Short2GND_failure 1 "Failed" 0 "Not Failed" ;
+VAL_ 260 USEN_overvoltagefailure 1 "Failed" 0 "Not Failed" ;
+VAL_ 260 Ubatt_undervoltage_failure 1 "Failed" 0 "Not Failed" ;
+VAL_ 260 Ubatt_overvoltage_failure 1 "Failed" 0 "Not Failed" ;
+VAL_ 256 Sideutton_press 1 "Pressed" 0 "Not pressed" ;
+VAL_ 256 button_press 3 "short2Gnd" 2 "Invalid" 1 "Pressed" 0 "Not pressed" ;
+VAL_ 256 Dist_button_press 1 "Pressed" 0 "Not pressed" ;
+VAL_ 256 A_mode_active 0 "Off" 4 "Inhibited" 3 "Failure" 2 "Active" 1 "Standby" ;
+VAL_ 256 mode_active 6 "Terminated" 5 "Failure" 4 "Completed" 3 "Guidance Active" 2 "Searching" 1 "Standby" 0 "Off" ;
+VAL_ 256 Distc_mode_active 6 "Inhibited" 5 "System Failure" 4 "Rear Active" 3 "Front Active" 2 "Front Rear Active" 1 "Standby" 0 "Off" ;
+VAL_ 256 UBatt 65535 "Description for the value '0x0'" ;
+VAL_ 132 PedalPosition 255 "Invalid" 254 "Abnormal" 253 "Invalid" 252 "Invalid" 251 "Invalid" ;
+VAL_ 132 PedalPositionInvalid 1 "Invalid" 0 "Valid" ;
+VAL_ 133 EngStatus 7 "Invalid" 6 "Abnormal" 5 "Reserved" 4 "Reserved" 3 "Running" 2 "Stopping ( only for PHEV )" 1 "Cranking" 0 "Engine Stop" ;
+VAL_ 133 SSMStatus 7 "Reserved" 6 "Auto Stopping" 5 "Operation" 4 "Engine Restart" 3 "Starter Restart" 2 "Stopped" 1 "Standby" 0 "Reset/Not Implemented" ;
+

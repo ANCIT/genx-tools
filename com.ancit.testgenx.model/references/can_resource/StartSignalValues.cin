@@ -1,0 +1,26 @@
+/*@!Encoding:1252*/
+// Written for automatic generation of the CAPL function from dbc...
+// devloper: saravanan 
+// Date: 10.09.2019
+includes
+{
+  
+}
+
+variables
+{
+  
+}
+
+on start
+{
+  //  declare the intial values for only transmit signals from other node to SUT.
+  //  Read the intial value of the signals from the dbc and set it here
+  //  syntax: messagename.signalname = value;
+  //  CentralLockingSystemState signal declaration
+  msg_CentralLockingSystemState.LockState = 1;  //Intial Value
+  msg_CentralLockingSystemState.AntiTheftSystemActive = 1; //Intial Value
+  //  LockingRemoteControlRequest declaration
+  msg_LockingRemoteControlRequest.LockRequest = 1; //Intial Value
+}
+

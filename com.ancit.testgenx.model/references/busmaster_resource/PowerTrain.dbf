@@ -1,0 +1,343 @@
+//******************************BUSMASTER Messages and signals Database ******************************//
+
+[DATABASE_VERSION] 1.3
+
+[PROTOCOL] CAN
+
+[BUSMASTER_VERSION] [3.2.2]
+[NUMBER_OF_MESSAGES] 12
+
+[START_MSG] Diag_Request,512,8,0,1,S,
+[END_MSG]
+
+[START_MSG] Diag_Response,1024,8,0,1,S,
+[END_MSG]
+
+[START_MSG] Ignition_Info,103,2,1,1,S,Gateway
+[START_SIGNALS] StarterKey,1,1,0,B,1,0,1,0,1,,,Engine
+[END_MSG]
+
+[START_MSG] DiagResponse_Motor,1544,8,0,1,S,Engine
+[END_MSG]
+
+[START_MSG] DiagRequest_Motor,1537,8,0,1,S,Gateway
+[END_MSG]
+
+[START_MSG] NM_Engine,1307,4,1,1,S,Engine
+[START_SIGNALS] SleepInd,1,2,4,B,1,0,1,0,1,,,
+[END_MSG]
+
+[START_MSG] NM_Gateway_PowerTrain,1306,4,1,1,S,Gateway
+[START_SIGNALS] SleepInd,1,2,4,B,1,0,1,0,1,,,
+[END_MSG]
+
+[START_MSG] GearBoxInfo,1020,1,3,1,S,Engine
+[START_SIGNALS] EcoMode,2,1,6,U,1,0,1,0,1,,,
+[START_SIGNALS] ShiftRequest,1,1,3,B,1,0,1,0,1,,,
+[VALUE_DESCRIPTION] "Shift_Request_On",1
+[VALUE_DESCRIPTION] "Shift_Request_Off",0
+[START_SIGNALS] Gear,3,1,0,U,5,0,1,0,1,,,Gateway
+[VALUE_DESCRIPTION] "Idle",0
+[VALUE_DESCRIPTION] "Gear_1",1
+[VALUE_DESCRIPTION] "Gear_2",2
+[VALUE_DESCRIPTION] "Gear_3",3
+[VALUE_DESCRIPTION] "Gear_4",4
+[VALUE_DESCRIPTION] "Gear_5",5
+[END_MSG]
+
+[START_MSG] EngineStatus,101,1,2,1,S,Engine
+[START_SIGNALS] ErrorCode,6,1,2,U,63,0,1,0,1,,,
+[START_SIGNALS] Status,2,1,0,U,3,0,1,0,1,,,
+[VALUE_DESCRIPTION] "Error",3
+[VALUE_DESCRIPTION] "GoSleep",2
+[VALUE_DESCRIPTION] "Running",1
+[VALUE_DESCRIPTION] "WakeUp",0
+[END_MSG]
+
+[START_MSG] EngineDataIEEE,102,8,2,1,S,Engine
+[START_SIGNALS] EngSpeed,32,1,0,F,8000,0,1,0,1,rpm,,
+[START_SIGNALS] EngForce,32,5,0,F,0,0,1,0,1,N,,
+[END_MSG]
+
+[START_MSG] EngineData,100,8,6,1,S,Engine
+[START_SIGNALS] PetrolLevel,8,4,0,U,255,0,1,0,1,l,,
+[START_SIGNALS] EngPower,16,7,0,U,15000,0,1,0,0.01,kW,,
+[START_SIGNALS] EngForce,16,5,0,U,65535,0,1,0,1,N,,
+[START_SIGNALS] IdleRunning,1,3,7,B,1,0,1,0,1,,,
+[VALUE_DESCRIPTION] "Running",0
+[VALUE_DESCRIPTION] "Idle",1
+[START_SIGNALS] EngTemp,7,3,0,U,100,0,1,-50,2,degC,,
+[START_SIGNALS] EngSpeed,16,1,0,U,8000,0,1,0,1,rpm,,
+[END_MSG]
+
+[START_MSG] ABSdata,201,6,4,1,S,Engine
+[START_SIGNALS] AccelerationForce,16,5,0,U,10000,0,1,-10000,1,N,,
+[START_SIGNALS] Diagnostics,8,3,0,U,255,0,1,0,1,,,
+[START_SIGNALS] GearLock,1,2,7,B,1,0,1,0,1,,,
+[VALUE_DESCRIPTION] "Gear_Lock_On",1
+[VALUE_DESCRIPTION] "Gear_Lock_Off",0
+[START_SIGNALS] CarSpeed,10,1,0,U,600,0,1,0,0.5,mph,,
+[END_MSG]
+
+[START_VALUE_TABLE]
+[END_VALUE_TABLE]
+
+[NODE] Engine,Gateway
+
+[START_DESC]
+[START_DESC_NET]
+ "CAN communication matrix for body electronics*******************************************************implemented: turn lights, warning lights, windows";
+[END_DESC_NET]
+
+[START_DESC_NODE]
+[END_DESC_NODE]
+
+[START_DESC_MSG]
+[END_DESC_MSG]
+
+[START_DESC_SIG]
+[END_DESC_SIG]
+[END_DESC]
+
+[START_PARAM]
+[START_PARAM_NET]
+"NmBaseAddress",HEX,1280,1280,1311
+"GenNWMApCanOff",STRING,"apCanOff()"
+"GenNWMApCanOn",STRING,"apCanOn()"
+"GenNWMApCanSleep",STRING,"apCanSleep()"
+"GenNWMGotoMode_Awake",STRING,"GotoMode_Awake()"
+"GenNWMGotoMode_BusSleep",STRING,"GotoMode_BusSleep()"
+"GenNWMSleepTime",INT,0,0,1000000
+"GenNWMTalkNM",STRING,"TalkNM()"
+"GenEnvVarPrefix",STRING,"Env"
+"GenEnvVarEndingSnd",STRING,"_"
+"GenEnvVarEndingDsp",STRING,"Dsp_"
+[END_PARAM_NET]
+
+[START_PARAM_NODE]
+"TpAddressingMode",INT,0,0,3
+"ILUsed",ENUM,"Yes","Yes","No"
+"GenNodAutoGenDsp",ENUM,"","No","Yes"
+"GenNodAutoGenSnd",ENUM,"","No","Yes"
+"GenNodSleepTime",INT,0,0,1000000
+"NmNode",ENUM,"no","no","yes"
+"NmStationAddress",INT,0,0,63
+"TpNodeBaseAddress",HEX,1536,0,33554431
+"TpUseFC",INT,1,0,1
+"TpCanBus",INT,1,0,2
+"TpRxMask",HEX,255,0,255
+"Diagnose-Stationsadresse",HEX,0,0,255
+"TpRxIdentifier",HEX,1536,1536,1791
+"TpTxIdentifier",HEX,1536,1536,1791
+"NodeLayerModules",STRING,""
+[END_PARAM_NODE]
+
+[START_PARAM_MSG]
+"GenMsgStartDelayTime",INT,0,0,100000
+"GenMsgFastOnStart",INT,0,0,100000
+"GenMsgILSupport",ENUM,"Yes","No","Yes"
+"GenMsgCycleTimeFast",INT,100,2,50000
+"GenMsgNrOfRepetition",INT,0,0,999999
+"GenMsgAltSetting",STRING,""
+"GenMsgPostIfSetting",STRING,""
+"GenMsgPreIfSetting",STRING,""
+"GenMsgConditionalSend",STRING,""
+"GenMsgPostSetting",STRING,""
+"GenMsgPreSetting",STRING,""
+"GenMsgEVName",STRING,""
+"GenMsgAutoGenDsp",ENUM,"","No","Yes"
+"GenMsgAutoGenSnd",ENUM,"","No","Yes"
+"GenMsgDelayTime",INT,1,1,1000
+"GenMsgCycleTime",INT,2,2,50000
+"GenMsgSendType",ENUM,"not_used","Cyclic","not_used","not_used","not_used","not_used","Cyclic","not_used","IfActive"
+"DiagRequest",ENUM,"no","no","yes"
+"DiagResponse",ENUM,"no","no","yes"
+"NmMessage",ENUM,"no","no","yes"
+[END_PARAM_MSG]
+
+[START_PARAM_SIG]
+"NWM-WakeupAllowed",ENUM,"","No","Yes"
+"GenSigAltSetting",STRING,""
+"GenSigPostIfSetting",STRING,""
+"GenSigPreIfSetting",STRING,""
+"GenSigConditionalSend",STRING,""
+"GenSigAssignSetting",STRING,""
+"GenSigPostSetting",STRING,""
+"GenSigPreSetting",STRING,""
+"GenSigReceiveSetting",STRING,""
+"GenSigAutoGenDsp",ENUM,"","No","Yes"
+"GenSigInactiveValue",INT,0,0,100000
+"GenSigAutoGenSnd",ENUM,"","No","Yes"
+"GenSigSendType",ENUM,"Cyclic","Cyclic","OnWrite","OnWriteWithRepetition","OnChange","OnChangeWithRepetition","IfActive","IfActiveWithRepetition"
+"GenSigStartValue",FLOAT,1.17549e-038,1.17549e-038,1e+011
+"GenSigEnvVarType",ENUM,"undef","int","float","undef"
+"GenSigEVName",STRING,""
+[END_PARAM_SIG]
+
+[START_PARAM_NODE_RX_SIG]
+[END_PARAM_NODE_RX_SIG]
+
+[START_PARAM_NODE_TX_MSG]
+[END_PARAM_NODE_TX_MSG]
+[END_PARAM]
+
+[START_PARAM_VAL]
+[START_PARAM_NET_VAL]
+"GenNWMSleepTime",5000
+[END_PARAM_NET_VAL]
+
+[START_PARAM_NODE_VAL]
+Engine,"GenNodAutoGenDsp","1"
+Gateway,"GenNodAutoGenDsp","1"
+Engine,"GenNodAutoGenSnd","1"
+Gateway,"GenNodAutoGenSnd","1"
+Engine,"GenNodSleepTime",5000
+Gateway,"GenNodSleepTime",5000
+Engine,"NmNode","1"
+Gateway,"NmNode","1"
+Engine,"NmStationAddress",27
+Gateway,"NmStationAddress",26
+Engine,"TpCanBus",2
+Gateway,"TpCanBus",2
+Engine,"Diagnose-Stationsadresse",8
+Gateway,"Diagnose-Stationsadresse",1
+Engine,"TpRxIdentifier",1537
+Gateway,"TpRxIdentifier",1542
+Engine,"TpTxIdentifier",1544
+Gateway,"TpTxIdentifier",1537
+Engine,"NodeLayerModules","dmoseknm.dll,osek_tp.dll,CANoeILNLVector.dll"
+Gateway,"NodeLayerModules","dmoseknm.dll,osek_tp.dll,CANoeILNLVector.dll"
+[END_PARAM_NODE_VAL]
+
+[START_PARAM_MSG_VAL]
+512,S,"GenMsgILSupport","0"
+1024,S,"GenMsgILSupport","0"
+1307,S,"GenMsgILSupport","0"
+1306,S,"GenMsgILSupport","0"
+201,S,"GenMsgEVName",""
+1307,S,"GenMsgAutoGenDsp","0"
+1306,S,"GenMsgAutoGenDsp","0"
+1020,S,"GenMsgAutoGenDsp","0"
+101,S,"GenMsgAutoGenDsp","0"
+102,S,"GenMsgAutoGenDsp","0"
+100,S,"GenMsgAutoGenDsp","1"
+201,S,"GenMsgAutoGenDsp","1"
+1307,S,"GenMsgAutoGenSnd","0"
+1306,S,"GenMsgAutoGenSnd","0"
+1020,S,"GenMsgAutoGenSnd","0"
+101,S,"GenMsgAutoGenSnd","0"
+102,S,"GenMsgAutoGenSnd","0"
+100,S,"GenMsgAutoGenSnd","0"
+201,S,"GenMsgAutoGenSnd","1"
+103,S,"GenMsgCycleTime",20
+1020,S,"GenMsgCycleTime",50
+102,S,"GenMsgCycleTime",50
+100,S,"GenMsgCycleTime",50
+201,S,"GenMsgCycleTime",50
+1307,S,"GenMsgSendType","0"
+1306,S,"GenMsgSendType","0"
+512,S,"DiagRequest","1"
+1024,S,"DiagResponse","1"
+1306,S,"DiagResponse","0"
+1307,S,"NmMessage","1"
+1306,S,"NmMessage","1"
+[END_PARAM_MSG_VAL]
+
+[START_PARAM_SIG_VAL]
+103,S,StarterKey,"NWM-WakeupAllowed","0"
+1307,S,SleepInd,"NWM-WakeupAllowed","0"
+1306,S,SleepInd,"NWM-WakeupAllowed","0"
+1020,S,EcoMode,"NWM-WakeupAllowed","0"
+1020,S,ShiftRequest,"NWM-WakeupAllowed","0"
+1020,S,Gear,"NWM-WakeupAllowed","0"
+101,S,ErrorCode,"NWM-WakeupAllowed","0"
+101,S,Status,"NWM-WakeupAllowed","0"
+102,S,EngSpeed,"NWM-WakeupAllowed","0"
+102,S,EngForce,"NWM-WakeupAllowed","0"
+100,S,PetrolLevel,"NWM-WakeupAllowed","0"
+100,S,EngPower,"NWM-WakeupAllowed","0"
+100,S,EngForce,"NWM-WakeupAllowed","0"
+100,S,IdleRunning,"NWM-WakeupAllowed","1"
+100,S,EngTemp,"NWM-WakeupAllowed","0"
+100,S,EngSpeed,"NWM-WakeupAllowed","0"
+201,S,AccelerationForce,"NWM-WakeupAllowed","0"
+201,S,Diagnostics,"NWM-WakeupAllowed","0"
+201,S,GearLock,"NWM-WakeupAllowed","0"
+201,S,CarSpeed,"NWM-WakeupAllowed","0"
+1020,S,Gear,"GenSigAutoGenDsp","1"
+100,S,PetrolLevel,"GenSigAutoGenDsp","0"
+201,S,AccelerationForce,"GenSigAutoGenDsp","0"
+201,S,Diagnostics,"GenSigAutoGenDsp","1"
+201,S,CarSpeed,"GenSigAutoGenDsp","1"
+100,S,IdleRunning,"GenSigInactiveValue",1
+1020,S,Gear,"GenSigAutoGenSnd","1"
+100,S,PetrolLevel,"GenSigAutoGenSnd","1"
+201,S,AccelerationForce,"GenSigAutoGenSnd","0"
+201,S,Diagnostics,"GenSigAutoGenSnd","1"
+201,S,CarSpeed,"GenSigAutoGenSnd","1"
+101,S,ErrorCode,"GenSigSendType","1"
+101,S,Status,"GenSigSendType","1"
+100,S,IdleRunning,"GenSigSendType","5"
+103,S,StarterKey,"GenSigEnvVarType","0"
+1307,S,SleepInd,"GenSigEnvVarType","0"
+1306,S,SleepInd,"GenSigEnvVarType","0"
+1020,S,EcoMode,"GenSigEnvVarType","0"
+1020,S,ShiftRequest,"GenSigEnvVarType","0"
+1020,S,Gear,"GenSigEnvVarType","0"
+101,S,ErrorCode,"GenSigEnvVarType","0"
+101,S,Status,"GenSigEnvVarType","0"
+102,S,EngForce,"GenSigEnvVarType","0"
+100,S,PetrolLevel,"GenSigEnvVarType","0"
+100,S,EngPower,"GenSigEnvVarType","1"
+100,S,EngForce,"GenSigEnvVarType","0"
+100,S,IdleRunning,"GenSigEnvVarType","0"
+100,S,EngTemp,"GenSigEnvVarType","0"
+100,S,EngSpeed,"GenSigEnvVarType","0"
+201,S,AccelerationForce,"GenSigEnvVarType","0"
+201,S,Diagnostics,"GenSigEnvVarType","0"
+201,S,GearLock,"GenSigEnvVarType","0"
+201,S,CarSpeed,"GenSigEnvVarType","1"
+102,S,EngForce,"GenSigEVName","@Msgname@Signame"
+100,S,PetrolLevel,"GenSigEVName","@Msgname@Signame"
+100,S,EngForce,"GenSigEVName","@Msgname@Signame"
+100,S,EngSpeed,"GenSigEVName","@Msgname@Signame"
+201,S,CarSpeed,"GenSigEVName","@Msgname@Signame"
+[END_PARAM_SIG_VAL]
+
+[END_PARAM_VAL]
+
+
+[START_NOT_SUPPORTED]
+[END_NOT_SUPPORTED]
+
+[START_NOT_PROCESSED]
+	PZ_
+	ON_QRS_
+	ON_
+	INY_
+	PNG_QRS_
+	PNG_
+	SVYGRE
+	ON_QRS_QRS_
+	RI_QNGN_
+	RAIINE_QNGN_
+	FTGLCR_
+	FTGLCR_INY_
+	ON_QRS_FTGLCR_
+	ON_FTGLCR_
+	FVT_GLCR_ERS_
+	INY_GNOYR_
+	FVT_TEBHC_
+	FVT_INYGLCR_
+	FVTGLCR_INYGLCR_
+	OB_GK_OH_
+	ON_QRS_ERY_
+	ON_ERY_
+	ON_QRS_QRS_ERY_
+	OH_FT_ERY_
+	OH_RI_ERY_
+	OH_OB_ERY_
+	FT_ZHY_INY_
+OF_:
+
+[END_NOT_PROCESSED]

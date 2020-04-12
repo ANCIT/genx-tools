@@ -1,0 +1,671 @@
+!!python/object:canmatrix.canmatrix.CanMatrix
+attributes: {}
+ecu_defines:
+  NmNode: !!python/object:canmatrix.canmatrix.Define
+    defaultValue: 'no'
+    definition: ENUM  "no","yes"
+    type: ENUM
+    values:
+    - 'no'
+    - 'yes'
+  NmStationAddress: !!python/object:canmatrix.canmatrix.Define
+    defaultValue: '0'
+    definition: INT 0 63
+    max: 63
+    min: 0
+    type: INT
+ecus:
+- !!python/object:canmatrix.canmatrix.Ecu
+  attributes: {}
+  comment: null
+  name: SUT_Driver
+- !!python/object:canmatrix.canmatrix.Ecu
+  attributes: {}
+  comment: null
+  name: SUT
+env_defines: {}
+env_vars:
+  DoorClosed:
+    accessNodes:
+    - Vector__XXX
+    accessType: DUMMY_NODE_VECTOR0
+    evId: '1'
+    initialValue: '0'
+    max: '1'
+    min: '0'
+    unit: ''
+    varType: '0'
+  rbbpPowermode:
+    accessNodes:
+    - Vector__XXX
+    accessType: DUMMY_NODE_VECTOR0
+    evId: '2'
+    initialValue: '0'
+    max: '5'
+    min: '0'
+    unit: ''
+    varType: '0'
+frame_defines:
+  DiagRequest: !!python/object:canmatrix.canmatrix.Define
+    defaultValue: 'No'
+    definition: ENUM  "No","Yes"
+    type: ENUM
+    values:
+    - 'No'
+    - 'Yes'
+  DiagResponse: !!python/object:canmatrix.canmatrix.Define
+    defaultValue: 'No'
+    definition: ENUM  "No","Yes"
+    type: ENUM
+    values:
+    - 'No'
+    - 'Yes'
+  GenMsgCycleTime: !!python/object:canmatrix.canmatrix.Define
+    defaultValue: '100'
+    definition: INT 0 50000
+    max: 50000
+    min: 0
+    type: INT
+  GenMsgCycleTimeFast: !!python/object:canmatrix.canmatrix.Define
+    defaultValue: '0'
+    definition: INT 0 50000
+    max: 50000
+    min: 0
+    type: INT
+  GenMsgDelayTime: !!python/object:canmatrix.canmatrix.Define
+    defaultValue: '0'
+    definition: INT 0 1000
+    max: 1000
+    min: 0
+    type: INT
+  GenMsgFastOnStart: !!python/object:canmatrix.canmatrix.Define
+    defaultValue: '0'
+    definition: INT 0 0
+    max: 0
+    min: 0
+    type: INT
+  GenMsgILSupport: !!python/object:canmatrix.canmatrix.Define
+    defaultValue: 'Yes'
+    definition: ENUM  "No","Yes"
+    type: ENUM
+    values:
+    - 'No'
+    - 'Yes'
+  GenMsgNrOfRepetition: !!python/object:canmatrix.canmatrix.Define
+    defaultValue: '0'
+    definition: INT 0 999999
+    max: 999999
+    min: 0
+    type: INT
+  GenMsgSendType: !!python/object:canmatrix.canmatrix.Define
+    defaultValue: NoMsgSendType
+    definition: ENUM  "Cyclic","NotUsed","NotUsed","NotUsed","NotUsed","Cyclic","NotUsed","IfActive","NoMsgSendType","NotUsed","vector_leerstring"
+    type: ENUM
+    values:
+    - Cyclic
+    - NotUsed
+    - NotUsed
+    - NotUsed
+    - NotUsed
+    - Cyclic
+    - NotUsed
+    - IfActive
+    - NoMsgSendType
+    - NotUsed
+    - ''
+  GenMsgStartDelayTime: !!python/object:canmatrix.canmatrix.Define
+    defaultValue: '0'
+    definition: INT 0 0
+    max: 0
+    min: 0
+    type: INT
+  NmMessage: !!python/object:canmatrix.canmatrix.Define
+    defaultValue: 'no'
+    definition: ENUM  "no","yes"
+    type: ENUM
+    values:
+    - 'no'
+    - 'yes'
+frames:
+- !!Frame
+  arbitration_id: !!python/object:canmatrix.canmatrix.ArbitrationId
+    extended: false
+    id: 1536
+  attributes:
+    DiagResponse: 'Yes'
+  comment: ''
+  is_complex_multiplexed: false
+  is_fd: false
+  is_j1939: false
+  j1939_pgn: null
+  j1939_prio: 0
+  j1939_source: 0
+  mux_names: {}
+  name: DiagResponse
+  receivers: []
+  signalGroups: []
+  signals: []
+  size: 8
+  transmitters: []
+- !!Frame
+  arbitration_id: !!python/object:canmatrix.canmatrix.ArbitrationId
+    extended: false
+    id: 1792
+  attributes:
+    DiagRequest: 'Yes'
+  comment: ''
+  is_complex_multiplexed: false
+  is_fd: false
+  is_j1939: false
+  j1939_pgn: null
+  j1939_prio: 0
+  j1939_source: 0
+  mux_names: {}
+  name: DiagRequest
+  receivers: []
+  signalGroups: []
+  signals: []
+  size: 8
+  transmitters: []
+- !!Frame
+  arbitration_id: !!python/object:canmatrix.canmatrix.ArbitrationId
+    extended: false
+    id: 1
+  attributes: {}
+  comment: ''
+  is_complex_multiplexed: false
+  is_fd: false
+  is_j1939: false
+  j1939_pgn: null
+  j1939_prio: 0
+  j1939_source: 0
+  mux_names: {}
+  name: LockingRemoteControlRequest
+  receivers:
+  - SUT
+  signalGroups: []
+  signals:
+  - !!python/object:canmatrix.canmatrix.Signal
+    attributes:
+      GenSigSendType: OnWrite
+    calc_max_for_none: true
+    calc_min_for_none: true
+    comment: null
+    comments: {}
+    enumeration: null
+    factor: !!python/object/apply:decimal.Decimal
+    - '1'
+    is_float: false
+    is_little_endian: true
+    is_multiplexer: false
+    is_signed: false
+    max: !!python/object/apply:decimal.Decimal
+    - '0'
+    min: !!python/object/apply:decimal.Decimal
+    - '0'
+    multiplex: null
+    mux_val: null
+    mux_val_grp: []
+    mux_value: null
+    muxer_for_signal: null
+    name: LockRequest
+    offset: !!python/object/apply:decimal.Decimal
+    - '0'
+    receivers:
+    - SUT
+    size: 2
+    start_bit: 0
+    unit: ''
+    values:
+      0: idle
+      1: Request_lock
+      2: Request_unlock
+      3: Comfort_lock
+  size: 1
+  transmitters:
+  - SUT_Driver
+- !!Frame
+  arbitration_id: !!python/object:canmatrix.canmatrix.ArbitrationId
+    extended: false
+    id: 0
+  attributes: {}
+  comment: ''
+  is_complex_multiplexed: false
+  is_fd: false
+  is_j1939: false
+  j1939_pgn: null
+  j1939_prio: 0
+  j1939_source: 0
+  mux_names: {}
+  name: CentralLockingSystemState
+  receivers:
+  - Vector__XXX
+  signalGroups: []
+  signals:
+  - !!python/object:canmatrix.canmatrix.Signal
+    attributes:
+      GenSigStartValue: '6'
+    calc_max_for_none: true
+    calc_min_for_none: true
+    comment: null
+    comments: {}
+    enumeration: null
+    factor: !!python/object/apply:decimal.Decimal
+    - '1'
+    is_float: false
+    is_little_endian: true
+    is_multiplexer: false
+    is_signed: false
+    max: !!python/object/apply:decimal.Decimal
+    - '10'
+    min: !!python/object/apply:decimal.Decimal
+    - '2'
+    multiplex: null
+    mux_val: null
+    mux_val_grp: []
+    mux_value: null
+    muxer_for_signal: null
+    name: AntiTheftSystemActive
+    offset: !!python/object/apply:decimal.Decimal
+    - '2'
+    receivers: []
+    size: 1
+    start_bit: 1
+    unit: ''
+    values:
+      0: not_moving
+      1: currently_closing
+      2: currently_opening
+  - !!python/object:canmatrix.canmatrix.Signal
+    attributes:
+      GenSigStartValue: '0.5'
+    calc_max_for_none: true
+    calc_min_for_none: true
+    comment: null
+    comments: {}
+    enumeration: null
+    factor: !!python/object/apply:decimal.Decimal
+    - '2'
+    is_float: false
+    is_little_endian: true
+    is_multiplexer: false
+    is_signed: false
+    max: !!python/object/apply:decimal.Decimal
+    - '5'
+    min: !!python/object/apply:decimal.Decimal
+    - '3'
+    multiplex: null
+    mux_val: null
+    mux_val_grp: []
+    mux_value: null
+    muxer_for_signal: null
+    name: LockState
+    offset: !!python/object/apply:decimal.Decimal
+    - '3'
+    receivers: []
+    size: 1
+    start_bit: 0
+    unit: ''
+    values:
+      0: not_moving
+      1: currently_closing
+      2: currently_opening
+  size: 1
+  transmitters:
+  - SUT
+- !!Frame
+  arbitration_id: !!python/object:canmatrix.canmatrix.ArbitrationId
+    extended: false
+    id: 50
+  attributes: {}
+  comment: ''
+  is_complex_multiplexed: false
+  is_fd: false
+  is_j1939: false
+  j1939_pgn: null
+  j1939_prio: 0
+  j1939_source: 0
+  mux_names: {}
+  name: VehicleMotion
+  receivers:
+  - Vector__XXX
+  - SUT
+  signalGroups: []
+  signals:
+  - !!python/object:canmatrix.canmatrix.Signal
+    attributes:
+      GenSigStartValue: '0.666666666666667'
+    calc_max_for_none: true
+    calc_min_for_none: true
+    comment: null
+    comments: {}
+    enumeration: null
+    factor: !!python/object/apply:decimal.Decimal
+    - '3'
+    is_float: false
+    is_little_endian: true
+    is_multiplexer: false
+    is_signed: false
+    max: !!python/object/apply:decimal.Decimal
+    - '3'
+    min: !!python/object/apply:decimal.Decimal
+    - '1'
+    multiplex: null
+    mux_val: null
+    mux_val_grp: []
+    mux_value: null
+    muxer_for_signal: null
+    name: EngineRunning
+    offset: !!python/object/apply:decimal.Decimal
+    - '0'
+    receivers: []
+    size: 1
+    start_bit: 17
+    unit: ''
+    values: {}
+  - !!python/object:canmatrix.canmatrix.Signal
+    attributes:
+      GenSigSendType: OnWrite
+    calc_max_for_none: true
+    calc_min_for_none: true
+    comment: null
+    comments: {}
+    enumeration: null
+    factor: !!python/object/apply:decimal.Decimal
+    - '1'
+    is_float: false
+    is_little_endian: true
+    is_multiplexer: false
+    is_signed: false
+    max: !!python/object/apply:decimal.Decimal
+    - '0'
+    min: !!python/object/apply:decimal.Decimal
+    - '0'
+    multiplex: null
+    mux_val: null
+    mux_val_grp: []
+    mux_value: null
+    muxer_for_signal: null
+    name: CrashDetected
+    offset: !!python/object/apply:decimal.Decimal
+    - '0'
+    receivers:
+    - SUT
+    size: 1
+    start_bit: 16
+    unit: ''
+    values: {}
+  - !!python/object:canmatrix.canmatrix.Signal
+    attributes:
+      GenSigStartValue: '1'
+    calc_max_for_none: true
+    calc_min_for_none: true
+    comment: null
+    comments: {}
+    enumeration: null
+    factor: !!python/object/apply:decimal.Decimal
+    - '3'
+    is_float: false
+    is_little_endian: true
+    is_multiplexer: false
+    is_signed: true
+    max: !!python/object/apply:decimal.Decimal
+    - '4'
+    min: !!python/object/apply:decimal.Decimal
+    - '1'
+    multiplex: null
+    mux_val: null
+    mux_val_grp: []
+    mux_value: null
+    muxer_for_signal: null
+    name: Velocity
+    offset: !!python/object/apply:decimal.Decimal
+    - '0'
+    receivers:
+    - SUT
+    size: 16
+    start_bit: 0
+    unit: ''
+    values: {}
+  size: 3
+  transmitters:
+  - SUT_Driver
+- !!Frame
+  arbitration_id: !!python/object:canmatrix.canmatrix.ArbitrationId
+    extended: false
+    id: 100
+  attributes: {}
+  comment: ''
+  is_complex_multiplexed: false
+  is_fd: false
+  is_j1939: false
+  j1939_pgn: null
+  j1939_prio: 0
+  j1939_source: 0
+  mux_names: {}
+  name: WindowState
+  receivers:
+  - Vector__XXX
+  signalGroups: []
+  signals:
+  - !!python/object:canmatrix.canmatrix.Signal
+    attributes:
+      GenSigStartValue: '3'
+    calc_max_for_none: true
+    calc_min_for_none: true
+    comment: null
+    comments: {}
+    enumeration: null
+    factor: !!python/object/apply:decimal.Decimal
+    - '1'
+    is_float: false
+    is_little_endian: true
+    is_multiplexer: false
+    is_signed: false
+    max: !!python/object/apply:decimal.Decimal
+    - '255'
+    min: !!python/object/apply:decimal.Decimal
+    - '0'
+    multiplex: null
+    mux_val: null
+    mux_val_grp: []
+    mux_value: null
+    muxer_for_signal: null
+    name: WindowPosition
+    offset: !!python/object/apply:decimal.Decimal
+    - '0'
+    receivers: []
+    size: 8
+    start_bit: 0
+    unit: ''
+    values: {}
+  - !!python/object:canmatrix.canmatrix.Signal
+    attributes:
+      GenSigSendType: OnWrite
+    calc_max_for_none: true
+    calc_min_for_none: true
+    comment: null
+    comments: {}
+    enumeration: null
+    factor: !!python/object/apply:decimal.Decimal
+    - '1'
+    is_float: false
+    is_little_endian: true
+    is_multiplexer: false
+    is_signed: false
+    max: !!python/object/apply:decimal.Decimal
+    - '0'
+    min: !!python/object/apply:decimal.Decimal
+    - '0'
+    multiplex: null
+    mux_val: null
+    mux_val_grp: []
+    mux_value: null
+    muxer_for_signal: null
+    name: WindowMotion
+    offset: !!python/object/apply:decimal.Decimal
+    - '0'
+    receivers: []
+    size: 2
+    start_bit: 14
+    unit: ''
+    values:
+      0: not_moving
+      1: currently_closing
+      2: currently_opening
+  size: 2
+  transmitters:
+  - SUT
+- !!Frame
+  arbitration_id: !!python/object:canmatrix.canmatrix.ArbitrationId
+    extended: false
+    id: 101
+  attributes:
+    GenMsgCycleTime: '500'
+    GenMsgCycleTimeFast: '20'
+    GenMsgDelayTime: '18'
+    GenMsgNrOfRepetition: '2'
+    GenMsgSendType: Cyclic
+  comment: ''
+  is_complex_multiplexed: false
+  is_fd: false
+  is_j1939: false
+  j1939_pgn: null
+  j1939_prio: 0
+  j1939_source: 0
+  mux_names: {}
+  name: WindowControl
+  receivers:
+  - SUT
+  signalGroups: []
+  signals:
+  - !!python/object:canmatrix.canmatrix.Signal
+    attributes:
+      GenSigSendType: IfActiveWithRepetition
+    calc_max_for_none: true
+    calc_min_for_none: true
+    comment: null
+    comments: {}
+    enumeration: null
+    factor: !!python/object/apply:decimal.Decimal
+    - '1'
+    is_float: false
+    is_little_endian: true
+    is_multiplexer: false
+    is_signed: false
+    max: !!python/object/apply:decimal.Decimal
+    - '0'
+    min: !!python/object/apply:decimal.Decimal
+    - '0'
+    multiplex: null
+    mux_val: null
+    mux_val_grp: []
+    mux_value: null
+    muxer_for_signal: null
+    name: KeyDown
+    offset: !!python/object/apply:decimal.Decimal
+    - '0'
+    receivers:
+    - SUT
+    size: 1
+    start_bit: 1
+    unit: ''
+    values: {}
+  - !!python/object:canmatrix.canmatrix.Signal
+    attributes:
+      GenSigSendType: IfActiveWithRepetition
+      GenSigStartValue: '1'
+    calc_max_for_none: true
+    calc_min_for_none: true
+    comment: null
+    comments: {}
+    enumeration: null
+    factor: !!python/object/apply:decimal.Decimal
+    - '1'
+    is_float: false
+    is_little_endian: true
+    is_multiplexer: false
+    is_signed: false
+    max: !!python/object/apply:decimal.Decimal
+    - '1'
+    min: !!python/object/apply:decimal.Decimal
+    - '0'
+    multiplex: null
+    mux_val: null
+    mux_val_grp: []
+    mux_value: null
+    muxer_for_signal: null
+    name: KeyUp
+    offset: !!python/object/apply:decimal.Decimal
+    - '0'
+    receivers:
+    - SUT
+    size: 1
+    start_bit: 0
+    unit: ''
+    values: {}
+  size: 1
+  transmitters:
+  - SUT_Driver
+global_defines:
+  BusType: !!python/object:canmatrix.canmatrix.Define
+    defaultValue: CAN
+    definition: STRING
+    max: null
+    min: null
+    type: STRING
+  NmBaseAddress: !!python/object:canmatrix.canmatrix.Define
+    defaultValue: '1024'
+    definition: HEX 1024 1087
+    max: 1087
+    min: 1024
+    type: HEX
+  NmMessageCount: !!python/object:canmatrix.canmatrix.Define
+    defaultValue: '64'
+    definition: INT 0 0
+    max: 0
+    min: 0
+    type: INT
+load_errors: []
+signal_defines:
+  GenSigInactiveValue: !!python/object:canmatrix.canmatrix.Define
+    defaultValue: '0'
+    definition: INT 0 100000
+    max: 100000
+    min: 0
+    type: INT
+  GenSigSendType: !!python/object:canmatrix.canmatrix.Define
+    defaultValue: Cyclic
+    definition: ENUM  "Cyclic","OnWrite","OnWriteWithRepetition","OnChange","OnChangeWithRepetition","IfActive","IfActiveWithRepetition","NoSigSendType","NotUsed","NotUsed","NotUsed","NotUsed","NotUsed"
+    type: ENUM
+    values:
+    - Cyclic
+    - OnWrite
+    - OnWriteWithRepetition
+    - OnChange
+    - OnChangeWithRepetition
+    - IfActive
+    - IfActiveWithRepetition
+    - NoSigSendType
+    - NotUsed
+    - NotUsed
+    - NotUsed
+    - NotUsed
+    - NotUsed
+  GenSigStartValue: !!python/object:canmatrix.canmatrix.Define
+    defaultValue: '0'
+    definition: FLOAT 0 100000000000
+    max: !!python/object/apply:decimal.Decimal
+    - '100000000000'
+    min: !!python/object/apply:decimal.Decimal
+    - '0'
+    type: FLOAT
+  NWM-WakeupAllowed: !!python/object:canmatrix.canmatrix.Define
+    defaultValue: ''
+    definition: ENUM  "No","Yes"
+    type: ENUM
+    values:
+    - 'No'
+    - 'Yes'
+signals: []
+value_tables: {}

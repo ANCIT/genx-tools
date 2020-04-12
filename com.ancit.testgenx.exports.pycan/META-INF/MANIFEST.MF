@@ -1,0 +1,14 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Pycan
+Bundle-SymbolicName: com.ancit.testgenx.exports.pycan;singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: com.ancit.testgenx.exports.pycan.Activator
+Bundle-Vendor: ANCIT
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ com.ancit.testgenx.ui,
+ com.ancit.testgenx.model
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Automatic-Module-Name: com.ancit.testgenx.exports.pycan
+Bundle-ActivationPolicy: lazy

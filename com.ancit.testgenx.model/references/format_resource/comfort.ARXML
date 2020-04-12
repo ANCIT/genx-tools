@@ -1,0 +1,1072 @@
+<?xml version='1.0' encoding='ASCII'?>
+<AUTOSAR xmlns="http://autosar.org/3.2.3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://autosar.org/3.2.3 AUTOSAR_323.xsd">
+  <TOP-LEVEL-PACKAGES>
+    <AR-PACKAGE>
+      <SHORT-NAME>Cluster</SHORT-NAME>
+      <ELEMENTS>
+        <CAN-CLUSTER>
+          <SHORT-NAME>CAN</SHORT-NAME>
+          <PHYSICAL-CHANNELS>
+            <PHYSICAL-CHANNEL>
+              <SHORT-NAME>CAN</SHORT-NAME>
+              <FRAME-TRIGGERINGSS>
+                <CAN-FRAME-TRIGGERING>
+                  <SHORT-NAME>DiagResponse</SHORT-NAME>
+                  <FRAME-PORT-REFS/>
+                  <FRAME-REF DEST="FRAME">/Frame/FRAME_DiagResponse</FRAME-REF>
+                  <I-PDU-TRIGGERING-REFS>
+                    <I-PDU-TRIGGERING-REF DEST="I-PDU-TRIGGERING">/Cluster/CAN/IPDUTRIGG_DiagResponse</I-PDU-TRIGGERING-REF>
+                  </I-PDU-TRIGGERING-REFS>
+                  <CAN-ADDRESSING-MODE>STANDARD</CAN-ADDRESSING-MODE>
+                  <IDENTIFIER>1536</IDENTIFIER>
+                </CAN-FRAME-TRIGGERING>
+                <CAN-FRAME-TRIGGERING>
+                  <SHORT-NAME>DiagRequest</SHORT-NAME>
+                  <FRAME-PORT-REFS/>
+                  <FRAME-REF DEST="FRAME">/Frame/FRAME_DiagRequest</FRAME-REF>
+                  <I-PDU-TRIGGERING-REFS>
+                    <I-PDU-TRIGGERING-REF DEST="I-PDU-TRIGGERING">/Cluster/CAN/IPDUTRIGG_DiagRequest</I-PDU-TRIGGERING-REF>
+                  </I-PDU-TRIGGERING-REFS>
+                  <CAN-ADDRESSING-MODE>STANDARD</CAN-ADDRESSING-MODE>
+                  <IDENTIFIER>1792</IDENTIFIER>
+                </CAN-FRAME-TRIGGERING>
+                <CAN-FRAME-TRIGGERING>
+                  <SHORT-NAME>LockingRemoteControlRequest</SHORT-NAME>
+                  <FRAME-PORT-REFS>
+                    <FRAME-PORT-REF DEST="FRAME-PORT">/ECU/SUT_Driver/CN_SUT_Driver/LockingRemoteControlRequest</FRAME-PORT-REF>
+                    <FRAME-PORT-REF DEST="FRAME-PORT">/ECU/SUT/CN_SUT/LockingRemoteControlRequest</FRAME-PORT-REF>
+                  </FRAME-PORT-REFS>
+                  <FRAME-REF DEST="FRAME">/Frame/FRAME_LockingRemoteControlRequest</FRAME-REF>
+                  <I-PDU-TRIGGERING-REFS>
+                    <I-PDU-TRIGGERING-REF DEST="I-PDU-TRIGGERING">/Cluster/CAN/IPDUTRIGG_LockingRemoteControlRequest</I-PDU-TRIGGERING-REF>
+                  </I-PDU-TRIGGERING-REFS>
+                  <CAN-ADDRESSING-MODE>STANDARD</CAN-ADDRESSING-MODE>
+                  <IDENTIFIER>1</IDENTIFIER>
+                </CAN-FRAME-TRIGGERING>
+                <CAN-FRAME-TRIGGERING>
+                  <SHORT-NAME>CentralLockingSystemState</SHORT-NAME>
+                  <FRAME-PORT-REFS>
+                    <FRAME-PORT-REF DEST="FRAME-PORT">/ECU/SUT/CN_SUT/CentralLockingSystemState</FRAME-PORT-REF>
+                    <FRAME-PORT-REF DEST="FRAME-PORT">/ECU/Vector__XXX/CN_Vector__XXX/CentralLockingSystemState</FRAME-PORT-REF>
+                  </FRAME-PORT-REFS>
+                  <FRAME-REF DEST="FRAME">/Frame/FRAME_CentralLockingSystemState</FRAME-REF>
+                  <I-PDU-TRIGGERING-REFS>
+                    <I-PDU-TRIGGERING-REF DEST="I-PDU-TRIGGERING">/Cluster/CAN/IPDUTRIGG_CentralLockingSystemState</I-PDU-TRIGGERING-REF>
+                  </I-PDU-TRIGGERING-REFS>
+                  <CAN-ADDRESSING-MODE>STANDARD</CAN-ADDRESSING-MODE>
+                  <IDENTIFIER>0</IDENTIFIER>
+                </CAN-FRAME-TRIGGERING>
+                <CAN-FRAME-TRIGGERING>
+                  <SHORT-NAME>VehicleMotion</SHORT-NAME>
+                  <FRAME-PORT-REFS>
+                    <FRAME-PORT-REF DEST="FRAME-PORT">/ECU/SUT_Driver/CN_SUT_Driver/VehicleMotion</FRAME-PORT-REF>
+                    <FRAME-PORT-REF DEST="FRAME-PORT">/ECU/Vector__XXX/CN_Vector__XXX/VehicleMotion</FRAME-PORT-REF>
+                    <FRAME-PORT-REF DEST="FRAME-PORT">/ECU/SUT/CN_SUT/VehicleMotion</FRAME-PORT-REF>
+                  </FRAME-PORT-REFS>
+                  <FRAME-REF DEST="FRAME">/Frame/FRAME_VehicleMotion</FRAME-REF>
+                  <I-PDU-TRIGGERING-REFS>
+                    <I-PDU-TRIGGERING-REF DEST="I-PDU-TRIGGERING">/Cluster/CAN/IPDUTRIGG_VehicleMotion</I-PDU-TRIGGERING-REF>
+                  </I-PDU-TRIGGERING-REFS>
+                  <CAN-ADDRESSING-MODE>STANDARD</CAN-ADDRESSING-MODE>
+                  <IDENTIFIER>50</IDENTIFIER>
+                </CAN-FRAME-TRIGGERING>
+                <CAN-FRAME-TRIGGERING>
+                  <SHORT-NAME>WindowState</SHORT-NAME>
+                  <FRAME-PORT-REFS>
+                    <FRAME-PORT-REF DEST="FRAME-PORT">/ECU/SUT/CN_SUT/WindowState</FRAME-PORT-REF>
+                    <FRAME-PORT-REF DEST="FRAME-PORT">/ECU/Vector__XXX/CN_Vector__XXX/WindowState</FRAME-PORT-REF>
+                  </FRAME-PORT-REFS>
+                  <FRAME-REF DEST="FRAME">/Frame/FRAME_WindowState</FRAME-REF>
+                  <I-PDU-TRIGGERING-REFS>
+                    <I-PDU-TRIGGERING-REF DEST="I-PDU-TRIGGERING">/Cluster/CAN/IPDUTRIGG_WindowState</I-PDU-TRIGGERING-REF>
+                  </I-PDU-TRIGGERING-REFS>
+                  <CAN-ADDRESSING-MODE>STANDARD</CAN-ADDRESSING-MODE>
+                  <IDENTIFIER>100</IDENTIFIER>
+                </CAN-FRAME-TRIGGERING>
+                <CAN-FRAME-TRIGGERING>
+                  <SHORT-NAME>WindowControl</SHORT-NAME>
+                  <FRAME-PORT-REFS>
+                    <FRAME-PORT-REF DEST="FRAME-PORT">/ECU/SUT_Driver/CN_SUT_Driver/WindowControl</FRAME-PORT-REF>
+                    <FRAME-PORT-REF DEST="FRAME-PORT">/ECU/SUT/CN_SUT/WindowControl</FRAME-PORT-REF>
+                  </FRAME-PORT-REFS>
+                  <FRAME-REF DEST="FRAME">/Frame/FRAME_WindowControl</FRAME-REF>
+                  <I-PDU-TRIGGERING-REFS>
+                    <I-PDU-TRIGGERING-REF DEST="I-PDU-TRIGGERING">/Cluster/CAN/IPDUTRIGG_WindowControl</I-PDU-TRIGGERING-REF>
+                  </I-PDU-TRIGGERING-REFS>
+                  <CAN-ADDRESSING-MODE>STANDARD</CAN-ADDRESSING-MODE>
+                  <IDENTIFIER>101</IDENTIFIER>
+                </CAN-FRAME-TRIGGERING>
+              </FRAME-TRIGGERINGSS>
+              <I-PDU-TRIGGERINGS>
+                <I-PDU-TRIGGERING>
+                  <SHORT-NAME>IPDUTRIGG_DiagResponse</SHORT-NAME>
+                  <I-PDU-REF DEST="SIGNAL-I-PDU">/PDU/PDU_DiagResponse</I-PDU-REF>
+                </I-PDU-TRIGGERING>
+                <I-PDU-TRIGGERING>
+                  <SHORT-NAME>IPDUTRIGG_DiagRequest</SHORT-NAME>
+                  <I-PDU-REF DEST="SIGNAL-I-PDU">/PDU/PDU_DiagRequest</I-PDU-REF>
+                </I-PDU-TRIGGERING>
+                <I-PDU-TRIGGERING>
+                  <SHORT-NAME>IPDUTRIGG_LockingRemoteControlRequest</SHORT-NAME>
+                  <I-PDU-REF DEST="SIGNAL-I-PDU">/PDU/PDU_LockingRemoteControlRequest</I-PDU-REF>
+                </I-PDU-TRIGGERING>
+                <I-PDU-TRIGGERING>
+                  <SHORT-NAME>IPDUTRIGG_CentralLockingSystemState</SHORT-NAME>
+                  <I-PDU-REF DEST="SIGNAL-I-PDU">/PDU/PDU_CentralLockingSystemState</I-PDU-REF>
+                </I-PDU-TRIGGERING>
+                <I-PDU-TRIGGERING>
+                  <SHORT-NAME>IPDUTRIGG_VehicleMotion</SHORT-NAME>
+                  <I-PDU-REF DEST="SIGNAL-I-PDU">/PDU/PDU_VehicleMotion</I-PDU-REF>
+                </I-PDU-TRIGGERING>
+                <I-PDU-TRIGGERING>
+                  <SHORT-NAME>IPDUTRIGG_WindowState</SHORT-NAME>
+                  <I-PDU-REF DEST="SIGNAL-I-PDU">/PDU/PDU_WindowState</I-PDU-REF>
+                </I-PDU-TRIGGERING>
+                <I-PDU-TRIGGERING>
+                  <SHORT-NAME>IPDUTRIGG_WindowControl</SHORT-NAME>
+                  <I-PDU-REF DEST="SIGNAL-I-PDU">/PDU/PDU_WindowControl</I-PDU-REF>
+                </I-PDU-TRIGGERING>
+              </I-PDU-TRIGGERINGS>
+              <I-SIGNAL-TRIGGERINGS>
+                <I-SIGNAL-TRIGGERING>
+                  <SHORT-NAME>LockRequest</SHORT-NAME>
+                  <I-SIGNAL-PORT-REFS>
+                    <I-SIGNAL-PORT-REF DEST="SIGNAL-PORT">/ECU/SUT/CN_SUT/LockRequest</I-SIGNAL-PORT-REF>
+                  </I-SIGNAL-PORT-REFS>
+                  <SIGNAL-REF DEST="I-SIGNAL">/ISignal/LockRequest</SIGNAL-REF>
+                </I-SIGNAL-TRIGGERING>
+                <I-SIGNAL-TRIGGERING>
+                  <SHORT-NAME>AntiTheftSystemActive</SHORT-NAME>
+                  <I-SIGNAL-PORT-REFS/>
+                  <SIGNAL-REF DEST="I-SIGNAL">/ISignal/AntiTheftSystemActive</SIGNAL-REF>
+                </I-SIGNAL-TRIGGERING>
+                <I-SIGNAL-TRIGGERING>
+                  <SHORT-NAME>LockState</SHORT-NAME>
+                  <I-SIGNAL-PORT-REFS/>
+                  <SIGNAL-REF DEST="I-SIGNAL">/ISignal/LockState</SIGNAL-REF>
+                </I-SIGNAL-TRIGGERING>
+                <I-SIGNAL-TRIGGERING>
+                  <SHORT-NAME>EngineRunning</SHORT-NAME>
+                  <I-SIGNAL-PORT-REFS/>
+                  <SIGNAL-REF DEST="I-SIGNAL">/ISignal/EngineRunning</SIGNAL-REF>
+                </I-SIGNAL-TRIGGERING>
+                <I-SIGNAL-TRIGGERING>
+                  <SHORT-NAME>CrashDetected</SHORT-NAME>
+                  <I-SIGNAL-PORT-REFS>
+                    <I-SIGNAL-PORT-REF DEST="SIGNAL-PORT">/ECU/SUT/CN_SUT/CrashDetected</I-SIGNAL-PORT-REF>
+                  </I-SIGNAL-PORT-REFS>
+                  <SIGNAL-REF DEST="I-SIGNAL">/ISignal/CrashDetected</SIGNAL-REF>
+                </I-SIGNAL-TRIGGERING>
+                <I-SIGNAL-TRIGGERING>
+                  <SHORT-NAME>Velocity</SHORT-NAME>
+                  <I-SIGNAL-PORT-REFS>
+                    <I-SIGNAL-PORT-REF DEST="SIGNAL-PORT">/ECU/SUT/CN_SUT/Velocity</I-SIGNAL-PORT-REF>
+                  </I-SIGNAL-PORT-REFS>
+                  <SIGNAL-REF DEST="I-SIGNAL">/ISignal/Velocity</SIGNAL-REF>
+                </I-SIGNAL-TRIGGERING>
+                <I-SIGNAL-TRIGGERING>
+                  <SHORT-NAME>WindowPosition</SHORT-NAME>
+                  <I-SIGNAL-PORT-REFS/>
+                  <SIGNAL-REF DEST="I-SIGNAL">/ISignal/WindowPosition</SIGNAL-REF>
+                </I-SIGNAL-TRIGGERING>
+                <I-SIGNAL-TRIGGERING>
+                  <SHORT-NAME>WindowMotion</SHORT-NAME>
+                  <I-SIGNAL-PORT-REFS/>
+                  <SIGNAL-REF DEST="I-SIGNAL">/ISignal/WindowMotion</SIGNAL-REF>
+                </I-SIGNAL-TRIGGERING>
+                <I-SIGNAL-TRIGGERING>
+                  <SHORT-NAME>KeyDown</SHORT-NAME>
+                  <I-SIGNAL-PORT-REFS>
+                    <I-SIGNAL-PORT-REF DEST="SIGNAL-PORT">/ECU/SUT/CN_SUT/KeyDown</I-SIGNAL-PORT-REF>
+                  </I-SIGNAL-PORT-REFS>
+                  <SIGNAL-REF DEST="I-SIGNAL">/ISignal/KeyDown</SIGNAL-REF>
+                </I-SIGNAL-TRIGGERING>
+                <I-SIGNAL-TRIGGERING>
+                  <SHORT-NAME>KeyUp</SHORT-NAME>
+                  <I-SIGNAL-PORT-REFS>
+                    <I-SIGNAL-PORT-REF DEST="SIGNAL-PORT">/ECU/SUT/CN_SUT/KeyUp</I-SIGNAL-PORT-REF>
+                  </I-SIGNAL-PORT-REFS>
+                  <SIGNAL-REF DEST="I-SIGNAL">/ISignal/KeyUp</SIGNAL-REF>
+                </I-SIGNAL-TRIGGERING>
+              </I-SIGNAL-TRIGGERINGS>
+            </PHYSICAL-CHANNEL>
+          </PHYSICAL-CHANNELS>
+        </CAN-CLUSTER>
+      </ELEMENTS>
+    </AR-PACKAGE>
+    <AR-PACKAGE>
+      <SHORT-NAME>Frame</SHORT-NAME>
+      <ELEMENTS>
+        <FRAME>
+          <SHORT-NAME>FRAME_DiagResponse</SHORT-NAME>
+          <FRAME-LENGTH>8</FRAME-LENGTH>
+          <PDU-TO-FRAME-MAPPINGS>
+            <PDU-TO-FRAME-MAPPING>
+              <SHORT-NAME>DiagResponse</SHORT-NAME>
+              <PACKING-BYTE-ORDER>MOST-SIGNIFICANT-BYTE-LAST</PACKING-BYTE-ORDER>
+              <PDU-REF DEST="SIGNAL-I-PDU">/PDU/PDU_DiagResponse</PDU-REF>
+              <START-POSITION>0</START-POSITION>
+            </PDU-TO-FRAME-MAPPING>
+          </PDU-TO-FRAME-MAPPINGS>
+        </FRAME>
+        <FRAME>
+          <SHORT-NAME>FRAME_DiagRequest</SHORT-NAME>
+          <FRAME-LENGTH>8</FRAME-LENGTH>
+          <PDU-TO-FRAME-MAPPINGS>
+            <PDU-TO-FRAME-MAPPING>
+              <SHORT-NAME>DiagRequest</SHORT-NAME>
+              <PACKING-BYTE-ORDER>MOST-SIGNIFICANT-BYTE-LAST</PACKING-BYTE-ORDER>
+              <PDU-REF DEST="SIGNAL-I-PDU">/PDU/PDU_DiagRequest</PDU-REF>
+              <START-POSITION>0</START-POSITION>
+            </PDU-TO-FRAME-MAPPING>
+          </PDU-TO-FRAME-MAPPINGS>
+        </FRAME>
+        <FRAME>
+          <SHORT-NAME>FRAME_LockingRemoteControlRequest</SHORT-NAME>
+          <FRAME-LENGTH>1</FRAME-LENGTH>
+          <PDU-TO-FRAME-MAPPINGS>
+            <PDU-TO-FRAME-MAPPING>
+              <SHORT-NAME>LockingRemoteControlRequest</SHORT-NAME>
+              <PACKING-BYTE-ORDER>MOST-SIGNIFICANT-BYTE-LAST</PACKING-BYTE-ORDER>
+              <PDU-REF DEST="SIGNAL-I-PDU">/PDU/PDU_LockingRemoteControlRequest</PDU-REF>
+              <START-POSITION>0</START-POSITION>
+            </PDU-TO-FRAME-MAPPING>
+          </PDU-TO-FRAME-MAPPINGS>
+        </FRAME>
+        <FRAME>
+          <SHORT-NAME>FRAME_CentralLockingSystemState</SHORT-NAME>
+          <FRAME-LENGTH>1</FRAME-LENGTH>
+          <PDU-TO-FRAME-MAPPINGS>
+            <PDU-TO-FRAME-MAPPING>
+              <SHORT-NAME>CentralLockingSystemState</SHORT-NAME>
+              <PACKING-BYTE-ORDER>MOST-SIGNIFICANT-BYTE-LAST</PACKING-BYTE-ORDER>
+              <PDU-REF DEST="SIGNAL-I-PDU">/PDU/PDU_CentralLockingSystemState</PDU-REF>
+              <START-POSITION>0</START-POSITION>
+            </PDU-TO-FRAME-MAPPING>
+          </PDU-TO-FRAME-MAPPINGS>
+        </FRAME>
+        <FRAME>
+          <SHORT-NAME>FRAME_VehicleMotion</SHORT-NAME>
+          <FRAME-LENGTH>3</FRAME-LENGTH>
+          <PDU-TO-FRAME-MAPPINGS>
+            <PDU-TO-FRAME-MAPPING>
+              <SHORT-NAME>VehicleMotion</SHORT-NAME>
+              <PACKING-BYTE-ORDER>MOST-SIGNIFICANT-BYTE-LAST</PACKING-BYTE-ORDER>
+              <PDU-REF DEST="SIGNAL-I-PDU">/PDU/PDU_VehicleMotion</PDU-REF>
+              <START-POSITION>0</START-POSITION>
+            </PDU-TO-FRAME-MAPPING>
+          </PDU-TO-FRAME-MAPPINGS>
+        </FRAME>
+        <FRAME>
+          <SHORT-NAME>FRAME_WindowState</SHORT-NAME>
+          <FRAME-LENGTH>2</FRAME-LENGTH>
+          <PDU-TO-FRAME-MAPPINGS>
+            <PDU-TO-FRAME-MAPPING>
+              <SHORT-NAME>WindowState</SHORT-NAME>
+              <PACKING-BYTE-ORDER>MOST-SIGNIFICANT-BYTE-LAST</PACKING-BYTE-ORDER>
+              <PDU-REF DEST="SIGNAL-I-PDU">/PDU/PDU_WindowState</PDU-REF>
+              <START-POSITION>0</START-POSITION>
+            </PDU-TO-FRAME-MAPPING>
+          </PDU-TO-FRAME-MAPPINGS>
+        </FRAME>
+        <FRAME>
+          <SHORT-NAME>FRAME_WindowControl</SHORT-NAME>
+          <FRAME-LENGTH>1</FRAME-LENGTH>
+          <PDU-TO-FRAME-MAPPINGS>
+            <PDU-TO-FRAME-MAPPING>
+              <SHORT-NAME>WindowControl</SHORT-NAME>
+              <PACKING-BYTE-ORDER>MOST-SIGNIFICANT-BYTE-LAST</PACKING-BYTE-ORDER>
+              <PDU-REF DEST="SIGNAL-I-PDU">/PDU/PDU_WindowControl</PDU-REF>
+              <START-POSITION>0</START-POSITION>
+            </PDU-TO-FRAME-MAPPING>
+          </PDU-TO-FRAME-MAPPINGS>
+        </FRAME>
+      </ELEMENTS>
+    </AR-PACKAGE>
+    <AR-PACKAGE>
+      <SHORT-NAME>PDU</SHORT-NAME>
+      <ELEMENTS>
+        <SIGNAL-I-PDU>
+          <SHORT-NAME>PDU_DiagResponse</SHORT-NAME>
+          <LENGTH>64</LENGTH>
+          <SIGNAL-TO-PDU-MAPPINGS/>
+        </SIGNAL-I-PDU>
+        <SIGNAL-I-PDU>
+          <SHORT-NAME>PDU_DiagRequest</SHORT-NAME>
+          <LENGTH>64</LENGTH>
+          <SIGNAL-TO-PDU-MAPPINGS/>
+        </SIGNAL-I-PDU>
+        <SIGNAL-I-PDU>
+          <SHORT-NAME>PDU_LockingRemoteControlRequest</SHORT-NAME>
+          <LENGTH>8</LENGTH>
+          <SIGNAL-TO-PDU-MAPPINGS>
+            <I-SIGNAL-TO-I-PDU-MAPPING>
+              <SHORT-NAME>LockRequest</SHORT-NAME>
+              <PACKING-BYTE-ORDER>MOST-SIGNIFICANT-BYTE-LAST</PACKING-BYTE-ORDER>
+              <SIGNAL-REF DEST="I-SIGNAL">/ISignal/LockRequest</SIGNAL-REF>
+              <START-POSITION>0</START-POSITION>
+            </I-SIGNAL-TO-I-PDU-MAPPING>
+          </SIGNAL-TO-PDU-MAPPINGS>
+        </SIGNAL-I-PDU>
+        <SIGNAL-I-PDU>
+          <SHORT-NAME>PDU_CentralLockingSystemState</SHORT-NAME>
+          <LENGTH>8</LENGTH>
+          <SIGNAL-TO-PDU-MAPPINGS>
+            <I-SIGNAL-TO-I-PDU-MAPPING>
+              <SHORT-NAME>AntiTheftSystemActive</SHORT-NAME>
+              <PACKING-BYTE-ORDER>MOST-SIGNIFICANT-BYTE-LAST</PACKING-BYTE-ORDER>
+              <SIGNAL-REF DEST="I-SIGNAL">/ISignal/AntiTheftSystemActive</SIGNAL-REF>
+              <START-POSITION>1</START-POSITION>
+            </I-SIGNAL-TO-I-PDU-MAPPING>
+            <I-SIGNAL-TO-I-PDU-MAPPING>
+              <SHORT-NAME>LockState</SHORT-NAME>
+              <PACKING-BYTE-ORDER>MOST-SIGNIFICANT-BYTE-LAST</PACKING-BYTE-ORDER>
+              <SIGNAL-REF DEST="I-SIGNAL">/ISignal/LockState</SIGNAL-REF>
+              <START-POSITION>0</START-POSITION>
+            </I-SIGNAL-TO-I-PDU-MAPPING>
+          </SIGNAL-TO-PDU-MAPPINGS>
+        </SIGNAL-I-PDU>
+        <SIGNAL-I-PDU>
+          <SHORT-NAME>PDU_VehicleMotion</SHORT-NAME>
+          <LENGTH>24</LENGTH>
+          <SIGNAL-TO-PDU-MAPPINGS>
+            <I-SIGNAL-TO-I-PDU-MAPPING>
+              <SHORT-NAME>EngineRunning</SHORT-NAME>
+              <PACKING-BYTE-ORDER>MOST-SIGNIFICANT-BYTE-LAST</PACKING-BYTE-ORDER>
+              <SIGNAL-REF DEST="I-SIGNAL">/ISignal/EngineRunning</SIGNAL-REF>
+              <START-POSITION>17</START-POSITION>
+            </I-SIGNAL-TO-I-PDU-MAPPING>
+            <I-SIGNAL-TO-I-PDU-MAPPING>
+              <SHORT-NAME>CrashDetected</SHORT-NAME>
+              <PACKING-BYTE-ORDER>MOST-SIGNIFICANT-BYTE-LAST</PACKING-BYTE-ORDER>
+              <SIGNAL-REF DEST="I-SIGNAL">/ISignal/CrashDetected</SIGNAL-REF>
+              <START-POSITION>16</START-POSITION>
+            </I-SIGNAL-TO-I-PDU-MAPPING>
+            <I-SIGNAL-TO-I-PDU-MAPPING>
+              <SHORT-NAME>Velocity</SHORT-NAME>
+              <PACKING-BYTE-ORDER>MOST-SIGNIFICANT-BYTE-LAST</PACKING-BYTE-ORDER>
+              <SIGNAL-REF DEST="I-SIGNAL">/ISignal/Velocity</SIGNAL-REF>
+              <START-POSITION>0</START-POSITION>
+            </I-SIGNAL-TO-I-PDU-MAPPING>
+          </SIGNAL-TO-PDU-MAPPINGS>
+        </SIGNAL-I-PDU>
+        <SIGNAL-I-PDU>
+          <SHORT-NAME>PDU_WindowState</SHORT-NAME>
+          <LENGTH>16</LENGTH>
+          <SIGNAL-TO-PDU-MAPPINGS>
+            <I-SIGNAL-TO-I-PDU-MAPPING>
+              <SHORT-NAME>WindowPosition</SHORT-NAME>
+              <PACKING-BYTE-ORDER>MOST-SIGNIFICANT-BYTE-LAST</PACKING-BYTE-ORDER>
+              <SIGNAL-REF DEST="I-SIGNAL">/ISignal/WindowPosition</SIGNAL-REF>
+              <START-POSITION>0</START-POSITION>
+            </I-SIGNAL-TO-I-PDU-MAPPING>
+            <I-SIGNAL-TO-I-PDU-MAPPING>
+              <SHORT-NAME>WindowMotion</SHORT-NAME>
+              <PACKING-BYTE-ORDER>MOST-SIGNIFICANT-BYTE-LAST</PACKING-BYTE-ORDER>
+              <SIGNAL-REF DEST="I-SIGNAL">/ISignal/WindowMotion</SIGNAL-REF>
+              <START-POSITION>14</START-POSITION>
+            </I-SIGNAL-TO-I-PDU-MAPPING>
+          </SIGNAL-TO-PDU-MAPPINGS>
+        </SIGNAL-I-PDU>
+        <SIGNAL-I-PDU>
+          <SHORT-NAME>PDU_WindowControl</SHORT-NAME>
+          <LENGTH>8</LENGTH>
+          <SIGNAL-TO-PDU-MAPPINGS>
+            <I-SIGNAL-TO-I-PDU-MAPPING>
+              <SHORT-NAME>KeyDown</SHORT-NAME>
+              <PACKING-BYTE-ORDER>MOST-SIGNIFICANT-BYTE-LAST</PACKING-BYTE-ORDER>
+              <SIGNAL-REF DEST="I-SIGNAL">/ISignal/KeyDown</SIGNAL-REF>
+              <START-POSITION>1</START-POSITION>
+            </I-SIGNAL-TO-I-PDU-MAPPING>
+            <I-SIGNAL-TO-I-PDU-MAPPING>
+              <SHORT-NAME>KeyUp</SHORT-NAME>
+              <PACKING-BYTE-ORDER>MOST-SIGNIFICANT-BYTE-LAST</PACKING-BYTE-ORDER>
+              <SIGNAL-REF DEST="I-SIGNAL">/ISignal/KeyUp</SIGNAL-REF>
+              <START-POSITION>0</START-POSITION>
+            </I-SIGNAL-TO-I-PDU-MAPPING>
+          </SIGNAL-TO-PDU-MAPPINGS>
+        </SIGNAL-I-PDU>
+      </ELEMENTS>
+    </AR-PACKAGE>
+    <AR-PACKAGE>
+      <SHORT-NAME>ISignal</SHORT-NAME>
+      <ELEMENTS>
+        <I-SIGNAL>
+          <SHORT-NAME>LockRequest</SHORT-NAME>
+          <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/Signal/LockRequest</SYSTEM-SIGNAL-REF>
+        </I-SIGNAL>
+        <I-SIGNAL>
+          <SHORT-NAME>AntiTheftSystemActive</SHORT-NAME>
+          <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/Signal/AntiTheftSystemActive</SYSTEM-SIGNAL-REF>
+        </I-SIGNAL>
+        <I-SIGNAL>
+          <SHORT-NAME>LockState</SHORT-NAME>
+          <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/Signal/LockState</SYSTEM-SIGNAL-REF>
+        </I-SIGNAL>
+        <I-SIGNAL>
+          <SHORT-NAME>EngineRunning</SHORT-NAME>
+          <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/Signal/EngineRunning</SYSTEM-SIGNAL-REF>
+        </I-SIGNAL>
+        <I-SIGNAL>
+          <SHORT-NAME>CrashDetected</SHORT-NAME>
+          <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/Signal/CrashDetected</SYSTEM-SIGNAL-REF>
+        </I-SIGNAL>
+        <I-SIGNAL>
+          <SHORT-NAME>Velocity</SHORT-NAME>
+          <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/Signal/Velocity</SYSTEM-SIGNAL-REF>
+        </I-SIGNAL>
+        <I-SIGNAL>
+          <SHORT-NAME>WindowPosition</SHORT-NAME>
+          <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/Signal/WindowPosition</SYSTEM-SIGNAL-REF>
+        </I-SIGNAL>
+        <I-SIGNAL>
+          <SHORT-NAME>WindowMotion</SHORT-NAME>
+          <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/Signal/WindowMotion</SYSTEM-SIGNAL-REF>
+        </I-SIGNAL>
+        <I-SIGNAL>
+          <SHORT-NAME>KeyDown</SHORT-NAME>
+          <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/Signal/KeyDown</SYSTEM-SIGNAL-REF>
+        </I-SIGNAL>
+        <I-SIGNAL>
+          <SHORT-NAME>KeyUp</SHORT-NAME>
+          <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/Signal/KeyUp</SYSTEM-SIGNAL-REF>
+        </I-SIGNAL>
+      </ELEMENTS>
+    </AR-PACKAGE>
+    <AR-PACKAGE>
+      <SHORT-NAME>Signal</SHORT-NAME>
+      <ELEMENTS>
+        <SYSTEM-SIGNAL>
+          <SHORT-NAME>LockRequest</SHORT-NAME>
+          <DATA-TYPE-REF DEST="INTEGER-TYPE">/DataType/LockRequest</DATA-TYPE-REF>
+          <LENGTH>2</LENGTH>
+        </SYSTEM-SIGNAL>
+        <SYSTEM-SIGNAL>
+          <SHORT-NAME>AntiTheftSystemActive</SHORT-NAME>
+          <DATA-TYPE-REF DEST="INTEGER-TYPE">/DataType/AntiTheftSystemActive</DATA-TYPE-REF>
+          <LENGTH>1</LENGTH>
+        </SYSTEM-SIGNAL>
+        <SYSTEM-SIGNAL>
+          <SHORT-NAME>LockState</SHORT-NAME>
+          <DATA-TYPE-REF DEST="INTEGER-TYPE">/DataType/LockState</DATA-TYPE-REF>
+          <LENGTH>1</LENGTH>
+        </SYSTEM-SIGNAL>
+        <SYSTEM-SIGNAL>
+          <SHORT-NAME>EngineRunning</SHORT-NAME>
+          <DATA-TYPE-REF DEST="INTEGER-TYPE">/DataType/EngineRunning</DATA-TYPE-REF>
+          <LENGTH>1</LENGTH>
+        </SYSTEM-SIGNAL>
+        <SYSTEM-SIGNAL>
+          <SHORT-NAME>CrashDetected</SHORT-NAME>
+          <DATA-TYPE-REF DEST="INTEGER-TYPE">/DataType/CrashDetected</DATA-TYPE-REF>
+          <LENGTH>1</LENGTH>
+        </SYSTEM-SIGNAL>
+        <SYSTEM-SIGNAL>
+          <SHORT-NAME>Velocity</SHORT-NAME>
+          <DATA-TYPE-REF DEST="INTEGER-TYPE">/DataType/Velocity</DATA-TYPE-REF>
+          <LENGTH>16</LENGTH>
+        </SYSTEM-SIGNAL>
+        <SYSTEM-SIGNAL>
+          <SHORT-NAME>WindowPosition</SHORT-NAME>
+          <DATA-TYPE-REF DEST="INTEGER-TYPE">/DataType/WindowPosition</DATA-TYPE-REF>
+          <LENGTH>8</LENGTH>
+        </SYSTEM-SIGNAL>
+        <SYSTEM-SIGNAL>
+          <SHORT-NAME>WindowMotion</SHORT-NAME>
+          <DATA-TYPE-REF DEST="INTEGER-TYPE">/DataType/WindowMotion</DATA-TYPE-REF>
+          <LENGTH>2</LENGTH>
+        </SYSTEM-SIGNAL>
+        <SYSTEM-SIGNAL>
+          <SHORT-NAME>KeyDown</SHORT-NAME>
+          <DATA-TYPE-REF DEST="INTEGER-TYPE">/DataType/KeyDown</DATA-TYPE-REF>
+          <LENGTH>1</LENGTH>
+        </SYSTEM-SIGNAL>
+        <SYSTEM-SIGNAL>
+          <SHORT-NAME>KeyUp</SHORT-NAME>
+          <DATA-TYPE-REF DEST="INTEGER-TYPE">/DataType/KeyUp</DATA-TYPE-REF>
+          <LENGTH>1</LENGTH>
+        </SYSTEM-SIGNAL>
+      </ELEMENTS>
+    </AR-PACKAGE>
+    <AR-PACKAGE>
+      <SHORT-NAME>DataType</SHORT-NAME>
+      <ELEMENTS>
+        <INTEGER-TYPE>
+          <SHORT-NAME>LockRequest</SHORT-NAME>
+          <SW-DATA-DEF-PROPS>
+            <COMPU-METHOD-REF DEST="COMPU-METHOD">/DataType/Semantics/LockRequest</COMPU-METHOD-REF>
+          </SW-DATA-DEF-PROPS>
+        </INTEGER-TYPE>
+        <INTEGER-TYPE>
+          <SHORT-NAME>AntiTheftSystemActive</SHORT-NAME>
+          <SW-DATA-DEF-PROPS>
+            <COMPU-METHOD-REF DEST="COMPU-METHOD">/DataType/Semantics/AntiTheftSystemActive</COMPU-METHOD-REF>
+          </SW-DATA-DEF-PROPS>
+        </INTEGER-TYPE>
+        <INTEGER-TYPE>
+          <SHORT-NAME>LockState</SHORT-NAME>
+          <SW-DATA-DEF-PROPS>
+            <COMPU-METHOD-REF DEST="COMPU-METHOD">/DataType/Semantics/LockState</COMPU-METHOD-REF>
+          </SW-DATA-DEF-PROPS>
+        </INTEGER-TYPE>
+        <INTEGER-TYPE>
+          <SHORT-NAME>EngineRunning</SHORT-NAME>
+          <SW-DATA-DEF-PROPS>
+            <COMPU-METHOD-REF DEST="COMPU-METHOD">/DataType/Semantics/EngineRunning</COMPU-METHOD-REF>
+          </SW-DATA-DEF-PROPS>
+        </INTEGER-TYPE>
+        <INTEGER-TYPE>
+          <SHORT-NAME>CrashDetected</SHORT-NAME>
+          <SW-DATA-DEF-PROPS>
+            <COMPU-METHOD-REF DEST="COMPU-METHOD">/DataType/Semantics/CrashDetected</COMPU-METHOD-REF>
+          </SW-DATA-DEF-PROPS>
+        </INTEGER-TYPE>
+        <INTEGER-TYPE>
+          <SHORT-NAME>Velocity</SHORT-NAME>
+          <SW-DATA-DEF-PROPS>
+            <COMPU-METHOD-REF DEST="COMPU-METHOD">/DataType/Semantics/Velocity</COMPU-METHOD-REF>
+          </SW-DATA-DEF-PROPS>
+        </INTEGER-TYPE>
+        <INTEGER-TYPE>
+          <SHORT-NAME>WindowPosition</SHORT-NAME>
+          <SW-DATA-DEF-PROPS>
+            <COMPU-METHOD-REF DEST="COMPU-METHOD">/DataType/Semantics/WindowPosition</COMPU-METHOD-REF>
+          </SW-DATA-DEF-PROPS>
+        </INTEGER-TYPE>
+        <INTEGER-TYPE>
+          <SHORT-NAME>WindowMotion</SHORT-NAME>
+          <SW-DATA-DEF-PROPS>
+            <COMPU-METHOD-REF DEST="COMPU-METHOD">/DataType/Semantics/WindowMotion</COMPU-METHOD-REF>
+          </SW-DATA-DEF-PROPS>
+        </INTEGER-TYPE>
+        <INTEGER-TYPE>
+          <SHORT-NAME>KeyDown</SHORT-NAME>
+          <SW-DATA-DEF-PROPS>
+            <COMPU-METHOD-REF DEST="COMPU-METHOD">/DataType/Semantics/KeyDown</COMPU-METHOD-REF>
+          </SW-DATA-DEF-PROPS>
+        </INTEGER-TYPE>
+        <INTEGER-TYPE>
+          <SHORT-NAME>KeyUp</SHORT-NAME>
+          <SW-DATA-DEF-PROPS>
+            <COMPU-METHOD-REF DEST="COMPU-METHOD">/DataType/Semantics/KeyUp</COMPU-METHOD-REF>
+          </SW-DATA-DEF-PROPS>
+        </INTEGER-TYPE>
+      </ELEMENTS>
+      <SUB-PACKAGES>
+        <AR-PACKAGE>
+          <SHORT-NAME>Semantics</SHORT-NAME>
+          <ELEMENTS>
+            <COMPU-METHOD>
+              <SHORT-NAME>LockRequest</SHORT-NAME>
+              <COMPU-INTERNAL-TO-PHYS>
+                <COMPU-SCALES>
+                  <COMPU-SCALE>
+                    <DESC>
+                      <L-2 L="FOR-ALL">idle</L-2>
+                    </DESC>
+                    <LOWER-LIMIT>0</LOWER-LIMIT>
+                    <UPPER-LIMIT>0</UPPER-LIMIT>
+                    <COMPU-CONST>
+                      <VT>idle</VT>
+                    </COMPU-CONST>
+                  </COMPU-SCALE>
+                  <COMPU-SCALE>
+                    <DESC>
+                      <L-2 L="FOR-ALL">Request_lock</L-2>
+                    </DESC>
+                    <LOWER-LIMIT>1</LOWER-LIMIT>
+                    <UPPER-LIMIT>1</UPPER-LIMIT>
+                    <COMPU-CONST>
+                      <VT>Request_lock</VT>
+                    </COMPU-CONST>
+                  </COMPU-SCALE>
+                  <COMPU-SCALE>
+                    <DESC>
+                      <L-2 L="FOR-ALL">Request_unlock</L-2>
+                    </DESC>
+                    <LOWER-LIMIT>2</LOWER-LIMIT>
+                    <UPPER-LIMIT>2</UPPER-LIMIT>
+                    <COMPU-CONST>
+                      <VT>Request_unlock</VT>
+                    </COMPU-CONST>
+                  </COMPU-SCALE>
+                  <COMPU-SCALE>
+                    <DESC>
+                      <L-2 L="FOR-ALL">Comfort_lock</L-2>
+                    </DESC>
+                    <LOWER-LIMIT>3</LOWER-LIMIT>
+                    <UPPER-LIMIT>3</UPPER-LIMIT>
+                    <COMPU-CONST>
+                      <VT>Comfort_lock</VT>
+                    </COMPU-CONST>
+                  </COMPU-SCALE>
+                  <COMPU-SCALE>
+                    <COMPU-RATIONAL-COEFFS>
+                      <COMPU-NUMERATOR>
+                        <V>0</V>
+                        <V>1</V>
+                      </COMPU-NUMERATOR>
+                      <COMPU-DENOMINATOR>
+                        <V>1</V>
+                      </COMPU-DENOMINATOR>
+                    </COMPU-RATIONAL-COEFFS>
+                  </COMPU-SCALE>
+                </COMPU-SCALES>
+              </COMPU-INTERNAL-TO-PHYS>
+            </COMPU-METHOD>
+            <COMPU-METHOD>
+              <SHORT-NAME>AntiTheftSystemActive</SHORT-NAME>
+              <COMPU-INTERNAL-TO-PHYS>
+                <COMPU-SCALES>
+                  <COMPU-SCALE>
+                    <DESC>
+                      <L-2 L="FOR-ALL">not_moving</L-2>
+                    </DESC>
+                    <LOWER-LIMIT>0</LOWER-LIMIT>
+                    <UPPER-LIMIT>0</UPPER-LIMIT>
+                    <COMPU-CONST>
+                      <VT>not_moving</VT>
+                    </COMPU-CONST>
+                  </COMPU-SCALE>
+                  <COMPU-SCALE>
+                    <DESC>
+                      <L-2 L="FOR-ALL">currently_closing</L-2>
+                    </DESC>
+                    <LOWER-LIMIT>1</LOWER-LIMIT>
+                    <UPPER-LIMIT>1</UPPER-LIMIT>
+                    <COMPU-CONST>
+                      <VT>currently_closing</VT>
+                    </COMPU-CONST>
+                  </COMPU-SCALE>
+                  <COMPU-SCALE>
+                    <DESC>
+                      <L-2 L="FOR-ALL">currently_opening</L-2>
+                    </DESC>
+                    <LOWER-LIMIT>2</LOWER-LIMIT>
+                    <UPPER-LIMIT>2</UPPER-LIMIT>
+                    <COMPU-CONST>
+                      <VT>currently_opening</VT>
+                    </COMPU-CONST>
+                  </COMPU-SCALE>
+                  <COMPU-SCALE>
+                    <COMPU-RATIONAL-COEFFS>
+                      <COMPU-NUMERATOR>
+                        <V>2</V>
+                        <V>1</V>
+                      </COMPU-NUMERATOR>
+                      <COMPU-DENOMINATOR>
+                        <V>1</V>
+                      </COMPU-DENOMINATOR>
+                    </COMPU-RATIONAL-COEFFS>
+                  </COMPU-SCALE>
+                </COMPU-SCALES>
+              </COMPU-INTERNAL-TO-PHYS>
+            </COMPU-METHOD>
+            <COMPU-METHOD>
+              <SHORT-NAME>LockState</SHORT-NAME>
+              <COMPU-INTERNAL-TO-PHYS>
+                <COMPU-SCALES>
+                  <COMPU-SCALE>
+                    <DESC>
+                      <L-2 L="FOR-ALL">not_moving</L-2>
+                    </DESC>
+                    <LOWER-LIMIT>0</LOWER-LIMIT>
+                    <UPPER-LIMIT>0</UPPER-LIMIT>
+                    <COMPU-CONST>
+                      <VT>not_moving</VT>
+                    </COMPU-CONST>
+                  </COMPU-SCALE>
+                  <COMPU-SCALE>
+                    <DESC>
+                      <L-2 L="FOR-ALL">currently_closing</L-2>
+                    </DESC>
+                    <LOWER-LIMIT>1</LOWER-LIMIT>
+                    <UPPER-LIMIT>1</UPPER-LIMIT>
+                    <COMPU-CONST>
+                      <VT>currently_closing</VT>
+                    </COMPU-CONST>
+                  </COMPU-SCALE>
+                  <COMPU-SCALE>
+                    <DESC>
+                      <L-2 L="FOR-ALL">currently_opening</L-2>
+                    </DESC>
+                    <LOWER-LIMIT>2</LOWER-LIMIT>
+                    <UPPER-LIMIT>2</UPPER-LIMIT>
+                    <COMPU-CONST>
+                      <VT>currently_opening</VT>
+                    </COMPU-CONST>
+                  </COMPU-SCALE>
+                  <COMPU-SCALE>
+                    <COMPU-RATIONAL-COEFFS>
+                      <COMPU-NUMERATOR>
+                        <V>3</V>
+                        <V>2</V>
+                      </COMPU-NUMERATOR>
+                      <COMPU-DENOMINATOR>
+                        <V>1</V>
+                      </COMPU-DENOMINATOR>
+                    </COMPU-RATIONAL-COEFFS>
+                  </COMPU-SCALE>
+                </COMPU-SCALES>
+              </COMPU-INTERNAL-TO-PHYS>
+            </COMPU-METHOD>
+            <COMPU-METHOD>
+              <SHORT-NAME>EngineRunning</SHORT-NAME>
+              <COMPU-INTERNAL-TO-PHYS>
+                <COMPU-SCALES>
+                  <COMPU-SCALE>
+                    <COMPU-RATIONAL-COEFFS>
+                      <COMPU-NUMERATOR>
+                        <V>0</V>
+                        <V>3</V>
+                      </COMPU-NUMERATOR>
+                      <COMPU-DENOMINATOR>
+                        <V>1</V>
+                      </COMPU-DENOMINATOR>
+                    </COMPU-RATIONAL-COEFFS>
+                  </COMPU-SCALE>
+                </COMPU-SCALES>
+              </COMPU-INTERNAL-TO-PHYS>
+            </COMPU-METHOD>
+            <COMPU-METHOD>
+              <SHORT-NAME>CrashDetected</SHORT-NAME>
+              <COMPU-INTERNAL-TO-PHYS>
+                <COMPU-SCALES>
+                  <COMPU-SCALE>
+                    <COMPU-RATIONAL-COEFFS>
+                      <COMPU-NUMERATOR>
+                        <V>0</V>
+                        <V>1</V>
+                      </COMPU-NUMERATOR>
+                      <COMPU-DENOMINATOR>
+                        <V>1</V>
+                      </COMPU-DENOMINATOR>
+                    </COMPU-RATIONAL-COEFFS>
+                  </COMPU-SCALE>
+                </COMPU-SCALES>
+              </COMPU-INTERNAL-TO-PHYS>
+            </COMPU-METHOD>
+            <COMPU-METHOD>
+              <SHORT-NAME>Velocity</SHORT-NAME>
+              <COMPU-INTERNAL-TO-PHYS>
+                <COMPU-SCALES>
+                  <COMPU-SCALE>
+                    <COMPU-RATIONAL-COEFFS>
+                      <COMPU-NUMERATOR>
+                        <V>0</V>
+                        <V>3</V>
+                      </COMPU-NUMERATOR>
+                      <COMPU-DENOMINATOR>
+                        <V>1</V>
+                      </COMPU-DENOMINATOR>
+                    </COMPU-RATIONAL-COEFFS>
+                  </COMPU-SCALE>
+                </COMPU-SCALES>
+              </COMPU-INTERNAL-TO-PHYS>
+            </COMPU-METHOD>
+            <COMPU-METHOD>
+              <SHORT-NAME>WindowPosition</SHORT-NAME>
+              <COMPU-INTERNAL-TO-PHYS>
+                <COMPU-SCALES>
+                  <COMPU-SCALE>
+                    <COMPU-RATIONAL-COEFFS>
+                      <COMPU-NUMERATOR>
+                        <V>0</V>
+                        <V>1</V>
+                      </COMPU-NUMERATOR>
+                      <COMPU-DENOMINATOR>
+                        <V>1</V>
+                      </COMPU-DENOMINATOR>
+                    </COMPU-RATIONAL-COEFFS>
+                  </COMPU-SCALE>
+                </COMPU-SCALES>
+              </COMPU-INTERNAL-TO-PHYS>
+            </COMPU-METHOD>
+            <COMPU-METHOD>
+              <SHORT-NAME>WindowMotion</SHORT-NAME>
+              <COMPU-INTERNAL-TO-PHYS>
+                <COMPU-SCALES>
+                  <COMPU-SCALE>
+                    <DESC>
+                      <L-2 L="FOR-ALL">not_moving</L-2>
+                    </DESC>
+                    <LOWER-LIMIT>0</LOWER-LIMIT>
+                    <UPPER-LIMIT>0</UPPER-LIMIT>
+                    <COMPU-CONST>
+                      <VT>not_moving</VT>
+                    </COMPU-CONST>
+                  </COMPU-SCALE>
+                  <COMPU-SCALE>
+                    <DESC>
+                      <L-2 L="FOR-ALL">currently_closing</L-2>
+                    </DESC>
+                    <LOWER-LIMIT>1</LOWER-LIMIT>
+                    <UPPER-LIMIT>1</UPPER-LIMIT>
+                    <COMPU-CONST>
+                      <VT>currently_closing</VT>
+                    </COMPU-CONST>
+                  </COMPU-SCALE>
+                  <COMPU-SCALE>
+                    <DESC>
+                      <L-2 L="FOR-ALL">currently_opening</L-2>
+                    </DESC>
+                    <LOWER-LIMIT>2</LOWER-LIMIT>
+                    <UPPER-LIMIT>2</UPPER-LIMIT>
+                    <COMPU-CONST>
+                      <VT>currently_opening</VT>
+                    </COMPU-CONST>
+                  </COMPU-SCALE>
+                  <COMPU-SCALE>
+                    <COMPU-RATIONAL-COEFFS>
+                      <COMPU-NUMERATOR>
+                        <V>0</V>
+                        <V>1</V>
+                      </COMPU-NUMERATOR>
+                      <COMPU-DENOMINATOR>
+                        <V>1</V>
+                      </COMPU-DENOMINATOR>
+                    </COMPU-RATIONAL-COEFFS>
+                  </COMPU-SCALE>
+                </COMPU-SCALES>
+              </COMPU-INTERNAL-TO-PHYS>
+            </COMPU-METHOD>
+            <COMPU-METHOD>
+              <SHORT-NAME>KeyDown</SHORT-NAME>
+              <COMPU-INTERNAL-TO-PHYS>
+                <COMPU-SCALES>
+                  <COMPU-SCALE>
+                    <COMPU-RATIONAL-COEFFS>
+                      <COMPU-NUMERATOR>
+                        <V>0</V>
+                        <V>1</V>
+                      </COMPU-NUMERATOR>
+                      <COMPU-DENOMINATOR>
+                        <V>1</V>
+                      </COMPU-DENOMINATOR>
+                    </COMPU-RATIONAL-COEFFS>
+                  </COMPU-SCALE>
+                </COMPU-SCALES>
+              </COMPU-INTERNAL-TO-PHYS>
+            </COMPU-METHOD>
+            <COMPU-METHOD>
+              <SHORT-NAME>KeyUp</SHORT-NAME>
+              <COMPU-INTERNAL-TO-PHYS>
+                <COMPU-SCALES>
+                  <COMPU-SCALE>
+                    <COMPU-RATIONAL-COEFFS>
+                      <COMPU-NUMERATOR>
+                        <V>0</V>
+                        <V>1</V>
+                      </COMPU-NUMERATOR>
+                      <COMPU-DENOMINATOR>
+                        <V>1</V>
+                      </COMPU-DENOMINATOR>
+                    </COMPU-RATIONAL-COEFFS>
+                  </COMPU-SCALE>
+                </COMPU-SCALES>
+              </COMPU-INTERNAL-TO-PHYS>
+            </COMPU-METHOD>
+          </ELEMENTS>
+        </AR-PACKAGE>
+        <AR-PACKAGE>
+          <SHORT-NAME>Unit</SHORT-NAME>
+          <ELEMENTS>
+            <UNIT>
+              <SHORT-NAME>LockRequest</SHORT-NAME>
+              <DISPLAY-NAME></DISPLAY-NAME>
+            </UNIT>
+            <UNIT>
+              <SHORT-NAME>AntiTheftSystemActive</SHORT-NAME>
+              <DISPLAY-NAME></DISPLAY-NAME>
+            </UNIT>
+            <UNIT>
+              <SHORT-NAME>LockState</SHORT-NAME>
+              <DISPLAY-NAME></DISPLAY-NAME>
+            </UNIT>
+            <UNIT>
+              <SHORT-NAME>EngineRunning</SHORT-NAME>
+              <DISPLAY-NAME></DISPLAY-NAME>
+            </UNIT>
+            <UNIT>
+              <SHORT-NAME>CrashDetected</SHORT-NAME>
+              <DISPLAY-NAME></DISPLAY-NAME>
+            </UNIT>
+            <UNIT>
+              <SHORT-NAME>Velocity</SHORT-NAME>
+              <DISPLAY-NAME></DISPLAY-NAME>
+            </UNIT>
+            <UNIT>
+              <SHORT-NAME>WindowPosition</SHORT-NAME>
+              <DISPLAY-NAME></DISPLAY-NAME>
+            </UNIT>
+            <UNIT>
+              <SHORT-NAME>WindowMotion</SHORT-NAME>
+              <DISPLAY-NAME></DISPLAY-NAME>
+            </UNIT>
+            <UNIT>
+              <SHORT-NAME>KeyDown</SHORT-NAME>
+              <DISPLAY-NAME></DISPLAY-NAME>
+            </UNIT>
+            <UNIT>
+              <SHORT-NAME>KeyUp</SHORT-NAME>
+              <DISPLAY-NAME></DISPLAY-NAME>
+            </UNIT>
+          </ELEMENTS>
+        </AR-PACKAGE>
+      </SUB-PACKAGES>
+    </AR-PACKAGE>
+    <AR-PACKAGE>
+      <SHORT-NAME>ECU</SHORT-NAME>
+      <ELEMENTS>
+        <ECU-INSTANCE>
+          <SHORT-NAME>SUT_Driver</SHORT-NAME>
+          <ASSOCIATED-I-PDU-GROUP-REFS>
+            <ASSOCIATED-I-PDU-GROUP-REF DEST="I-PDU-GROUP">/IPDUGroup/SUT_Driver_Tx</ASSOCIATED-I-PDU-GROUP-REF>
+          </ASSOCIATED-I-PDU-GROUP-REFS>
+          <CONNECTORS>
+            <COMMUNICATION-CONNECTOR>
+              <SHORT-NAME>CN_SUT_Driver</SHORT-NAME>
+              <ECU-COMM-PORT-INSTANCES>
+                <FRAME-PORT>
+                  <SHORT-NAME>LockingRemoteControlRequest</SHORT-NAME>
+                  <COMMUNICATION-DIRECTION>OUT</COMMUNICATION-DIRECTION>
+                </FRAME-PORT>
+                <SIGNAL-PORT>
+                  <SHORT-NAME>LockRequest</SHORT-NAME>
+                  <COMMUNICATION-DIRECTION>OUT</COMMUNICATION-DIRECTION>
+                </SIGNAL-PORT>
+                <FRAME-PORT>
+                  <SHORT-NAME>VehicleMotion</SHORT-NAME>
+                  <COMMUNICATION-DIRECTION>OUT</COMMUNICATION-DIRECTION>
+                </FRAME-PORT>
+                <SIGNAL-PORT>
+                  <SHORT-NAME>EngineRunning</SHORT-NAME>
+                  <COMMUNICATION-DIRECTION>OUT</COMMUNICATION-DIRECTION>
+                </SIGNAL-PORT>
+                <SIGNAL-PORT>
+                  <SHORT-NAME>CrashDetected</SHORT-NAME>
+                  <COMMUNICATION-DIRECTION>OUT</COMMUNICATION-DIRECTION>
+                </SIGNAL-PORT>
+                <SIGNAL-PORT>
+                  <SHORT-NAME>Velocity</SHORT-NAME>
+                  <COMMUNICATION-DIRECTION>OUT</COMMUNICATION-DIRECTION>
+                </SIGNAL-PORT>
+                <FRAME-PORT>
+                  <SHORT-NAME>WindowControl</SHORT-NAME>
+                  <COMMUNICATION-DIRECTION>OUT</COMMUNICATION-DIRECTION>
+                </FRAME-PORT>
+                <SIGNAL-PORT>
+                  <SHORT-NAME>KeyDown</SHORT-NAME>
+                  <COMMUNICATION-DIRECTION>OUT</COMMUNICATION-DIRECTION>
+                </SIGNAL-PORT>
+                <SIGNAL-PORT>
+                  <SHORT-NAME>KeyUp</SHORT-NAME>
+                  <COMMUNICATION-DIRECTION>OUT</COMMUNICATION-DIRECTION>
+                </SIGNAL-PORT>
+              </ECU-COMM-PORT-INSTANCES>
+            </COMMUNICATION-CONNECTOR>
+          </CONNECTORS>
+        </ECU-INSTANCE>
+        <ECU-INSTANCE>
+          <SHORT-NAME>SUT</SHORT-NAME>
+          <ASSOCIATED-I-PDU-GROUP-REFS>
+            <ASSOCIATED-I-PDU-GROUP-REF DEST="I-PDU-GROUP">/IPDUGroup/SUT_Rx</ASSOCIATED-I-PDU-GROUP-REF>
+            <ASSOCIATED-I-PDU-GROUP-REF DEST="I-PDU-GROUP">/IPDUGroup/SUT_Tx</ASSOCIATED-I-PDU-GROUP-REF>
+          </ASSOCIATED-I-PDU-GROUP-REFS>
+          <CONNECTORS>
+            <COMMUNICATION-CONNECTOR>
+              <SHORT-NAME>CN_SUT</SHORT-NAME>
+              <ECU-COMM-PORT-INSTANCES>
+                <FRAME-PORT>
+                  <SHORT-NAME>LockingRemoteControlRequest</SHORT-NAME>
+                  <COMMUNICATION-DIRECTION>IN</COMMUNICATION-DIRECTION>
+                </FRAME-PORT>
+                <SIGNAL-PORT>
+                  <SHORT-NAME>LockRequest</SHORT-NAME>
+                  <COMMUNICATION-DIRECTION>IN</COMMUNICATION-DIRECTION>
+                </SIGNAL-PORT>
+                <FRAME-PORT>
+                  <SHORT-NAME>CentralLockingSystemState</SHORT-NAME>
+                  <COMMUNICATION-DIRECTION>OUT</COMMUNICATION-DIRECTION>
+                </FRAME-PORT>
+                <SIGNAL-PORT>
+                  <SHORT-NAME>AntiTheftSystemActive</SHORT-NAME>
+                  <COMMUNICATION-DIRECTION>OUT</COMMUNICATION-DIRECTION>
+                </SIGNAL-PORT>
+                <SIGNAL-PORT>
+                  <SHORT-NAME>LockState</SHORT-NAME>
+                  <COMMUNICATION-DIRECTION>OUT</COMMUNICATION-DIRECTION>
+                </SIGNAL-PORT>
+                <FRAME-PORT>
+                  <SHORT-NAME>VehicleMotion</SHORT-NAME>
+                  <COMMUNICATION-DIRECTION>IN</COMMUNICATION-DIRECTION>
+                </FRAME-PORT>
+                <SIGNAL-PORT>
+                  <SHORT-NAME>CrashDetected</SHORT-NAME>
+                  <COMMUNICATION-DIRECTION>IN</COMMUNICATION-DIRECTION>
+                </SIGNAL-PORT>
+                <SIGNAL-PORT>
+                  <SHORT-NAME>Velocity</SHORT-NAME>
+                  <COMMUNICATION-DIRECTION>IN</COMMUNICATION-DIRECTION>
+                </SIGNAL-PORT>
+                <FRAME-PORT>
+                  <SHORT-NAME>WindowState</SHORT-NAME>
+                  <COMMUNICATION-DIRECTION>OUT</COMMUNICATION-DIRECTION>
+                </FRAME-PORT>
+                <SIGNAL-PORT>
+                  <SHORT-NAME>WindowPosition</SHORT-NAME>
+                  <COMMUNICATION-DIRECTION>OUT</COMMUNICATION-DIRECTION>
+                </SIGNAL-PORT>
+                <SIGNAL-PORT>
+                  <SHORT-NAME>WindowMotion</SHORT-NAME>
+                  <COMMUNICATION-DIRECTION>OUT</COMMUNICATION-DIRECTION>
+                </SIGNAL-PORT>
+                <FRAME-PORT>
+                  <SHORT-NAME>WindowControl</SHORT-NAME>
+                  <COMMUNICATION-DIRECTION>IN</COMMUNICATION-DIRECTION>
+                </FRAME-PORT>
+                <SIGNAL-PORT>
+                  <SHORT-NAME>KeyDown</SHORT-NAME>
+                  <COMMUNICATION-DIRECTION>IN</COMMUNICATION-DIRECTION>
+                </SIGNAL-PORT>
+                <SIGNAL-PORT>
+                  <SHORT-NAME>KeyUp</SHORT-NAME>
+                  <COMMUNICATION-DIRECTION>IN</COMMUNICATION-DIRECTION>
+                </SIGNAL-PORT>
+              </ECU-COMM-PORT-INSTANCES>
+            </COMMUNICATION-CONNECTOR>
+          </CONNECTORS>
+        </ECU-INSTANCE>
+      </ELEMENTS>
+    </AR-PACKAGE>
+    <AR-PACKAGE>
+      <SHORT-NAME>IPDUGroup</SHORT-NAME>
+      <ELEMENTS>
+        <I-PDU-GROUP>
+          <SHORT-NAME>SUT_Driver_Tx</SHORT-NAME>
+          <COMMUNICATION-DIRECTION>OUT</COMMUNICATION-DIRECTION>
+          <I-PDU-REFS>
+            <I-PDU-REF DEST="SIGNAL-I-PDU">/PDU/PDU_LockingRemoteControlRequest</I-PDU-REF>
+            <I-PDU-REF DEST="SIGNAL-I-PDU">/PDU/PDU_VehicleMotion</I-PDU-REF>
+            <I-PDU-REF DEST="SIGNAL-I-PDU">/PDU/PDU_WindowControl</I-PDU-REF>
+          </I-PDU-REFS>
+        </I-PDU-GROUP>
+        <I-PDU-GROUP>
+          <SHORT-NAME>SUT_Tx</SHORT-NAME>
+          <COMMUNICATION-DIRECTION>OUT</COMMUNICATION-DIRECTION>
+          <I-PDU-REFS>
+            <I-PDU-REF DEST="SIGNAL-I-PDU">/PDU/PDU_CentralLockingSystemState</I-PDU-REF>
+            <I-PDU-REF DEST="SIGNAL-I-PDU">/PDU/PDU_WindowState</I-PDU-REF>
+          </I-PDU-REFS>
+        </I-PDU-GROUP>
+        <I-PDU-GROUP>
+          <SHORT-NAME>SUT_Rx</SHORT-NAME>
+          <COMMUNICATION-DIRECTION>IN</COMMUNICATION-DIRECTION>
+          <I-PDU-REFS>
+            <I-PDU-REF DEST="SIGNAL-I-PDU">/PDU/PDU_WindowControl</I-PDU-REF>
+          </I-PDU-REFS>
+        </I-PDU-GROUP>
+      </ELEMENTS>
+    </AR-PACKAGE>
+  </TOP-LEVEL-PACKAGES>
+</AUTOSAR>

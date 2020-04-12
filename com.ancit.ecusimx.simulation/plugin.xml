@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.editors">
+      <editor
+            class="com.ancit.ecusimx.simulation.editor.CANSimulationEditor"
+            default="false"
+            extensions="ecux"
+            icon="icons/simulation.png"
+            id="com.ancit.diagnostictool.cansimulation.mycaneditorid"
+            name="ECU Simulation">
+      </editor>
+   </extension>
+   <extension
+         point="org.eclipse.ui.newWizards">
+      <wizard
+            category="com.ancit.diagnostictool.ui.viewcat"
+            class="com.ancit.ecusimx.simulation.wizards.NewECUSimulationWizard"
+            icon="icons/simulation.png"
+            id="com.ancit.diagnostictool.cansimulation.wizards.NewECUSimulationWizard"
+            name="ECU Simulation">
+      </wizard>
+   </extension>
+
+</plugin>

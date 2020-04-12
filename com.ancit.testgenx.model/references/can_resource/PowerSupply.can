@@ -1,0 +1,142 @@
+/*@!Encoding:1252*/
+includes
+{
+  // include files
+}
+
+variables
+{
+  enum boolean { false = 0, true = 1 };
+  
+  int page_id = 2;  // used to identify write window tab
+  const int cHANDSHAKE_RTSCTS   = 33;
+  dword RS232_comport = 5;  //Com5
+  dword RS232_handshake = cHANDSHAKE_RTSCTS;
+  dword RS232_baudrate = 9600;
+  dword RS232_databits = 8;
+  dword RE232_stopbits = 1; 
+  dword RS232_parity = 0;
+  
+  const int  receiveMaxSize = 1000;
+  byte receiveBuffer[receiveMaxSize];
+  byte sendBuffer[receiveMaxSize];
+  byte receiveCallbackBuffer[receiveMaxSize];
+  
+  const int cINFO        = 1;  // used within writelineEx
+  const int cWARN        = 2;
+  const int cERROR       = 3;
+}
+
+on envVar ""
+{
+  RS232_connect(); //intialize the com port at the start of the CANoe
+}
+
+
+void RS232_connect (void)
+{
+  long lRes;
+  int len;
+  byte bBuffer[1000];
+
+  lRes= RS232Close( RS232_comport);  //Closes a serial port.
+  if ( 0 == lRes)
+  {                         
+    writeLineEx(page_id,cERROR,"RS232: An error occurred during closing of the serial port %d", RS232_comport);
+  }
+  else
+  {                    
+     writeLineEx(page_id,cINFO,"RS232: Serial port %d successfully closed.", RS232_comport);
+  }
+
+  lRes= RS232Open( RS232_comport);
+  if ( 0 == lRes)
+  {                         
+    writeLineEx(page_id,cERROR,"RS232: An error occurred during opening of the serial port %d.", RS232_comport);
+  }
+  else
+  {                    
+     writeLineEx(page_id,cINFO,"RS232: Serial port %d successfully opened.", RS232_comport);
+  }
+
+
+
+  lRes = RS232Configure(    RS232_comport,
+                            RS232_baudrate,
+                            RS232_databits,
+                            RE232_stopbits,
+                            RS232_parity) ;
+  if ( 0 == lRes)
+  {                         
+     writeLineEx(page_id,cERROR,"RS232: Configure (%d,%d,%d,%d,%d)", RS232_comport,
+                            RS232_baudrate,
+                            RS232_databits,
+                            RE232_stopbits,
+                            RS232_parity);
+  }
+  else
+  {                    
+     writeLineEx(page_id,cINFO,"RS232: Configure success");
+  }
+
+  lRes = Rs232SetHandshake ( RS232_comport, 
+		                     RS232_handshake, // hardware handshake, use RTS<->CTS
+				             0, // xonLim Minimum number of bytes
+				             0, // xoffLim
+				             0, // xonChar
+				             0  // xoffChar
+				          );
+ 
+ if ( 0 == lRes)
+  {                         
+    writeLineEx(page_id,cERROR,"RS232: Handshake error");
+  }
+  else
+  {                    
+     writeLineEx(page_id,cINFO,"RS232: Handshake success");
+  }
+
+
+  lRes = RS232Receive(RS232_comport,receiveCallbackBuffer,receiveMaxSize) ;
+
+  if ( 0 == lRes)
+  {                         
+    writeLineEx(page_id,cERROR,"RS232: Receive error");
+  }
+  else
+  {                    
+     writeLineEx(page_id,cINFO,"RS232: Receive success");
+  }  
+}
+
+RS232_send ( char cmd[], dword len)
+{  
+  long lRes;  
+  int i;
+  
+  for(i=0;i<len;i++)    //convert the char array to byte array to transmit on the RS232send(inbuild function looking for Byte array)
+    sendBuffer[i] = cmd[i];
+	
+  lRes= RS232Send( RS232_comport, sendBuffer, len );
+  if ( 0 == lRes)
+  {                         
+    writeLineEx(page_id,cERROR,"RS232: Send error: '%s'", cmd);
+  }
+  else
+  {                 
+      writeLineEx(page_id,cINFO,"RS232: Send success cmd: '%s'", cmd);
+    
+  }
+}
+
+RS232OnReceive( dword port, char buffer[], dword number ) //Callback handler for reception of data at a serial port.
+{
+    writeLineEx(page_id,0,"RS232 CallBackRS232OnReceive port %ld: %d Bytes '%s'", 
+               port, number, buffer); 
+}
+
+testfunction SetVoltage(float Volt)
+{
+  RS232_send(cmdcode+Volt);
+}
+

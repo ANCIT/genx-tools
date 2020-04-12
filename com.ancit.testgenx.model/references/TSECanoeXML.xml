@@ -1,0 +1,163 @@
+<testmodule title="ANCIT-Testcase Generator Demo" version="1.0" xmlns="http://www.vector-informatik.de/CANoe/TestModule/1.23">
+	<sut>
+		<info>
+			<name>Testcase Generator Tool-Demo</name>
+			<description>ADAS</description>
+		</info>
+	</sut>
+  <engineer>
+		<info>
+			<name>Testcase Generator</name>
+			<description>ANCIT - Version 1.0</description>
+		</info>
+  </engineer> 
+  
+    	<testgroup title="Sample-TestCaseCall-inputparameterexchange">
+    	
+		
+			<capltestcase title="SampleTestGroup1_Testcase1">
+			 
+			 
+		<caplparam name="Identity" type="string"> TC203 </caplparam> 
+		
+	
+		<caplparam name="Title" type="string"> Timing check between Request and Response </caplparam> 
+		
+	
+		<caplparam name="MinDiffTime" type="int"> 1 </caplparam> 
+		
+	
+		<caplparam name="MaxDiffTime" type="int"> 200 </caplparam> 
+		
+	
+	</capltestcase> 
+		
+		</testgroup>
+	
+    	<testgroup title="Sample-ExternalRef_Link_SingleTestcase">
+    	
+		
+			<capltestcase title="ANCIT_Testcase1">
+			 
+			 
+	</capltestcase> 
+		
+		</testgroup>
+	
+    	<testgroup title="Sample-TestCaseCall-Voidfunction">
+    	
+		
+			<capltestcase title="Initialization">
+			 
+			 
+	</capltestcase> 
+		
+		</testgroup>
+	
+    	<testgroup title="Sample-ExternalRef_Link_GroupofTestcase">
+    	
+		
+		</testgroup>
+	
+    	<testgroup title="Sample-WaitFunction">
+    	
+			<testcase title="TestWait" ident="1">
+			 
+			 <initialize title="SetCANSignal" wait="0">
+		
+		<wait title="Wait null ms" time=null />
+		
+		</testcase>
+	
+	</initialize> 
+		
+		
+		</testgroup>
+	
+    	<testgroup title="Sample-Set Environmental Variable">
+    	
+			<testcase title="Set_EnvVariables" ident="10">
+			 
+			 <initialize title="SetCANSignal" wait="0">
+		
+		<cansignal name="SendMeg" node="" msg="">1</cansignal>
+		
+		</testcase>
+	
+	</initialize> 
+		
+		
+		</testgroup>
+	
+    	<testgroup title="Sample-Set CAN Signal">
+    	
+			<testcase title="SetCANSignal" ident="12">
+			 
+			 <initialize title="SetCANSignal" wait="0">
+		
+		<cansignal name="New_Signal_1" node="" msg="">0</cansignal>
+		
+		</testcase>
+	
+	</initialize> 
+		
+		
+		</testgroup>
+	
+    	<testgroup title="Sample-Set System Variable">
+    	
+			<testcase title="SetSysVariable" ident="13">
+			 
+			 <initialize title="SetCANSignal" wait="0">
+		
+		<cansignal name="SetRadioChannel_1" node="" msg="">0</cansignal>
+		
+		</testcase>
+	
+	</initialize> 
+		
+		
+		</testgroup>
+	
+    	<testgroup title="Sample-Check CAN Signal">
+    	
+			<testcase title="Check_SysVariables" ident="14">
+			 
+			 <initialize title="SetCANSignal" wait="0">
+		
+		<cansignal name="ADAS_Switch" node=""><eq>1</eq></cansignal>
+		
+		</testcase>
+	
+	</initialize> 
+		
+		
+		</testgroup>
+	
+    	<testgroup title="Sample-Set and check CAN signal">
+    	
+			<testcase title="Testcase1" ident="1">
+			 
+			 <initialize title="SetCANSignal" wait="0">
+		
+		<cansignal name="WN_left_up" node="" msg="">1</cansignal>
+		
+		</testcase>
+	
+		
+		<wait title="Wait null ms" time=null />
+		
+		</testcase>
+	
+		
+		<cansignal name="WN_left_up" node=""><eq>1</eq></cansignal>
+		
+		</testcase>
+	
+	</initialize> 
+		
+		
+		</testgroup>
+	
+  
+  </testmodule>

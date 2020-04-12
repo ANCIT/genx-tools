@@ -1,0 +1,580 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--Vector Test Automation Editor 2.1.34.0-->
+<testmodule title="Central locking system test" version="1.0" xmlns="http://www.vector-informatik.de/CANoe/TestModule/1.27">
+  <description>Test the states of the Central Locking System (CLS) that are depending on the lock/unlock requests by using the remote control within the key, and that are depending on the velocity and the crash sensor of the vehicle.</description>
+  <variants>
+    <variant name="A">Central locking system with window lifts</variant>
+    <variant name="B">Basis Central locking system (without window lifts)</variant>
+  </variants>
+  <engineer>
+    <info>
+      <name>Editor</name>
+      <description>Vector Informatik - Version 1.1</description>
+    </info>
+  </engineer>
+  <sut>
+    <info>
+      <name>CLS</name>
+      <description>Central Locking System - Version 1.1</description>
+    </info>
+    <info>
+      <name>SUT-Driver</name>
+      <description>Signal-Driver and CAPL-Driver (Diagnosis) for the SUT - Version 1.0</description>
+    </info>
+  </sut>
+  <templates>
+    <testcasetemplate name="StaticOpenClose">
+      <paramdef name="WaitingTime" default="3000" />
+      <paramdef name="UpDown" default="KeyDown" />
+      <paramdef name="SigWindowMotion" />
+      <description>- Message "WindowControl" is to be sent at minimum by the CycleTimeFast of message "WindowControl"\n- Message "WindowState" is to be sent cyclically but also spontaneously on write of the signal "WindowMotion"\n- The deinitialisation (Key=0) statechange-pattern does not affect the test result, because the fast cycle is repeated once even if the value is not active (like here)</description>
+      <preparation>
+        <initialize wait="500ms" title="Initialize all signals ">
+          <cansignal name="Velocity">0</cansignal>
+          <cansignal name="CrashDetected">0</cansignal>
+          <cansignal name="LockRequest">idle</cansignal>
+          <cansignal name="EngineRunning">0</cansignal>
+          <cansignal name="KeyUp">0</cansignal>
+          <cansignal name="KeyDown">0</cansignal>
+          <sysvar name="Accelerate" namespace="SystemUnderTest">0</sysvar>
+          <sysvar name="Decelerate" namespace="SystemUnderTest">0</sysvar>
+        </initialize>
+      </preparation>
+      <constraints>
+        <cycletime_abs max="350">
+          <canmsg id="WindowControl" />
+        </cycletime_abs>
+      </constraints>
+      <conditions>
+        <cycletime_rel min="0" max="4">
+          <canmsg id="WindowState" />
+        </cycletime_rel>
+      </conditions>
+      <statechange wait="$WaitingTime$" title="Start opening/closing the window. Check if the window is really opening/closing then">
+        <in>
+          <cansignal name="$UpDown$">1</cansignal>
+        </in>
+        <expected>
+          <cansignal name="WindowMotion">
+            <eq>$SigWindowMotion$</eq>
+          </cansignal>
+        </expected>
+      </statechange>
+      <statechange wait="40" title="Stop opening/closing the window. Check if the window is halted very soon. ">
+        <in>
+          <cansignal name="$UpDown$">0</cansignal>
+        </in>
+        <expected>
+          <cansignal name="WindowMotion">
+            <eq>not_moving</eq>
+          </cansignal>
+        </expected>
+      </statechange>
+    </testcasetemplate>
+  </templates>
+  <testgroup title="Test static requirements of the SUT">
+    <testcase ident="TC101" title="Lock statically">
+      <description>Lock the car while enigne off or on</description>
+      <initialize wait="100" title="Initialize signals of Central locking system" variants="A B">
+        <cansignal name="Velocity">0</cansignal>
+        <cansignal name="CrashDetected">0</cansignal>
+        <cansignal name="LockRequest">idle</cansignal>
+        <cansignal name="EngineRunning">0</cansignal>
+      </initialize>
+      <initialize wait="100" title="Initialize signals of Windows system" variants="A">
+        <cansignal name="KeyUp">0</cansignal>
+        <cansignal name="KeyDown">0</cansignal>
+      </initialize>
+      <statechange wait="500" title="Request to lock the car. Let's see if the car will be locked (Engine not running)">
+        <in>
+          <cansignal name="Velocity">0</cansignal>
+          <cansignal name="CrashDetected">0</cansignal>
+          <cansignal name="LockRequest">Request_lock</cansignal>
+          <cansignal name="EngineRunning">0</cansignal>
+          <cansignal name="KeyUp" variants="A">0</cansignal>
+          <cansignal name="KeyDown" variants="A">0</cansignal>
+        </in>
+        <expected>
+          <cansignal name="LockState">
+            <eq>Locked</eq>
+          </cansignal>
+          <cansignal name="KeyUp" variants="A">
+            <eq>0</eq>
+          </cansignal>
+          <cansignal name="KeyDown" variants="A">
+            <eq>0</eq>
+          </cansignal>
+        </expected>
+      </statechange>
+      <statechange wait="500" title="Request to lock the car. Let's see if the car will be locked (Engine running)">
+        <in>
+          <cansignal name="LockRequest">Request_lock</cansignal>
+          <cansignal name="CrashDetected">0</cansignal>
+          <cansignal name="EngineRunning">1</cansignal>
+          <cansignal name="Velocity">0</cansignal>
+        </in>
+        <expected>
+          <cansignal name="LockState">
+            <eq>Locked</eq>
+          </cansignal>
+        </expected>
+      </statechange>
+      <initialize wait="100" title="Initialize all signals ">
+        <cansignal name="Velocity">0</cansignal>
+        <cansignal name="CrashDetected">0</cansignal>
+        <cansignal name="LockRequest">idle</cansignal>
+        <cansignal name="EngineRunning">0</cansignal>
+        <sysvar name="Accelerate" namespace="SystemUnderTest">0</sysvar>
+        <sysvar name="Decelerate" namespace="SystemUnderTest">0</sysvar>
+      </initialize>
+    </testcase>
+    <templateinstances template="StaticOpenClose">
+      <testcaseinstance ident="TC201" title="Statically open the window" variants="A">
+        <paramvalue name="WaitingTime">3000</paramvalue>
+        <paramvalue name="UpDown">KeyDown</paramvalue>
+        <paramvalue name="SigWindowMotion">2</paramvalue>
+      </testcaseinstance>
+      <testcaseinstance ident="TC202" title="Statically close the window" variants="A">
+        <paramvalue name="WaitingTime">1500</paramvalue>
+        <paramvalue name="UpDown">KeyUp</paramvalue>
+        <paramvalue name="SigWindowMotion">1</paramvalue>
+      </testcaseinstance>
+    </templateinstances>
+    <testcase ident="TC102" title="Unlock statically">
+      <description>Unlock the car while engine is off or on</description>
+      <initialize wait="100" title="Initialize all signals ">
+        <cansignal name="Velocity">0</cansignal>
+        <cansignal name="CrashDetected">0</cansignal>
+        <cansignal name="LockRequest">idle</cansignal>
+        <cansignal name="EngineRunning">0</cansignal>
+        <sysvar name="Accelerate" namespace="SystemUnderTest">0</sysvar>
+        <sysvar name="Decelerate" namespace="SystemUnderTest">0</sysvar>
+      </initialize>
+      <statechange wait="500" title="Request to unlock the car. Let's see if the car will be unlocked">
+        <in>
+          <cansignal name="LockRequest">Request_unlock</cansignal>
+          <cansignal name="CrashDetected">0</cansignal>
+          <cansignal name="EngineRunning">0</cansignal>
+          <cansignal name="Velocity">0</cansignal>
+        </in>
+        <expected>
+          <cansignal name="LockState">
+            <eq>Unlocked</eq>
+          </cansignal>
+        </expected>
+      </statechange>
+      <statechange wait="500" title="Request to unlock the car. Let's see if the car will be unlocked">
+        <in>
+          <cansignal name="LockRequest">Request_unlock</cansignal>
+          <cansignal name="CrashDetected">0</cansignal>
+          <cansignal name="EngineRunning">1</cansignal>
+          <cansignal name="Velocity">0</cansignal>
+        </in>
+        <expected>
+          <cansignal name="LockState">
+            <eq>Unlocked</eq>
+          </cansignal>
+        </expected>
+      </statechange>
+      <initialize wait="100" title="Initialize all signals ">
+        <cansignal name="Velocity">0</cansignal>
+        <cansignal name="CrashDetected">0</cansignal>
+        <cansignal name="LockRequest">idle</cansignal>
+        <cansignal name="EngineRunning">0</cansignal>
+        <sysvar name="Accelerate" namespace="SystemUnderTest">0</sysvar>
+        <sysvar name="Decelerate" namespace="SystemUnderTest">0</sysvar>
+      </initialize>
+    </testcase>
+  </testgroup>
+  <testgroup title="Test velocity dependent requirements of Central Locking System">
+    <testcase ident="TC103" title="Lock by increasing velocity">
+      <description>Start engine, try different velocity levels if the car will be locked dependent to the velocity.</description>
+      <initialize wait="100" title="Initialize all signals ">
+        <cansignal name="Velocity">0</cansignal>
+        <cansignal name="CrashDetected">0</cansignal>
+        <cansignal name="LockRequest">idle</cansignal>
+        <cansignal name="EngineRunning">0</cansignal>
+        <sysvar name="Accelerate" namespace="SystemUnderTest">0</sysvar>
+        <sysvar name="Decelerate" namespace="SystemUnderTest">0</sysvar>
+      </initialize>
+      <statechange wait="200" title="Initialize all input signals">
+        <in>
+          <cansignal name="LockRequest">Request_unlock</cansignal>
+        </in>
+        <expected>
+          <cansignal name="LockState">
+            <eq>Unlocked</eq>
+          </cansignal>
+        </expected>
+      </statechange>
+      <statechange wait="500" title="Start Engine">
+        <in>
+          <cansignal name="EngineRunning">1</cansignal>
+        </in>
+        <expected>
+          <cansignal name="LockState">
+            <eq>Unlocked</eq>
+          </cansignal>
+        </expected>
+      </statechange>
+      <capltestfunction name="TF_AccelerateDecelerate" title="Accelerate to velocity lower than the lock-velocity">
+        <caplparam type="float" name="targetSpeed">20</caplparam>
+      </capltestfunction>
+      <statecheck wait="500" title="Try with velocity lower than the lock-velocity">
+        <expected>
+          <cansignal name="LockState">
+            <eq>Unlocked</eq>
+          </cansignal>
+        </expected>
+      </statecheck>
+      <capltestfunction name="TF_AccelerateDecelerate" title="Accelerate to lock-velocity">
+        <caplparam type="float" name="targetSpeed">50</caplparam>
+      </capltestfunction>
+      <statecheck wait="500" title="Try if the Central Locking System reacts on the velocity change">
+        <expected>
+          <cansignal name="LockState">
+            <eq>Locked</eq>
+          </cansignal>
+        </expected>
+      </statecheck>
+      <capltestfunction name="TF_AccelerateDecelerate" title="Decelerate until stopped">
+        <caplparam type="float" name="targetSpeed">0</caplparam>
+      </capltestfunction>
+      <initialize wait="100" title="Initialize all signals ">
+        <cansignal name="Velocity">0</cansignal>
+        <cansignal name="CrashDetected">0</cansignal>
+        <cansignal name="LockRequest">idle</cansignal>
+        <cansignal name="EngineRunning">0</cansignal>
+        <sysvar name="Accelerate" namespace="SystemUnderTest">0</sysvar>
+        <sysvar name="Decelerate" namespace="SystemUnderTest">0</sysvar>
+      </initialize>
+    </testcase>
+    <testcase ident="TC104" title="Check no unlock when slowing down">
+      <description>Slow down, try if the car remains locked.</description>
+      <preparation>
+        <vardef name="CounterVar" type="int">0</vardef>
+        <vardef name="VelocityVar" type="float">0</vardef>
+      </preparation>
+      <statechange wait="200" title="Initialize all input signals">
+        <in>
+          <cansignal name="LockRequest">idle</cansignal>
+          <cansignal name="CrashDetected">0</cansignal>
+          <cansignal name="EngineRunning">0</cansignal>
+          <cansignal name="Velocity">0</cansignal>
+          <cansignal name="LockRequest">Request_unlock</cansignal>
+          <sysvar name="Accelerate" namespace="SystemUnderTest">0</sysvar>
+          <sysvar name="Decelerate" namespace="SystemUnderTest">0</sysvar>
+        </in>
+        <expected>
+          <cansignal name="LockState">
+            <eq>Unlocked</eq>
+          </cansignal>
+        </expected>
+      </statechange>
+      <initialize wait="100" title="Reset the lock request">
+        <cansignal name="LockRequest">idle</cansignal>
+      </initialize>
+      <choice title="Ensure that engine is running">
+        <if>
+          <condition>
+            <cansignal name="EngineRunning">0</cansignal>
+          </condition>
+          <body>
+            <initialize title="Start engine" wait="500">
+              <cansignal name="EngineRunning">1</cansignal>
+            </initialize>
+          </body>
+        </if>
+      </choice>
+      <statecheck title="Check lock state after start of engine" wait="100">
+        <expected>
+          <cansignal name="LockState">Unlocked</cansignal>
+        </expected>
+      </statecheck>
+      <for_loop title="Accelerate to a velocity faster than the lock-velocity" loopvar="CounterVar" stopvalue="21" startvalue="0">
+        <varset_bycapl name="VelocityVar">
+          <caplfunction><![CDATA[VelocityVar = 15 * sqrt(5 * x);]]></caplfunction>
+          <caplparam name="x" type="int">
+            <var name="CounterVar" />
+          </caplparam>
+        </varset_bycapl>
+        <initialize title="Speed up" wait="500">
+          <cansignal name="Velocity">
+            <var name="VelocityVar" />
+          </cansignal>
+        </initialize>
+      </for_loop>
+      <statecheck title="Check lock state at a speed of 150 km/h" wait="100">
+        <expected>
+          <cansignal name="LockState">Locked</cansignal>
+        </expected>
+      </statecheck>
+      <statechange title="Check lock state at the lock-velocity (50 km/h)" wait="500">
+        <in>
+          <cansignal name="Velocity" copytovar="VelocityVar">50</cansignal>
+        </in>
+        <expected>
+          <cansignal name="LockState">Locked</cansignal>
+        </expected>
+      </statechange>
+      <statechange title="Check lock state below the lock-velocity (20 km/h)" wait="500">
+        <in>
+          <cansignal name="Velocity" copytovar="VelocityVar">20</cansignal>
+        </in>
+        <expected>
+          <cansignal name="LockState">Locked</cansignal>
+        </expected>
+      </statechange>
+      <while_loop title="Halt, lock must be kept engaged nevertheless">
+        <condition>
+          <cansignal name="Velocity">
+            <gt>0</gt>
+          </cansignal>
+        </condition>
+        <body>
+          <varset_bycapl name="VelocityVar">
+            <caplfunction><![CDATA[VelocityVar -= 4;]]></caplfunction>
+          </varset_bycapl>
+          <initialize title="Slow down" wait="400">
+            <cansignal name="Velocity">
+              <var name="VelocityVar" />
+            </cansignal>
+          </initialize>
+        </body>
+      </while_loop>
+      <statecheck title="Check lock state after halt" wait="100">
+        <expected>
+          <cansignal name="LockState">Locked</cansignal>
+        </expected>
+      </statecheck>
+    </testcase>
+    <testcase ident="TC105" title="Crash while engine is on">
+      <description>Apply a crash while engine is running. Slow down. Car must open and remain opened.</description>
+      <statechange wait="200" title="Initialize all input signals">
+        <in>
+          <cansignal name="LockRequest">idle</cansignal>
+          <cansignal name="CrashDetected">0</cansignal>
+          <cansignal name="EngineRunning">1</cansignal>
+          <cansignal name="Velocity">80</cansignal>
+          <sysvar name="Accelerate" namespace="SystemUnderTest">0</sysvar>
+          <sysvar name="Decelerate" namespace="SystemUnderTest">0</sysvar>
+        </in>
+        <expected>
+          <cansignal name="LockState">
+            <eq>Locked</eq>
+          </cansignal>
+        </expected>
+      </statechange>
+      <statechange wait="200" title="Apply a crash. Check if the car has been opened">
+        <in>
+          <cansignal name="CrashDetected">1</cansignal>
+        </in>
+        <expected>
+          <cansignal name="LockState">
+            <eq>Unlocked</eq>
+          </cansignal>
+        </expected>
+      </statechange>
+      <statechange wait="200" title="Check if the car remains opened, even if the velocity changes">
+        <in>
+          <cansignal name="Velocity">70</cansignal>
+        </in>
+        <expected>
+          <cansignal name="LockState">
+            <eq>Unlocked</eq>
+          </cansignal>
+        </expected>
+      </statechange>
+      <initialize wait="100" title="Reset the crash signal">
+        <cansignal name="CrashDetected">0</cansignal>
+      </initialize>
+    </testcase>
+    <testcase ident="TC106" title="Apply crash while engine is off and not moving">
+      <description>Apply a crash when engine is not running and car is not moving. Car must not be opened.</description>
+      <statechange wait="200" title="Initialize all input signals">
+        <in>
+          <cansignal name="LockRequest">Request_lock</cansignal>
+          <cansignal name="CrashDetected">0</cansignal>
+          <cansignal name="EngineRunning">0</cansignal>
+          <cansignal name="Velocity">0</cansignal>
+          <sysvar name="Accelerate" namespace="SystemUnderTest">0</sysvar>
+          <sysvar name="Decelerate" namespace="SystemUnderTest">0</sysvar>
+        </in>
+        <expected>
+          <cansignal name="LockState">
+            <eq>Locked</eq>
+          </cansignal>
+        </expected>
+      </statechange>
+      <statechange wait="200" title="Apply the crash">
+        <in>
+          <cansignal name="CrashDetected">1</cansignal>
+        </in>
+        <expected>
+          <cansignal name="LockState">
+            <eq>Locked</eq>
+          </cansignal>
+        </expected>
+      </statechange>
+      <initialize wait="100" title="Reset the crash signal">
+        <cansignal name="CrashDetected">0</cansignal>
+      </initialize>
+    </testcase>
+    <testcase ident="TC107" title="Apply crash when engine is off but moving">
+      <description>Apply a crash when engine is not running but the car is moving. Car must be opened.</description>
+      <statechange wait="200" title="Initialize all input signals">
+        <in>
+          <cansignal name="LockRequest">Request_lock</cansignal>
+          <cansignal name="CrashDetected">0</cansignal>
+          <cansignal name="EngineRunning">0</cansignal>
+          <cansignal name="Velocity">100</cansignal>
+          <sysvar name="Accelerate" namespace="SystemUnderTest">0</sysvar>
+          <sysvar name="Decelerate" namespace="SystemUnderTest">0</sysvar>
+        </in>
+        <expected>
+          <cansignal name="LockState">
+            <eq>Locked</eq>
+          </cansignal>
+        </expected>
+      </statechange>
+      <statechange wait="200" title="Apply the crash">
+        <in>
+          <cansignal name="CrashDetected">1</cansignal>
+        </in>
+        <expected>
+          <cansignal name="LockState">
+            <eq>Unlocked</eq>
+          </cansignal>
+        </expected>
+      </statechange>
+      <initialize wait="100" title="Initialize all signals ">
+        <cansignal name="Velocity">0</cansignal>
+        <cansignal name="CrashDetected">0</cansignal>
+        <cansignal name="LockRequest">idle</cansignal>
+        <cansignal name="EngineRunning">0</cansignal>
+        <sysvar name="Accelerate" namespace="SystemUnderTest">0</sysvar>
+        <sysvar name="Decelerate" namespace="SystemUnderTest">0</sysvar>
+      </initialize>
+    </testcase>
+    <testcase ident="TC108" title="Run external test application">
+      <description>Call external test application (just a sample application: if called with parameter it claims not ok at the GUI and returns 1 else it returns 0).</description>
+      <syscall title="Call external application" timeout="30000">
+        <invoke>SampleApplication.exe</invoke>
+        <expectedexitcode>
+          <eq>0</eq>
+        </expectedexitcode>
+      </syscall>
+    </testcase>
+  </testgroup>
+  <testgroup title="Additional requirements of the Window System" variants="A">
+    <capltestcase name="TC_RequestResponseTiming" title="CAPL: Check Request Reponse Timing">
+      <caplparam name="Ident" type="string">TC203</caplparam>
+      <caplparam name="Title" type="string">Timing check between Request and Response</caplparam>
+      <caplparam name="MinDiffTime" type="int">1</caplparam>
+      <caplparam name="MaxDiffTime" type="int">200</caplparam>
+    </capltestcase>
+    <testcase ident="TC204" title="Ambiguous open and close">
+      <description>Check ambiguous operation (open and close at the same time).</description>
+      <initialize wait="100" title="Initialize all signals ">
+        <cansignal name="Velocity">0</cansignal>
+        <cansignal name="CrashDetected">0</cansignal>
+        <cansignal name="LockRequest">idle</cansignal>
+        <cansignal name="EngineRunning">0</cansignal>
+        <cansignal name="KeyUp">0</cansignal>
+        <cansignal name="KeyDown">0</cansignal>
+        <sysvar name="Accelerate" namespace="SystemUnderTest">0</sysvar>
+        <sysvar name="Decelerate" namespace="SystemUnderTest">0</sysvar>
+      </initialize>
+      <faultmem_clear title="Erase the DTCs" ecu="SUT" reportservicedetails="onfail" />
+      <statechange wait="100" title="Operate both, key up and key down. Check the behavior.">
+        <in>
+          <cansignal name="KeyUp">1</cansignal>
+          <cansignal name="KeyDown">1</cansignal>
+        </in>
+        <expected>
+          <cansignal name="WindowMotion">
+            <eq>not_moving</eq>
+          </cansignal>
+        </expected>
+      </statechange>
+      <faultmem_status title="Check if one entry has been created." ecu="SUT" query="identified">
+        <faultmem_status_lookup>
+          <dtcstatus>
+            <status_test_failed>true</status_test_failed>
+            <status_failed_since_last_clear>true</status_failed_since_last_clear>
+          </dtcstatus>
+        </faultmem_status_lookup>
+        <expected_dtccount>1</expected_dtccount>
+      </faultmem_status>
+      <statecheck wait="3000" title="Let's show the illegal state to the user, do nothing more.">
+        <expected>
+          <cansignal name="WindowMotion">
+            <eq>not_moving</eq>
+          </cansignal>
+        </expected>
+      </statecheck>
+      <initialize wait="100" title="Initialize all signals ">
+        <cansignal name="KeyUp">0</cansignal>
+        <cansignal name="KeyDown">0</cansignal>
+      </initialize>
+    </testcase>
+    <testcase ident="TC205" title="Open and comfort-close">
+      <description>Open the window, then check comfort close.</description>
+      <initialize wait="100" title="Initialize all signals ">
+        <cansignal name="Velocity">0</cansignal>
+        <cansignal name="CrashDetected">0</cansignal>
+        <cansignal name="LockRequest">idle</cansignal>
+        <cansignal name="EngineRunning">0</cansignal>
+        <cansignal name="KeyUp">0</cansignal>
+        <cansignal name="KeyDown">0</cansignal>
+        <sysvar name="Accelerate" namespace="SystemUnderTest">0</sysvar>
+        <sysvar name="Decelerate" namespace="SystemUnderTest">0</sysvar>
+      </initialize>
+      <initialize wait="5000" title="Open the window">
+        <cansignal name="KeyDown">1</cansignal>
+      </initialize>
+      <initialize wait="100" title="Open the window">
+        <cansignal name="KeyDown">0</cansignal>
+      </initialize>
+      <statechange wait="4000" title="Try the comfort close. Check if the window is really closing.">
+        <in>
+          <cansignal name="LockRequest">Comfort_lock</cansignal>
+        </in>
+        <expected>
+          <cansignal name="WindowMotion">
+            <eq>currently_closing</eq>
+          </cansignal>
+        </expected>
+      </statechange>
+      <statechange wait="1000" title="Check if the window is still closing if the lock request is reset.">
+        <in>
+          <cansignal name="LockRequest">idle</cansignal>
+        </in>
+        <expected>
+          <cansignal name="WindowMotion">
+            <eq>currently_closing</eq>
+          </cansignal>
+        </expected>
+      </statechange>
+      <statechange wait="100" title="Check if the window stops moving when the car is opened again.">
+        <in>
+          <cansignal name="LockRequest">Request_unlock</cansignal>
+        </in>
+        <expected>
+          <cansignal name="WindowMotion">
+            <eq>not_moving</eq>
+          </cansignal>
+        </expected>
+      </statechange>
+      <testerconfirmation title="Verify physical window state" wait="10s" passedbutton="yes" timeoutresult="passed">
+        <question>Please verify the physical window position. Is it completely closed as shown here?</question>
+        <resource caption="target state">Testmodules\ClosedWindow.png</resource>
+      </testerconfirmation>
+      <initialize wait="100" title="Reset the affected signals ">
+        <cansignal name="LockRequest">idle</cansignal>
+        <sysvar name="Accelerate" namespace="SystemUnderTest">0</sysvar>
+        <sysvar name="Decelerate" namespace="SystemUnderTest">0</sysvar>
+      </initialize>
+    </testcase>
+  </testgroup>
+</testmodule>

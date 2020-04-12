@@ -1,0 +1,151 @@
+{
+    "messages": [
+        {
+            "id": 1536,
+            "is_extended_frame": false,
+            "name": "DiagResponse",
+            "signals": []
+        },
+        {
+            "id": 1792,
+            "is_extended_frame": false,
+            "name": "DiagRequest",
+            "signals": []
+        },
+        {
+            "id": 1,
+            "is_extended_frame": false,
+            "name": "LockingRemoteControlRequest",
+            "signals": [
+                {
+                    "bit_length": 2,
+                    "factor": "1",
+                    "is_big_endian": false,
+                    "is_float": false,
+                    "is_signed": false,
+                    "name": "LockRequest",
+                    "offset": "0",
+                    "start_bit": 0
+                }
+            ]
+        },
+        {
+            "id": 0,
+            "is_extended_frame": false,
+            "name": "CentralLockingSystemState",
+            "signals": [
+                {
+                    "bit_length": 1,
+                    "factor": "1",
+                    "is_big_endian": false,
+                    "is_float": false,
+                    "is_signed": false,
+                    "name": "AntiTheftSystemActive",
+                    "offset": "2",
+                    "start_bit": 1
+                },
+                {
+                    "bit_length": 1,
+                    "factor": "2",
+                    "is_big_endian": false,
+                    "is_float": false,
+                    "is_signed": false,
+                    "name": "LockState",
+                    "offset": "3",
+                    "start_bit": 0
+                }
+            ]
+        },
+        {
+            "id": 50,
+            "is_extended_frame": false,
+            "name": "VehicleMotion",
+            "signals": [
+                {
+                    "bit_length": 1,
+                    "factor": "3",
+                    "is_big_endian": false,
+                    "is_float": false,
+                    "is_signed": false,
+                    "name": "EngineRunning",
+                    "offset": "0",
+                    "start_bit": 17
+                },
+                {
+                    "bit_length": 1,
+                    "factor": "1",
+                    "is_big_endian": false,
+                    "is_float": false,
+                    "is_signed": false,
+                    "name": "CrashDetected",
+                    "offset": "0",
+                    "start_bit": 16
+                },
+                {
+                    "bit_length": 16,
+                    "factor": "3",
+                    "is_big_endian": false,
+                    "is_float": false,
+                    "is_signed": true,
+                    "name": "Velocity",
+                    "offset": "0",
+                    "start_bit": 0
+                }
+            ]
+        },
+        {
+            "id": 100,
+            "is_extended_frame": false,
+            "name": "WindowState",
+            "signals": [
+                {
+                    "bit_length": 8,
+                    "factor": "1",
+                    "is_big_endian": false,
+                    "is_float": false,
+                    "is_signed": false,
+                    "name": "WindowPosition",
+                    "offset": "0",
+                    "start_bit": 0
+                },
+                {
+                    "bit_length": 2,
+                    "factor": "1",
+                    "is_big_endian": false,
+                    "is_float": false,
+                    "is_signed": false,
+                    "name": "WindowMotion",
+                    "offset": "0",
+                    "start_bit": 14
+                }
+            ]
+        },
+        {
+            "id": 101,
+            "is_extended_frame": false,
+            "name": "WindowControl",
+            "signals": [
+                {
+                    "bit_length": 1,
+                    "factor": "1",
+                    "is_big_endian": false,
+                    "is_float": false,
+                    "is_signed": false,
+                    "name": "KeyDown",
+                    "offset": "0",
+                    "start_bit": 1
+                },
+                {
+                    "bit_length": 1,
+                    "factor": "1",
+                    "is_big_endian": false,
+                    "is_float": false,
+                    "is_signed": false,
+                    "name": "KeyUp",
+                    "offset": "0",
+                    "start_bit": 0
+                }
+            ]
+        }
+    ]
+}

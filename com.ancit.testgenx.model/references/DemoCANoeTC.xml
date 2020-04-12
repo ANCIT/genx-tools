@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<testmodule title="ANCIT-Testcase Generator Demo" version="1.0" xmlns="http://www.vector-informatik.de/CANoe/TestModule/1.23">
+	<sut>
+		<info>
+			<name>Testcase Generator Tool-Demo</name>
+			<description>ADAS</description>
+		</info>
+	</sut>
+  <engineer>
+		<info>
+			<name>Testcase Generator</name>
+			<description>ANCIT - Version 1.0</description>
+		</info>
+  </engineer>  
+	<testgroup title="Sample-TestCaseCall-Voidfunction">		
+		<description />
+		<capltestcase name="Initialization" title="Initialization" />		
+	</testgroup>
+	<testgroup title="Sample-TestCaseCall-inputparameterexchange">    
+		<description />  
+		  <capltestcase name="SampleTestGroup1_Testcase1">
+			  <caplparam name="Ident" type="string"> TC203 </caplparam> 
+			  <caplparam name="Title" type="string">Timing check between Request and Response</caplparam> 
+			  <caplparam name="MinDiffTime" type="int">1</caplparam>
+			  <caplparam name="MaxDiffTime" type="int">200</caplparam>
+		  </capltestcase>
+	</testgroup>
+	<testgroup title="Sample-ExternalRef_Link_SingleTestcase">
+		<description />  
+		<externalref type="RequirementToolName" title="SWT_101" owner="">https://www.microsoft.com/en-US/download/details.aspx?id=15697</externalref>
+		<capltestcase name="ANCIT_Testcase1" title="Example testcase1" />			  
+	</testgroup>  
+	<testgroup title="Sample-ExternalRef_Link_GroupofTestcase">
+		<externalref type="RequirementToolName" title="SWT_101" owner="">https://www.microsoft.com/en-US/download/details.aspx?id=15697</externalref>
+			<testgroup title="TestCase Group">
+			  <description />
+				  <capltestcase name="ANCIT_Testcase1" title="Example testcase1" />
+				  <capltestcase name="ANCIT_Testcase2" title="Example testcase2" /> 
+			</testgroup>    
+	</testgroup> 
+	<testgroup title="Sample-WaitFunction">
+		<description />
+		<testcase title="TestWait" ident="1">
+			<wait title="Wait 1000 ms" time="1000" />
+		</testcase>
+	</testgroup>
+		<testgroup title="Sample-Set System Variable">
+		<testcase title="SetSysVariable" ident="1">      
+			<initialize title="SetSystemVariable" wait="0">
+				<sysvar name="SetRadioChannel_1" namespace="">0</sysvar>
+			</initialize>      
+		</testcase>
+	</testgroup>
+	<testgroup title="Sample-Check System Variable">
+		<testcase title="Check_SysVariables" ident="1">      
+			<initialize title="CheckSysVariable" wait="0">
+				<sysvar name="ADAS_Switch" namespace="XCP::ProjectName"><eq>1</eq></sysvar>
+			</initialize>      
+		</testcase>
+	</testgroup>
+	<testgroup title="Sample-Set and check CAN signal">
+		<testcase title="Testcase1" ident="1">  
+			<initialize title="SetCANSignal" wait="0">
+				<cansignal name="WN_left_up" node="" msg="">1</cansignal>
+			</initialize>    
+			<wait title="Wait 1000 ms" time="1000" />
+			<initialize title="CheckCanSignal" wait="0">
+				<cansignal name="WN_left_up" node=""><eq>1</eq></cansignal>
+			</initialize>    
+		</testcase>
+	</testgroup>
+	<testgroup title="Sample-Diagnostic functionality">
+		<testcase title="Check Default session" ident="">
+		  <description>This test case is a sample for put the ECU into default session if you have a cdd file.</description>
+		  <preparation>
+			<diagservice title="Enable Default Session" ecu="Engine" service="DEFAULT_SESSION_Start" timeout="500" result="pos">
+			  <diagrequest />
+			  <diagresponse />
+			</diagservice>
+		  </preparation>
+		</testcase>
+	</testgroup>
+  <!-- End: The test cases itself -->
+</testmodule>

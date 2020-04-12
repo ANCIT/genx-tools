@@ -1,0 +1,12 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Dbc
+Bundle-SymbolicName: com.ancit.genxtools.dbc
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: com.ancit.genxtools.dbc.Activator
+Require-Bundle: org.eclipse.ui,
+  org.eclipse.core.runtime
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-ActivationPolicy: lazy
+Export-Package: com.ancit.genxtools.dbc.model,
+ com.ancit.genxtools.dbc.parser

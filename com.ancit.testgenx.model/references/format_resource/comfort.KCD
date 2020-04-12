@@ -1,0 +1,122 @@
+<NetworkDefinition xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://kayak.2codeornot2code.org/1.0" xsi:schemaLocation="Definition.xsd">
+  <Document name="Some Document Name">some text</Document>
+  <Node name="SUT_Driver" id="1"/>
+  <Node name="SUT" id="2"/>
+  <Bus name="C:\Users\LENOVO\Desktop\DATA\Convert All Format\comfort">
+    <Message id="0x600" name="DiagResponse" length="8" triggered="true" interval="100">
+      <Notes></Notes>
+    </Message>
+    <Message id="0x700" name="DiagRequest" length="8" triggered="true" interval="100">
+      <Notes></Notes>
+    </Message>
+    <Message id="0x001" name="LockingRemoteControlRequest" length="1" triggered="true" interval="100">
+      <Notes></Notes>
+      <Producer>
+        <NodeRef id="1"/>
+      </Producer>
+      <Signal name="LockRequest" offset="0" length="2">
+        <Consumer>
+          <NodeRef id="2"/>
+        </Consumer>
+        <LabelSet>
+          <Label name="idle" value="0"/>
+          <Label name="Request_lock" value="1"/>
+          <Label name="Request_unlock" value="2"/>
+          <Label name="Comfort_lock" value="3"/>
+        </LabelSet>
+      </Signal>
+    </Message>
+    <Message id="0x000" name="CentralLockingSystemState" length="1" triggered="true" interval="100">
+      <Notes></Notes>
+      <Producer>
+        <NodeRef id="2"/>
+      </Producer>
+      <Signal name="AntiTheftSystemActive" offset="1">
+        <Notes>
+
+GenSigStartValue: 6</Notes>
+        <Value intercept="2" min="2" max="10"/>
+        <LabelSet>
+          <Label name="not_moving" value="0"/>
+          <Label name="currently_closing" value="1"/>
+          <Label name="currently_opening" value="2"/>
+        </LabelSet>
+      </Signal>
+      <Signal name="LockState" offset="0">
+        <Notes>
+
+GenSigStartValue: 0.5</Notes>
+        <Value slope="2" intercept="3" min="3" max="5"/>
+        <LabelSet>
+          <Label name="not_moving" value="0"/>
+          <Label name="currently_closing" value="1"/>
+          <Label name="currently_opening" value="2"/>
+        </LabelSet>
+      </Signal>
+    </Message>
+    <Message id="0x032" name="VehicleMotion" length="3" triggered="true" interval="100">
+      <Notes></Notes>
+      <Producer>
+        <NodeRef id="1"/>
+      </Producer>
+      <Signal name="EngineRunning" offset="17">
+        <Notes>
+
+GenSigStartValue: 0.666666666666667</Notes>
+        <Value slope="3" min="1" max="3"/>
+      </Signal>
+      <Signal name="CrashDetected" offset="16">
+        <Consumer>
+          <NodeRef id="2"/>
+        </Consumer>
+      </Signal>
+      <Signal name="Velocity" offset="0" length="16">
+        <Notes>
+
+GenSigStartValue: 1</Notes>
+        <Consumer>
+          <NodeRef id="2"/>
+        </Consumer>
+        <Value type="signed" slope="3" min="1" max="4"/>
+      </Signal>
+    </Message>
+    <Message id="0x064" name="WindowState" length="2" triggered="true" interval="100">
+      <Notes></Notes>
+      <Producer>
+        <NodeRef id="2"/>
+      </Producer>
+      <Signal name="WindowPosition" offset="0" length="8">
+        <Notes>
+
+GenSigStartValue: 3</Notes>
+        <Value max="255"/>
+      </Signal>
+      <Signal name="WindowMotion" offset="14" length="2">
+        <LabelSet>
+          <Label name="not_moving" value="0"/>
+          <Label name="currently_closing" value="1"/>
+          <Label name="currently_opening" value="2"/>
+        </LabelSet>
+      </Signal>
+    </Message>
+    <Message id="0x065" name="WindowControl" length="1" triggered="true" interval="500">
+      <Notes></Notes>
+      <Producer>
+        <NodeRef id="1"/>
+      </Producer>
+      <Signal name="KeyDown" offset="1">
+        <Consumer>
+          <NodeRef id="2"/>
+        </Consumer>
+      </Signal>
+      <Signal name="KeyUp" offset="0">
+        <Notes>
+
+GenSigStartValue: 1</Notes>
+        <Consumer>
+          <NodeRef id="2"/>
+        </Consumer>
+      </Signal>
+    </Message>
+  </Bus>
+</NetworkDefinition>

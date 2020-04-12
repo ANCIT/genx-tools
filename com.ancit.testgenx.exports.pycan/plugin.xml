@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="com.ancit.testgenx.ui.exports">
+      <exports
+            description="Generates Python based CAN Node Tester"
+            id="com.ancit.diagnostictools.export.pycan"
+            implementation="com.ancit.testgenx.exports.pycan.PyCanNodeTesterExport"
+            name="PyCAN">
+      </exports>
+   </extension>
+
+</plugin>

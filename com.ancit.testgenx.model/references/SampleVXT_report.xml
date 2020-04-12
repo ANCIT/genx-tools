@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<testmodule starttime="2019-07-19 14:27:23" timestamp="   8.338578" verdicts="2_basic">
+  <testgroup>
+    <testcase starttime="2019-07-19 14:27:24" timestamp="   8.338578">
+      <testpattern timestamp="   8.338578" name="wait" type="controlfunction">
+        <title>Wait 500 ms </title>
+        <teststep timestamp="   8.838578" level="1" type="auto" ident="Resume reason" result="na">Elapsed time=500ms (max=500ms)</teststep>
+        <teststep timestamp="   8.838578" level="1" type="auto" ident="1" result="pass">Waited for 500 ms.</teststep>
+        <result timestamp="   8.838578" result="pass"/>
+      </testpattern>
+      <testpattern timestamp="   8.838578" name="initialize" type="testprimitive">
+        <title>SetCANSignal</title>
+        <details timestamp="   8.838578">
+          <title>Set specified value.</title>
+          <info>
+            <name>CAN signal &apos;LockRequest&apos; on bus CAN</name>
+            <description>0 (idle)</description>
+          </info>
+        </details>
+        <teststep timestamp="   8.838578" level="2" type="auto" ident="1" result="pass">Stimulation of the input parameters</teststep>
+        <result timestamp="   8.838578" result="pass"/>
+      </testpattern>
+      <testpattern timestamp="   8.838578" name="wait" type="controlfunction">
+        <title>Wait 100 ms </title>
+        <teststep timestamp="   8.938578" level="1" type="auto" ident="Resume reason" result="na">Elapsed time=100ms (max=100ms)</teststep>
+        <teststep timestamp="   8.938578" level="1" type="auto" ident="1" result="pass">Waited for 100 ms.</teststep>
+        <result timestamp="   8.938578" result="pass"/>
+      </testpattern>
+      <testpattern timestamp="   8.938578" name="initialize" type="testprimitive">
+        <title>null</title>
+        <details timestamp="   8.938578">
+          <title>Set specified value.</title>
+          <info>
+            <name>CAN signal &apos;LockRequest&apos; on bus CAN</name>
+            <description>1 (Request_lock)</description>
+          </info>
+        </details>
+        <teststep timestamp="   8.938578" level="2" type="auto" ident="1" result="pass">Stimulation of the input parameters</teststep>
+        <result timestamp="   8.938578" result="pass"/>
+      </testpattern>
+      <verdict time="2019-07-19 14:27:24" timestamp="   8.938578" endtime="2019-07-19 14:27:24" endtimestamp="   8.938578" result="pass" />
+      <title>Test_001</title>
+      <ident>001</ident>
+    </testcase>
+    <title>TG_001</title>
+  </testgroup>
+  <verdict time="2019-07-19 14:27:24" timestamp="   8.938578" endtime="2019-07-19 14:27:24" endtimestamp="   8.938578" result="pass" />
+  <title>TestSpec</title>
+  <testlogfiles>
+  </testlogfiles>
+  <engineer>
+    <xinfo>
+      <name>Windows Login Name</name>
+      <description>LENOVO</description>
+    </xinfo>
+    <info>
+      <name>Testcase Generator</name>
+      <description></description>
+    </info>
+  </engineer>
+  <testsetup>
+    <xinfo>
+      <name>Version</name>
+      <description>CANoe.FlexRay 11.0.81 (SP3)</description>
+    </xinfo>
+    <xinfo>
+      <name>Configuration</name>
+      <description>C:\Users\LENOVO\Desktop\DATA\CentralLockingSystem\CentralLockingSystem.cfg</description>
+    </xinfo>
+    <xinfo>
+      <name>Database comfort on CAN</name>
+      <description>C:\Users\LENOVO\Desktop\DATA\CentralLockingSystem\DBs\comfort.dbc (2013-08-05 08:01:54)</description>
+    </xinfo>
+    <xinfo>
+      <name>Diagnostic Description of SUT</name>
+      <description>CommonDiagnostics, en-US, C:\Users\LENOVO\Desktop\DATA\CentralLockingSystem\DBs\SampleUDS.cdd (1.0, 2009-11-24 10:40:55+01:00)</description>
+    </xinfo>
+    <xinfo>
+      <name>Test Module Name</name>
+      <description>SampleVXT</description>
+    </xinfo>
+    <xinfo>
+      <name>Test Module File</name>
+      <description>C:\Users\LENOVO\Desktop\DATA\SampleVXT.VXT</description>
+    </xinfo>
+    <xinfo>
+      <name>Last modification of Test Module File</name>
+      <description>2019-07-19, 14:26:36</description>
+    </xinfo>
+    <xinfo>
+      <name>Windows Computer Name</name>
+      <description>USER</description>
+    </xinfo>
+    <xinfo>
+      <name>Nodelayer Module CANoeILNLVector</name>
+      <description>CANoe Interaction Layer NL (Vector) Version 3.17.64 (Sep 20 2018 17:36:23) , C:\Program Files\Vector CANoe 11.0\Exec32\CANoeILNLVector.dll</description>
+    </xinfo>
+    <xinfo>
+      <name>Nodelayer Module osek_tp</name>
+      <description>OSEK_TP (VC12, Version 5.32.72 MSC12.0, Build 72), C:\Program Files\Vector CANoe 11.0\Exec32\osek_tp.dll</description>
+    </xinfo>
+    <xinfo>
+      <name>Nodelayer Module J1939TestServiceLibraryNL</name>
+      <description>J1939 Test Service Library for CANoe, Version 11.0.81.0, C:\Program Files\Vector CANoe 11.0\Exec32\J1939TestServiceLibraryNL.dll</description>
+    </xinfo>
+    <xinfo>
+      <name>Nodelayer Module CANOEILNLDEFAULT</name>
+      <description>CANoe Interaction Layer NL (Default) Version 3.17.64 (Sep 20 2018 17:37:54) , C:\Program Files\Vector CANoe 11.0\Exec32\CANOEILNLDEFAULT.DLL</description>
+    </xinfo>
+  </testsetup>
+  <sut>
+    <info>
+      <name>ADAS_Cha</name>
+      <description></description>
+    </info>
+  </sut>
+  <hardware name="CAN Channel Interfaces" category="CategoryCANIF">
+    <xinfoset type="device">
+      <xinfoobject type="device">
+      <xinfo key="channel">
+        <name>Channel</name>
+        <description>1</description>
+      </xinfo>
+      <xinfo key="device">
+        <name>Device</name>
+        <description>VN7640</description>
+      </xinfo>
+      <xinfo key="serialnumber">
+        <name>Serial number</name>
+        <description>3209</description>
+      </xinfo>
+      <xinfo key="driverdllversion">
+        <name>Driver DLL version</name>
+        <description>10.6.14</description>
+      </xinfo>
+      <xinfo key="driverversion">
+        <name>Driver version</name>
+        <description>10.1.24</description>
+      </xinfo>
+      </xinfoobject>
+      <xinfoobject type="device">
+      <xinfo key="channel">
+        <name>Channel</name>
+        <description>2</description>
+      </xinfo>
+      <xinfo key="device">
+        <name>Device</name>
+        <description>VN7640</description>
+      </xinfo>
+      <xinfo key="serialnumber">
+        <name>Serial number</name>
+        <description>3209</description>
+      </xinfo>
+      <xinfo key="driverdllversion">
+        <name>Driver DLL version</name>
+        <description>10.6.14</description>
+      </xinfo>
+      <xinfo key="driverversion">
+        <name>Driver version</name>
+        <description>10.1.24</description>
+      </xinfo>
+      </xinfoobject>
+    </xinfoset>
+  </hardware>
+</testmodule>
+<!--footprint="9b0f4b77b9d3daaa5b0a8bf86a68f60a" version="1"-->

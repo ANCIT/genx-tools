@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/com.ancit.diagnostictool.model/src" modelPluginID="com.ancit.diagnostictool.model"
+    modelName="DiagonasticModel" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    importerID="org.eclipse.emf.importer.ecore" complianceLevel="8.0" copyrightFields="false"
+    operationReflection="true" importOrganizing="true">
+  <foreignModel>DiagonasticModel.ecore</foreignModel>
+  <genPackages prefix="DiagonosticModel" disposableProviderFactory="true" ecorePackage="DiagonasticModel.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="DiagonasticModel.ecore#//OperatorTypeEnum">
+      <genEnumLiterals ecoreEnumLiteral="DiagonasticModel.ecore#//OperatorTypeEnum/eq"/>
+      <genEnumLiterals ecoreEnumLiteral="DiagonasticModel.ecore#//OperatorTypeEnum/ne"/>
+      <genEnumLiterals ecoreEnumLiteral="DiagonasticModel.ecore#//OperatorTypeEnum/gt"/>
+      <genEnumLiterals ecoreEnumLiteral="DiagonasticModel.ecore#//OperatorTypeEnum/lt"/>
+      <genEnumLiterals ecoreEnumLiteral="DiagonasticModel.ecore#//OperatorTypeEnum/bt"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="DiagonasticModel.ecore#//SignalTypeEnum">
+      <genEnumLiterals ecoreEnumLiteral="DiagonasticModel.ecore#//SignalTypeEnum/SIGNAL"/>
+      <genEnumLiterals ecoreEnumLiteral="DiagonasticModel.ecore#//SignalTypeEnum/ENVIRONMENT"/>
+      <genEnumLiterals ecoreEnumLiteral="DiagonasticModel.ecore#//SignalTypeEnum/SYSTEM"/>
+      <genEnumLiterals ecoreEnumLiteral="DiagonasticModel.ecore#//SignalTypeEnum/UNDEFINED"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="DiagonasticModel.ecore#//ExecutionStatueTypeEnum">
+      <genEnumLiterals ecoreEnumLiteral="DiagonasticModel.ecore#//ExecutionStatueTypeEnum/NOT_EXECUTED"/>
+      <genEnumLiterals ecoreEnumLiteral="DiagonasticModel.ecore#//ExecutionStatueTypeEnum/PASS"/>
+      <genEnumLiterals ecoreEnumLiteral="DiagonasticModel.ecore#//ExecutionStatueTypeEnum/FAIL"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="DiagonasticModel.ecore#//CreationModeEnum">
+      <genEnumLiterals ecoreEnumLiteral="DiagonasticModel.ecore#//CreationModeEnum/IMPORTED"/>
+      <genEnumLiterals ecoreEnumLiteral="DiagonasticModel.ecore#//CreationModeEnum/USER_DEFINED"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="DiagonasticModel.ecore#//TraceabilityArtifactEnum">
+      <genEnumLiterals ecoreEnumLiteral="DiagonasticModel.ecore#//TraceabilityArtifactEnum/REQUIREMENT"/>
+      <genEnumLiterals ecoreEnumLiteral="DiagonasticModel.ecore#//TraceabilityArtifactEnum/TEST"/>
+      <genEnumLiterals ecoreEnumLiteral="DiagonasticModel.ecore#//TraceabilityArtifactEnum/BUG"/>
+      <genEnumLiterals ecoreEnumLiteral="DiagonasticModel.ecore#//TraceabilityArtifactEnum/OTHERS"/>
+    </genEnums>
+    <genDataTypes ecoreDataType="DiagonasticModel.ecore#//ArrayListDataType"/>
+    <genClasses ecoreClass="DiagonasticModel.ecore#//TestSpecification">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DiagonasticModel.ecore#//TestSpecification/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DiagonasticModel.ecore#//TestSpecification/testGroups"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DiagonasticModel.ecore#//TestSpecification/version"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DiagonasticModel.ecore#//TestSpecification/description"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DiagonasticModel.ecore#//TestSpecification/functionName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DiagonasticModel.ecore#//TestSpecification/functionVersion"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DiagonasticModel.ecore#//TestSpecification/author"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DiagonasticModel.ecore#//TestSpecification/capltestcases"/>
+      <genFeatures property="None" createChild="true" ecoreFeature="ecore:EReference DiagonasticModel.ecore#//TestSpecification/variants"/>
+      <genFeatures property="None" createChild="false" ecoreFeature="ecore:EReference DiagonasticModel.ecore#//TestSpecification/importArtifacts"/>
+      <genOperations ecoreOperation="DiagonasticModel.ecore#//TestSpecification/getSignals"
+          body="ArrayList&lt;SignalType> signals = new ArrayList&lt;SignalType>();&#xA;&#x9;&#x9;&#xA;&#x9;&#x9;for (ImportArtifact importArtifact : getImportArtifacts()) {&#xA;&#x9;&#x9;&#x9;signals.addAll(importArtifact.getSignalType());&#xA;&#x9;&#x9;}&#xA;&#x9;&#x9;return signals;"/>
+    </genClasses>
+    <genClasses ecoreClass="DiagonasticModel.ecore#//TestGroup">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DiagonasticModel.ecore#//TestGroup/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DiagonasticModel.ecore#//TestGroup/testCases"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DiagonasticModel.ecore#//TestGroup/description"/>
+      <genFeatures property="None" createChild="false" ecoreFeature="ecore:EReference DiagonasticModel.ecore#//TestGroup/externalreference"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DiagonasticModel.ecore#//TestGroup/testGroups"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DiagonasticModel.ecore#//TestGroup/capltestcases"/>
+    </genClasses>
+    <genClasses ecoreClass="DiagonasticModel.ecore#//TestCase">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DiagonasticModel.ecore#//TestCase/name"/>
+      <genFeatures property="None" createChild="false" ecoreFeature="ecore:EReference DiagonasticModel.ecore#//TestCase/testSteps"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DiagonasticModel.ecore#//TestCase/id"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DiagonasticModel.ecore#//TestCase/description"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference DiagonasticModel.ecore#//TestCase/variants"/>
+      <genFeatures property="None" createChild="false" ecoreFeature="ecore:EReference DiagonasticModel.ecore#//TestCase/preConditions"/>
+      <genFeatures property="None" createChild="false" ecoreFeature="ecore:EReference DiagonasticModel.ecore#//TestCase/postConditions"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DiagonasticModel.ecore#//TestCase/requirementID"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DiagonasticModel.ecore#//TestCase/executionStatus"/>
+      <genFeatures property="None" createChild="true" ecoreFeature="ecore:EReference DiagonasticModel.ecore#//TestCase/externalreference"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DiagonasticModel.ecore#//TestCase/skip"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DiagonasticModel.ecore#//TestCase/traceabilityArtifacts"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="DiagonasticModel.ecore#//TestStep">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DiagonasticModel.ecore#//TestStep/title"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference DiagonasticModel.ecore#//TestStep/nextStep"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference DiagonasticModel.ecore#//TestStep/key"/>
+    </genClasses>
+    <genClasses ecoreClass="DiagonasticModel.ecore#//WaitAction"/>
+    <genClasses ecoreClass="DiagonasticModel.ecore#//CheckAction">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DiagonasticModel.ecore#//CheckAction/operator"/>
+    </genClasses>
+    <genClasses ecoreClass="DiagonasticModel.ecore#//SetAction"/>
+    <genClasses ecoreClass="DiagonasticModel.ecore#//SignalType">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DiagonasticModel.ecore#//SignalType/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DiagonasticModel.ecore#//SignalType/type"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DiagonasticModel.ecore#//SignalType/MessageName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DiagonasticModel.ecore#//SignalType/node"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DiagonasticModel.ecore#//SignalType/namespace"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DiagonasticModel.ecore#//SignalType/creationMode"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DiagonasticModel.ecore#//SignalType/lookupValues"/>
+    </genClasses>
+    <genClasses ecoreClass="DiagonasticModel.ecore#//DiagnosticService">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DiagonasticModel.ecore#//DiagnosticService/ecu"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DiagonasticModel.ecore#//DiagnosticService/service"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DiagonasticModel.ecore#//DiagnosticService/result"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DiagonasticModel.ecore#//DiagnosticService/diagrequest"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DiagonasticModel.ecore#//DiagnosticService/diagresponse"/>
+    </genClasses>
+    <genClasses ecoreClass="DiagonasticModel.ecore#//ExternalReference">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DiagonasticModel.ecore#//ExternalReference/title"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DiagonasticModel.ecore#//ExternalReference/url"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DiagonasticModel.ecore#//ExternalReference/owner"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DiagonasticModel.ecore#//ExternalReference/type"/>
+    </genClasses>
+    <genClasses ecoreClass="DiagonasticModel.ecore#//CAPLTestCase">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DiagonasticModel.ecore#//CAPLTestCase/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DiagonasticModel.ecore#//CAPLTestCase/parameters"/>
+    </genClasses>
+    <genClasses ecoreClass="DiagonasticModel.ecore#//CAPLParam">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DiagonasticModel.ecore#//CAPLParam/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DiagonasticModel.ecore#//CAPLParam/type"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DiagonasticModel.ecore#//CAPLParam/value"/>
+    </genClasses>
+    <genClasses ecoreClass="DiagonasticModel.ecore#//Variant">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DiagonasticModel.ecore#//Variant/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DiagonasticModel.ecore#//Variant/description"/>
+    </genClasses>
+    <genClasses ecoreClass="DiagonasticModel.ecore#//CAPLTestStep">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DiagonasticModel.ecore#//CAPLTestStep/parameters"/>
+    </genClasses>
+    <genClasses ecoreClass="DiagonasticModel.ecore#//ImportArtifact">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DiagonasticModel.ecore#//ImportArtifact/path"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DiagonasticModel.ecore#//ImportArtifact/signalType"/>
+    </genClasses>
+    <genClasses ecoreClass="DiagonasticModel.ecore#//DiagnosticRequest">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DiagonasticModel.ecore#//DiagnosticRequest/diagparam"/>
+    </genClasses>
+    <genClasses ecoreClass="DiagonasticModel.ecore#//DiagnosticResponse">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DiagonasticModel.ecore#//DiagnosticResponse/primitive"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DiagonasticModel.ecore#//DiagnosticResponse/diagparam"/>
+    </genClasses>
+    <genClasses ecoreClass="DiagonasticModel.ecore#//DiagnosticParam">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DiagonasticModel.ecore#//DiagnosticParam/qualifier"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DiagonasticModel.ecore#//DiagnosticParam/copyToVar"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DiagonasticModel.ecore#//DiagnosticParam/valueTypes"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="DiagonasticModel.ecore#//Action">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DiagonasticModel.ecore#//Action/value"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DiagonasticModel.ecore#//Action/wait"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DiagonasticModel.ecore#//Action/valueTo"/>
+    </genClasses>
+    <genClasses ecoreClass="DiagonasticModel.ecore#//BlockAction">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference DiagonasticModel.ecore#//BlockAction/testSteps"/>
+    </genClasses>
+    <genClasses ecoreClass="DiagonasticModel.ecore#//ForLoop">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DiagonasticModel.ecore#//ForLoop/loopVar"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DiagonasticModel.ecore#//ForLoop/stopValue"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DiagonasticModel.ecore#//ForLoop/startValue"/>
+    </genClasses>
+    <genClasses ecoreClass="DiagonasticModel.ecore#//WhileLoop">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DiagonasticModel.ecore#//WhileLoop/value"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DiagonasticModel.ecore#//WhileLoop/valueTo"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DiagonasticModel.ecore#//WhileLoop/operator"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="DiagonasticModel.ecore#//DiagnosticParamValueType"/>
+    <genClasses ecoreClass="DiagonasticModel.ecore#//Var">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DiagonasticModel.ecore#//Var/name"/>
+    </genClasses>
+    <genClasses ecoreClass="DiagonasticModel.ecore#//OneOf">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DiagonasticModel.ecore#//OneOf/values"/>
+    </genClasses>
+    <genClasses ecoreClass="DiagonasticModel.ecore#//Range">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DiagonasticModel.ecore#//Range/from"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DiagonasticModel.ecore#//Range/to"/>
+    </genClasses>
+    <genClasses ecoreClass="DiagonasticModel.ecore#//TracebilityArtifact">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DiagonasticModel.ecore#//TracebilityArtifact/type"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DiagonasticModel.ecore#//TracebilityArtifact/url"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

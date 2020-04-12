@@ -1,0 +1,749 @@
+<fx:FIBEX xmlns:fx="http://www.asam.net/xml/fbx" xmlns:ho="http://www.asam.net/xml" xmlns:can="http://www.asam.net/xml/fbx/can" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.asam.net/xml/fbx ..\..\xml_schema\fibex.xsd http://www.asam.net/xml/fbx/can  ..\..\xml_schema\fibex4can.xsd">
+  <fx:PROJECT ID="canmatrixExport">
+    <ho:SHORT-NAME>CAN</ho:SHORT-NAME>
+    <ho:DESC>Canmatrix Export</ho:DESC>
+  </fx:PROJECT>
+  <fx:ELEMENTS>
+    <fx:CLUSTERS>
+      <fx:CLUSTER ID="canCluster1">
+        <ho:SHORT-NAME>clusterShort</ho:SHORT-NAME>
+        <ho:DESC>clusterDesc</ho:DESC>
+        <fx:SPEED>500</fx:SPEED>
+        <fx:IS-HIGH-LOW-BIT-ORDER>false</fx:IS-HIGH-LOW-BIT-ORDER>
+        <fx:BIT-COUNTING-POLICY>MONOTONE</fx:BIT-COUNTING-POLICY>
+        <fx:PROTOCOL xsi:type="can:PROTOCOL-TYPE">CAN</fx:PROTOCOL>
+        <fx:PROTOCOL-VERSION>20</fx:PROTOCOL-VERSION>
+        <fx:CHANNEL-REFS>
+          <fx:CHANNEL-REF ID-REF="CANCHANNEL01"/>
+        </fx:CHANNEL-REFS>
+      </fx:CLUSTER>
+    </fx:CLUSTERS>
+    <fx:CHANNELS>
+      <fx:CHANNEL>
+        <ho:SHORT-NAME>CANCHANNEL01</ho:SHORT-NAME>
+        <ho:DESC>Can Channel Description</ho:DESC>
+        <fx:FRAME-TRIGGERINGS>
+          <fx:FRAME-TRIGGERING ID="FT_DiagResponse">
+            <fx:IDENTIFIER>
+              <fx:IDENTIFIER-VALUE>1536</fx:IDENTIFIER-VALUE>
+            </fx:IDENTIFIER>
+            <fx:FRAME-REF ID-REF="FRAME_DiagResponse"/>
+          </fx:FRAME-TRIGGERING>
+          <fx:FRAME-TRIGGERING ID="FT_DiagRequest">
+            <fx:IDENTIFIER>
+              <fx:IDENTIFIER-VALUE>1792</fx:IDENTIFIER-VALUE>
+            </fx:IDENTIFIER>
+            <fx:FRAME-REF ID-REF="FRAME_DiagRequest"/>
+          </fx:FRAME-TRIGGERING>
+          <fx:FRAME-TRIGGERING ID="FT_LockingRemoteControlRequest">
+            <fx:IDENTIFIER>
+              <fx:IDENTIFIER-VALUE>1</fx:IDENTIFIER-VALUE>
+            </fx:IDENTIFIER>
+            <fx:FRAME-REF ID-REF="FRAME_LockingRemoteControlRequest"/>
+          </fx:FRAME-TRIGGERING>
+          <fx:FRAME-TRIGGERING ID="FT_CentralLockingSystemState">
+            <fx:IDENTIFIER>
+              <fx:IDENTIFIER-VALUE>0</fx:IDENTIFIER-VALUE>
+            </fx:IDENTIFIER>
+            <fx:FRAME-REF ID-REF="FRAME_CentralLockingSystemState"/>
+          </fx:FRAME-TRIGGERING>
+          <fx:FRAME-TRIGGERING ID="FT_VehicleMotion">
+            <fx:IDENTIFIER>
+              <fx:IDENTIFIER-VALUE>50</fx:IDENTIFIER-VALUE>
+            </fx:IDENTIFIER>
+            <fx:FRAME-REF ID-REF="FRAME_VehicleMotion"/>
+          </fx:FRAME-TRIGGERING>
+          <fx:FRAME-TRIGGERING ID="FT_WindowState">
+            <fx:IDENTIFIER>
+              <fx:IDENTIFIER-VALUE>100</fx:IDENTIFIER-VALUE>
+            </fx:IDENTIFIER>
+            <fx:FRAME-REF ID-REF="FRAME_WindowState"/>
+          </fx:FRAME-TRIGGERING>
+          <fx:FRAME-TRIGGERING ID="FT_WindowControl">
+            <fx:IDENTIFIER>
+              <fx:IDENTIFIER-VALUE>101</fx:IDENTIFIER-VALUE>
+            </fx:IDENTIFIER>
+            <fx:FRAME-REF ID-REF="FRAME_WindowControl"/>
+          </fx:FRAME-TRIGGERING>
+        </fx:FRAME-TRIGGERINGS>
+      </fx:CHANNEL>
+    </fx:CHANNELS>
+    <fx:ECUS>
+      <fx:ECU ID="SUT_Driver">
+        <ho:SHORT-NAME>SUT_Driver</ho:SHORT-NAME>
+        <ho:DESC/>
+        <fx:FUNCTION-REFS>
+          <fx:FUNCTION-REF ID-REF="FCT_SUT_Driver"/>
+        </fx:FUNCTION-REFS>
+      </fx:ECU>
+      <fx:ECU ID="SUT">
+        <ho:SHORT-NAME>SUT</ho:SHORT-NAME>
+        <ho:DESC/>
+        <fx:FUNCTION-REFS>
+          <fx:FUNCTION-REF ID-REF="FCT_SUT"/>
+        </fx:FUNCTION-REFS>
+      </fx:ECU>
+    </fx:ECUS>
+    <fx:PDUS>
+      <fx:PDU ID="PDU_DiagResponse">
+        <ho:SHORT-NAME>PDU_DiagResponse</ho:SHORT-NAME>
+        <ho:DESC></ho:DESC>
+        <fx:BYTE-LENGTH>8</fx:BYTE-LENGTH>
+        <fx:PDU-TYPE>APPLICATION</fx:PDU-TYPE>
+        <fx:SIGNAL-INSTANCES/>
+      </fx:PDU>
+      <fx:PDU ID="PDU_DiagRequest">
+        <ho:SHORT-NAME>PDU_DiagRequest</ho:SHORT-NAME>
+        <ho:DESC></ho:DESC>
+        <fx:BYTE-LENGTH>8</fx:BYTE-LENGTH>
+        <fx:PDU-TYPE>APPLICATION</fx:PDU-TYPE>
+        <fx:SIGNAL-INSTANCES/>
+      </fx:PDU>
+      <fx:PDU ID="PDU_LockingRemoteControlRequest">
+        <ho:SHORT-NAME>PDU_LockingRemoteControlRequest</ho:SHORT-NAME>
+        <ho:DESC></ho:DESC>
+        <fx:BYTE-LENGTH>1</fx:BYTE-LENGTH>
+        <fx:PDU-TYPE>APPLICATION</fx:PDU-TYPE>
+        <fx:SIGNAL-INSTANCES>
+          <fx:SIGNAL-INSTANCE ID="PDUINST_LockRequest">
+            <fx:BIT-POSITION>0</fx:BIT-POSITION>
+            <fx:IS-HIGH-LOW-BYTE-ORDER>false</fx:IS-HIGH-LOW-BYTE-ORDER>
+            <fx:SIGNAL-REF ID-REF="LockRequest"/>
+          </fx:SIGNAL-INSTANCE>
+        </fx:SIGNAL-INSTANCES>
+      </fx:PDU>
+      <fx:PDU ID="PDU_CentralLockingSystemState">
+        <ho:SHORT-NAME>PDU_CentralLockingSystemState</ho:SHORT-NAME>
+        <ho:DESC></ho:DESC>
+        <fx:BYTE-LENGTH>1</fx:BYTE-LENGTH>
+        <fx:PDU-TYPE>APPLICATION</fx:PDU-TYPE>
+        <fx:SIGNAL-INSTANCES>
+          <fx:SIGNAL-INSTANCE ID="PDUINST_AntiTheftSystemActive">
+            <fx:BIT-POSITION>1</fx:BIT-POSITION>
+            <fx:IS-HIGH-LOW-BYTE-ORDER>false</fx:IS-HIGH-LOW-BYTE-ORDER>
+            <fx:SIGNAL-REF ID-REF="AntiTheftSystemActive"/>
+          </fx:SIGNAL-INSTANCE>
+          <fx:SIGNAL-INSTANCE ID="PDUINST_LockState">
+            <fx:BIT-POSITION>0</fx:BIT-POSITION>
+            <fx:IS-HIGH-LOW-BYTE-ORDER>false</fx:IS-HIGH-LOW-BYTE-ORDER>
+            <fx:SIGNAL-REF ID-REF="LockState"/>
+          </fx:SIGNAL-INSTANCE>
+        </fx:SIGNAL-INSTANCES>
+      </fx:PDU>
+      <fx:PDU ID="PDU_VehicleMotion">
+        <ho:SHORT-NAME>PDU_VehicleMotion</ho:SHORT-NAME>
+        <ho:DESC></ho:DESC>
+        <fx:BYTE-LENGTH>3</fx:BYTE-LENGTH>
+        <fx:PDU-TYPE>APPLICATION</fx:PDU-TYPE>
+        <fx:SIGNAL-INSTANCES>
+          <fx:SIGNAL-INSTANCE ID="PDUINST_EngineRunning">
+            <fx:BIT-POSITION>17</fx:BIT-POSITION>
+            <fx:IS-HIGH-LOW-BYTE-ORDER>false</fx:IS-HIGH-LOW-BYTE-ORDER>
+            <fx:SIGNAL-REF ID-REF="EngineRunning"/>
+          </fx:SIGNAL-INSTANCE>
+          <fx:SIGNAL-INSTANCE ID="PDUINST_CrashDetected">
+            <fx:BIT-POSITION>16</fx:BIT-POSITION>
+            <fx:IS-HIGH-LOW-BYTE-ORDER>false</fx:IS-HIGH-LOW-BYTE-ORDER>
+            <fx:SIGNAL-REF ID-REF="CrashDetected"/>
+          </fx:SIGNAL-INSTANCE>
+          <fx:SIGNAL-INSTANCE ID="PDUINST_Velocity">
+            <fx:BIT-POSITION>0</fx:BIT-POSITION>
+            <fx:IS-HIGH-LOW-BYTE-ORDER>false</fx:IS-HIGH-LOW-BYTE-ORDER>
+            <fx:SIGNAL-REF ID-REF="Velocity"/>
+          </fx:SIGNAL-INSTANCE>
+        </fx:SIGNAL-INSTANCES>
+      </fx:PDU>
+      <fx:PDU ID="PDU_WindowState">
+        <ho:SHORT-NAME>PDU_WindowState</ho:SHORT-NAME>
+        <ho:DESC></ho:DESC>
+        <fx:BYTE-LENGTH>2</fx:BYTE-LENGTH>
+        <fx:PDU-TYPE>APPLICATION</fx:PDU-TYPE>
+        <fx:SIGNAL-INSTANCES>
+          <fx:SIGNAL-INSTANCE ID="PDUINST_WindowPosition">
+            <fx:BIT-POSITION>0</fx:BIT-POSITION>
+            <fx:IS-HIGH-LOW-BYTE-ORDER>false</fx:IS-HIGH-LOW-BYTE-ORDER>
+            <fx:SIGNAL-REF ID-REF="WindowPosition"/>
+          </fx:SIGNAL-INSTANCE>
+          <fx:SIGNAL-INSTANCE ID="PDUINST_WindowMotion">
+            <fx:BIT-POSITION>14</fx:BIT-POSITION>
+            <fx:IS-HIGH-LOW-BYTE-ORDER>false</fx:IS-HIGH-LOW-BYTE-ORDER>
+            <fx:SIGNAL-REF ID-REF="WindowMotion"/>
+          </fx:SIGNAL-INSTANCE>
+        </fx:SIGNAL-INSTANCES>
+      </fx:PDU>
+      <fx:PDU ID="PDU_WindowControl">
+        <ho:SHORT-NAME>PDU_WindowControl</ho:SHORT-NAME>
+        <ho:DESC></ho:DESC>
+        <fx:BYTE-LENGTH>1</fx:BYTE-LENGTH>
+        <fx:PDU-TYPE>APPLICATION</fx:PDU-TYPE>
+        <fx:SIGNAL-INSTANCES>
+          <fx:SIGNAL-INSTANCE ID="PDUINST_KeyDown">
+            <fx:BIT-POSITION>1</fx:BIT-POSITION>
+            <fx:IS-HIGH-LOW-BYTE-ORDER>false</fx:IS-HIGH-LOW-BYTE-ORDER>
+            <fx:SIGNAL-REF ID-REF="KeyDown"/>
+          </fx:SIGNAL-INSTANCE>
+          <fx:SIGNAL-INSTANCE ID="PDUINST_KeyUp">
+            <fx:BIT-POSITION>0</fx:BIT-POSITION>
+            <fx:IS-HIGH-LOW-BYTE-ORDER>false</fx:IS-HIGH-LOW-BYTE-ORDER>
+            <fx:SIGNAL-REF ID-REF="KeyUp"/>
+          </fx:SIGNAL-INSTANCE>
+        </fx:SIGNAL-INSTANCES>
+      </fx:PDU>
+    </fx:PDUS>
+    <fx:FRAMES>
+      <fx:FRAME ID="FRAME_DiagResponse">
+        <ho:SHORT-NAME>FRAME_DiagResponse</ho:SHORT-NAME>
+        <ho:DESC></ho:DESC>
+        <fx:BYTE-LENGTH>8</fx:BYTE-LENGTH>
+        <fx:PDU-TYPE>APPLICATION</fx:PDU-TYPE>
+        <fx:PDU-INSTANCES>
+          <fx:PDU-INSTANCE ID="PDUINSTANCE_DiagResponse">
+            <fx:PDU-REF ID-REF="PDU_DiagResponse"/>
+            <fx:BIT-POSITION>0</fx:BIT-POSITION>
+            <fx:IS-HIGH-LOW-BYTE-ORDER>false</fx:IS-HIGH-LOW-BYTE-ORDER>
+          </fx:PDU-INSTANCE>
+        </fx:PDU-INSTANCES>
+      </fx:FRAME>
+      <fx:FRAME ID="FRAME_DiagRequest">
+        <ho:SHORT-NAME>FRAME_DiagRequest</ho:SHORT-NAME>
+        <ho:DESC></ho:DESC>
+        <fx:BYTE-LENGTH>8</fx:BYTE-LENGTH>
+        <fx:PDU-TYPE>APPLICATION</fx:PDU-TYPE>
+        <fx:PDU-INSTANCES>
+          <fx:PDU-INSTANCE ID="PDUINSTANCE_DiagRequest">
+            <fx:PDU-REF ID-REF="PDU_DiagRequest"/>
+            <fx:BIT-POSITION>0</fx:BIT-POSITION>
+            <fx:IS-HIGH-LOW-BYTE-ORDER>false</fx:IS-HIGH-LOW-BYTE-ORDER>
+          </fx:PDU-INSTANCE>
+        </fx:PDU-INSTANCES>
+      </fx:FRAME>
+      <fx:FRAME ID="FRAME_LockingRemoteControlRequest">
+        <ho:SHORT-NAME>FRAME_LockingRemoteControlRequest</ho:SHORT-NAME>
+        <ho:DESC></ho:DESC>
+        <fx:BYTE-LENGTH>1</fx:BYTE-LENGTH>
+        <fx:PDU-TYPE>APPLICATION</fx:PDU-TYPE>
+        <fx:PDU-INSTANCES>
+          <fx:PDU-INSTANCE ID="PDUINSTANCE_LockingRemoteControlRequest">
+            <fx:PDU-REF ID-REF="PDU_LockingRemoteControlRequest"/>
+            <fx:BIT-POSITION>0</fx:BIT-POSITION>
+            <fx:IS-HIGH-LOW-BYTE-ORDER>false</fx:IS-HIGH-LOW-BYTE-ORDER>
+          </fx:PDU-INSTANCE>
+        </fx:PDU-INSTANCES>
+      </fx:FRAME>
+      <fx:FRAME ID="FRAME_CentralLockingSystemState">
+        <ho:SHORT-NAME>FRAME_CentralLockingSystemState</ho:SHORT-NAME>
+        <ho:DESC></ho:DESC>
+        <fx:BYTE-LENGTH>1</fx:BYTE-LENGTH>
+        <fx:PDU-TYPE>APPLICATION</fx:PDU-TYPE>
+        <fx:PDU-INSTANCES>
+          <fx:PDU-INSTANCE ID="PDUINSTANCE_CentralLockingSystemState">
+            <fx:PDU-REF ID-REF="PDU_CentralLockingSystemState"/>
+            <fx:BIT-POSITION>0</fx:BIT-POSITION>
+            <fx:IS-HIGH-LOW-BYTE-ORDER>false</fx:IS-HIGH-LOW-BYTE-ORDER>
+          </fx:PDU-INSTANCE>
+        </fx:PDU-INSTANCES>
+      </fx:FRAME>
+      <fx:FRAME ID="FRAME_VehicleMotion">
+        <ho:SHORT-NAME>FRAME_VehicleMotion</ho:SHORT-NAME>
+        <ho:DESC></ho:DESC>
+        <fx:BYTE-LENGTH>3</fx:BYTE-LENGTH>
+        <fx:PDU-TYPE>APPLICATION</fx:PDU-TYPE>
+        <fx:PDU-INSTANCES>
+          <fx:PDU-INSTANCE ID="PDUINSTANCE_VehicleMotion">
+            <fx:PDU-REF ID-REF="PDU_VehicleMotion"/>
+            <fx:BIT-POSITION>0</fx:BIT-POSITION>
+            <fx:IS-HIGH-LOW-BYTE-ORDER>false</fx:IS-HIGH-LOW-BYTE-ORDER>
+          </fx:PDU-INSTANCE>
+        </fx:PDU-INSTANCES>
+      </fx:FRAME>
+      <fx:FRAME ID="FRAME_WindowState">
+        <ho:SHORT-NAME>FRAME_WindowState</ho:SHORT-NAME>
+        <ho:DESC></ho:DESC>
+        <fx:BYTE-LENGTH>2</fx:BYTE-LENGTH>
+        <fx:PDU-TYPE>APPLICATION</fx:PDU-TYPE>
+        <fx:PDU-INSTANCES>
+          <fx:PDU-INSTANCE ID="PDUINSTANCE_WindowState">
+            <fx:PDU-REF ID-REF="PDU_WindowState"/>
+            <fx:BIT-POSITION>0</fx:BIT-POSITION>
+            <fx:IS-HIGH-LOW-BYTE-ORDER>false</fx:IS-HIGH-LOW-BYTE-ORDER>
+          </fx:PDU-INSTANCE>
+        </fx:PDU-INSTANCES>
+      </fx:FRAME>
+      <fx:FRAME ID="FRAME_WindowControl">
+        <ho:SHORT-NAME>FRAME_WindowControl</ho:SHORT-NAME>
+        <ho:DESC></ho:DESC>
+        <fx:BYTE-LENGTH>1</fx:BYTE-LENGTH>
+        <fx:PDU-TYPE>APPLICATION</fx:PDU-TYPE>
+        <fx:PDU-INSTANCES>
+          <fx:PDU-INSTANCE ID="PDUINSTANCE_WindowControl">
+            <fx:PDU-REF ID-REF="PDU_WindowControl"/>
+            <fx:BIT-POSITION>0</fx:BIT-POSITION>
+            <fx:IS-HIGH-LOW-BYTE-ORDER>false</fx:IS-HIGH-LOW-BYTE-ORDER>
+          </fx:PDU-INSTANCE>
+        </fx:PDU-INSTANCES>
+      </fx:FRAME>
+    </fx:FRAMES>
+    <fx:FUNCTIONS>
+      <fx:FUNCTION ID="FCT_SUT_Driver">
+        <ho:SHORT-NAME>FCT_SUT_Driver</ho:SHORT-NAME>
+        <ho:DESC/>
+        <fx:INPUT-PORTS>
+          <fx:OUTPUT-PORT ID="OUTP_LockRequest">
+            <ho:DESC>signalcomment</ho:DESC>
+            <fx:SIGNAL-REF ID-REF="SIG_LockRequest"/>
+          </fx:OUTPUT-PORT>
+          <fx:OUTPUT-PORT ID="OUTP_EngineRunning">
+            <ho:DESC>signalcomment</ho:DESC>
+            <fx:SIGNAL-REF ID-REF="SIG_EngineRunning"/>
+          </fx:OUTPUT-PORT>
+          <fx:OUTPUT-PORT ID="OUTP_CrashDetected">
+            <ho:DESC>signalcomment</ho:DESC>
+            <fx:SIGNAL-REF ID-REF="SIG_CrashDetected"/>
+          </fx:OUTPUT-PORT>
+          <fx:OUTPUT-PORT ID="OUTP_Velocity">
+            <ho:DESC>signalcomment</ho:DESC>
+            <fx:SIGNAL-REF ID-REF="SIG_Velocity"/>
+          </fx:OUTPUT-PORT>
+          <fx:OUTPUT-PORT ID="OUTP_KeyDown">
+            <ho:DESC>signalcomment</ho:DESC>
+            <fx:SIGNAL-REF ID-REF="SIG_KeyDown"/>
+          </fx:OUTPUT-PORT>
+          <fx:OUTPUT-PORT ID="OUTP_KeyUp">
+            <ho:DESC>signalcomment</ho:DESC>
+            <fx:SIGNAL-REF ID-REF="SIG_KeyUp"/>
+          </fx:OUTPUT-PORT>
+        </fx:INPUT-PORTS>
+      </fx:FUNCTION>
+      <fx:FUNCTION ID="FCT_SUT">
+        <ho:SHORT-NAME>FCT_SUT</ho:SHORT-NAME>
+        <ho:DESC/>
+        <fx:INPUT-PORTS>
+          <fx:INPUT-PORT ID="INP_LockRequest">
+            <ho:DESC/>
+            <fx:SIGNAL-REF ID-REF="SIG_LockRequest"/>
+          </fx:INPUT-PORT>
+          <fx:INPUT-PORT ID="INP_CrashDetected">
+            <ho:DESC/>
+            <fx:SIGNAL-REF ID-REF="SIG_CrashDetected"/>
+          </fx:INPUT-PORT>
+          <fx:INPUT-PORT ID="INP_Velocity">
+            <ho:DESC/>
+            <fx:SIGNAL-REF ID-REF="SIG_Velocity"/>
+          </fx:INPUT-PORT>
+          <fx:INPUT-PORT ID="INP_KeyDown">
+            <ho:DESC/>
+            <fx:SIGNAL-REF ID-REF="SIG_KeyDown"/>
+          </fx:INPUT-PORT>
+          <fx:INPUT-PORT ID="INP_KeyUp">
+            <ho:DESC/>
+            <fx:SIGNAL-REF ID-REF="SIG_KeyUp"/>
+          </fx:INPUT-PORT>
+          <fx:OUTPUT-PORT ID="OUTP_AntiTheftSystemActive">
+            <ho:DESC>signalcomment</ho:DESC>
+            <fx:SIGNAL-REF ID-REF="SIG_AntiTheftSystemActive"/>
+          </fx:OUTPUT-PORT>
+          <fx:OUTPUT-PORT ID="OUTP_LockState">
+            <ho:DESC>signalcomment</ho:DESC>
+            <fx:SIGNAL-REF ID-REF="SIG_LockState"/>
+          </fx:OUTPUT-PORT>
+          <fx:OUTPUT-PORT ID="OUTP_WindowPosition">
+            <ho:DESC>signalcomment</ho:DESC>
+            <fx:SIGNAL-REF ID-REF="SIG_WindowPosition"/>
+          </fx:OUTPUT-PORT>
+          <fx:OUTPUT-PORT ID="OUTP_WindowMotion">
+            <ho:DESC>signalcomment</ho:DESC>
+            <fx:SIGNAL-REF ID-REF="SIG_WindowMotion"/>
+          </fx:OUTPUT-PORT>
+        </fx:INPUT-PORTS>
+      </fx:FUNCTION>
+    </fx:FUNCTIONS>
+    <fx:SIGNALS/>
+    <fx:SIGNALS/>
+    <fx:SIGNALS>
+      <fx:SIGNAL ID="SIG_LockRequest">
+        <ho:SHORT-NAME>LockRequest</ho:SHORT-NAME>
+        <ho:DESC/>
+        <fx:CODING-REF ID-REF="CODING_LockRequest"/>
+      </fx:SIGNAL>
+    </fx:SIGNALS>
+    <fx:SIGNALS>
+      <fx:SIGNAL ID="SIG_AntiTheftSystemActive">
+        <ho:SHORT-NAME>AntiTheftSystemActive</ho:SHORT-NAME>
+        <ho:DESC/>
+        <fx:CODING-REF ID-REF="CODING_AntiTheftSystemActive"/>
+      </fx:SIGNAL>
+      <fx:SIGNAL ID="SIG_LockState">
+        <ho:SHORT-NAME>LockState</ho:SHORT-NAME>
+        <ho:DESC/>
+        <fx:CODING-REF ID-REF="CODING_LockState"/>
+      </fx:SIGNAL>
+    </fx:SIGNALS>
+    <fx:SIGNALS>
+      <fx:SIGNAL ID="SIG_EngineRunning">
+        <ho:SHORT-NAME>EngineRunning</ho:SHORT-NAME>
+        <ho:DESC/>
+        <fx:CODING-REF ID-REF="CODING_EngineRunning"/>
+      </fx:SIGNAL>
+      <fx:SIGNAL ID="SIG_CrashDetected">
+        <ho:SHORT-NAME>CrashDetected</ho:SHORT-NAME>
+        <ho:DESC/>
+        <fx:CODING-REF ID-REF="CODING_CrashDetected"/>
+      </fx:SIGNAL>
+      <fx:SIGNAL ID="SIG_Velocity">
+        <ho:SHORT-NAME>Velocity</ho:SHORT-NAME>
+        <ho:DESC/>
+        <fx:CODING-REF ID-REF="CODING_Velocity"/>
+      </fx:SIGNAL>
+    </fx:SIGNALS>
+    <fx:SIGNALS>
+      <fx:SIGNAL ID="SIG_WindowPosition">
+        <ho:SHORT-NAME>WindowPosition</ho:SHORT-NAME>
+        <ho:DESC/>
+        <fx:CODING-REF ID-REF="CODING_WindowPosition"/>
+      </fx:SIGNAL>
+      <fx:SIGNAL ID="SIG_WindowMotion">
+        <ho:SHORT-NAME>WindowMotion</ho:SHORT-NAME>
+        <ho:DESC/>
+        <fx:CODING-REF ID-REF="CODING_WindowMotion"/>
+      </fx:SIGNAL>
+    </fx:SIGNALS>
+    <fx:SIGNALS>
+      <fx:SIGNAL ID="SIG_KeyDown">
+        <ho:SHORT-NAME>KeyDown</ho:SHORT-NAME>
+        <ho:DESC/>
+        <fx:CODING-REF ID-REF="CODING_KeyDown"/>
+      </fx:SIGNAL>
+      <fx:SIGNAL ID="SIG_KeyUp">
+        <ho:SHORT-NAME>KeyUp</ho:SHORT-NAME>
+        <ho:DESC/>
+        <fx:CODING-REF ID-REF="CODING_KeyUp"/>
+      </fx:SIGNAL>
+    </fx:SIGNALS>
+    <fx:PROCESSING-INFORMATION>
+      <ho:UNIT-SPEC>
+        <ho:UNIT ID="UNIT_LockRequest">
+          <ho:SHORT-NAME>LockRequest</ho:SHORT-NAME>
+          <ho:DISPLAY-NAME></ho:DISPLAY-NAME>
+        </ho:UNIT>
+        <ho:UNIT ID="UNIT_AntiTheftSystemActive">
+          <ho:SHORT-NAME>AntiTheftSystemActive</ho:SHORT-NAME>
+          <ho:DISPLAY-NAME></ho:DISPLAY-NAME>
+        </ho:UNIT>
+        <ho:UNIT ID="UNIT_LockState">
+          <ho:SHORT-NAME>LockState</ho:SHORT-NAME>
+          <ho:DISPLAY-NAME></ho:DISPLAY-NAME>
+        </ho:UNIT>
+        <ho:UNIT ID="UNIT_EngineRunning">
+          <ho:SHORT-NAME>EngineRunning</ho:SHORT-NAME>
+          <ho:DISPLAY-NAME></ho:DISPLAY-NAME>
+        </ho:UNIT>
+        <ho:UNIT ID="UNIT_CrashDetected">
+          <ho:SHORT-NAME>CrashDetected</ho:SHORT-NAME>
+          <ho:DISPLAY-NAME></ho:DISPLAY-NAME>
+        </ho:UNIT>
+        <ho:UNIT ID="UNIT_Velocity">
+          <ho:SHORT-NAME>Velocity</ho:SHORT-NAME>
+          <ho:DISPLAY-NAME></ho:DISPLAY-NAME>
+        </ho:UNIT>
+        <ho:UNIT ID="UNIT_WindowPosition">
+          <ho:SHORT-NAME>WindowPosition</ho:SHORT-NAME>
+          <ho:DISPLAY-NAME></ho:DISPLAY-NAME>
+        </ho:UNIT>
+        <ho:UNIT ID="UNIT_WindowMotion">
+          <ho:SHORT-NAME>WindowMotion</ho:SHORT-NAME>
+          <ho:DISPLAY-NAME></ho:DISPLAY-NAME>
+        </ho:UNIT>
+        <ho:UNIT ID="UNIT_KeyDown">
+          <ho:SHORT-NAME>KeyDown</ho:SHORT-NAME>
+          <ho:DISPLAY-NAME></ho:DISPLAY-NAME>
+        </ho:UNIT>
+        <ho:UNIT ID="UNIT_KeyUp">
+          <ho:SHORT-NAME>KeyUp</ho:SHORT-NAME>
+          <ho:DISPLAY-NAME></ho:DISPLAY-NAME>
+        </ho:UNIT>
+      </ho:UNIT-SPEC>
+      <fx:CODINGS>
+        <fx:CODING ID="CODING_LockRequest">
+          <ho:SHORT-NAME>CODING_LockRequest</ho:SHORT-NAME>
+          <ho:DESC>Coding for LockRequest</ho:DESC>
+          <ho:COMPU-METHODS>
+            <ho:COMPU-METHOD>
+              <ho:SHORT-NAME>COMPUMETHOD_LockRequest</ho:SHORT-NAME>
+              <ho:CATEGORY>LINEAR</ho:CATEGORY>
+              <ho:UNIT-REF ID-REF="UNIT_LockRequest"/>
+              <ho:COMPU-INTERNAL-TO-PHYS>
+                <ho:COMPU-SCALES>
+                  <ho:COMPU-SCALE>
+                    <ho:LOWER-LIMIT INTERVAL-TYPE="CLOSED">0</ho:LOWER-LIMIT>
+                    <ho:UPPER-LIMIT INTERVAL-TYPE="CLOSED">0</ho:UPPER-LIMIT>
+                    <ho:COMPU-RATIONAL-COEFFS>
+                      <ho:COMPU-NUMERATOR>
+                        <ho:V>0</ho:V>
+                        <ho:V>1</ho:V>
+                      </ho:COMPU-NUMERATOR>
+                      <ho:COMPU-DENOMINATOR>
+                        <ho:V>1</ho:V>
+                      </ho:COMPU-DENOMINATOR>
+                    </ho:COMPU-RATIONAL-COEFFS>
+                  </ho:COMPU-SCALE>
+                </ho:COMPU-SCALES>
+              </ho:COMPU-INTERNAL-TO-PHYS>
+            </ho:COMPU-METHOD>
+          </ho:COMPU-METHODS>
+        </fx:CODING>
+        <fx:CODING ID="CODING_AntiTheftSystemActive">
+          <ho:SHORT-NAME>CODING_AntiTheftSystemActive</ho:SHORT-NAME>
+          <ho:DESC>Coding for AntiTheftSystemActive</ho:DESC>
+          <ho:COMPU-METHODS>
+            <ho:COMPU-METHOD>
+              <ho:SHORT-NAME>COMPUMETHOD_AntiTheftSystemActive</ho:SHORT-NAME>
+              <ho:CATEGORY>LINEAR</ho:CATEGORY>
+              <ho:UNIT-REF ID-REF="UNIT_AntiTheftSystemActive"/>
+              <ho:COMPU-INTERNAL-TO-PHYS>
+                <ho:COMPU-SCALES>
+                  <ho:COMPU-SCALE>
+                    <ho:LOWER-LIMIT INTERVAL-TYPE="CLOSED">2</ho:LOWER-LIMIT>
+                    <ho:UPPER-LIMIT INTERVAL-TYPE="CLOSED">10</ho:UPPER-LIMIT>
+                    <ho:COMPU-RATIONAL-COEFFS>
+                      <ho:COMPU-NUMERATOR>
+                        <ho:V>2</ho:V>
+                        <ho:V>1</ho:V>
+                      </ho:COMPU-NUMERATOR>
+                      <ho:COMPU-DENOMINATOR>
+                        <ho:V>1</ho:V>
+                      </ho:COMPU-DENOMINATOR>
+                    </ho:COMPU-RATIONAL-COEFFS>
+                  </ho:COMPU-SCALE>
+                </ho:COMPU-SCALES>
+              </ho:COMPU-INTERNAL-TO-PHYS>
+            </ho:COMPU-METHOD>
+          </ho:COMPU-METHODS>
+        </fx:CODING>
+        <fx:CODING ID="CODING_LockState">
+          <ho:SHORT-NAME>CODING_LockState</ho:SHORT-NAME>
+          <ho:DESC>Coding for LockState</ho:DESC>
+          <ho:COMPU-METHODS>
+            <ho:COMPU-METHOD>
+              <ho:SHORT-NAME>COMPUMETHOD_LockState</ho:SHORT-NAME>
+              <ho:CATEGORY>LINEAR</ho:CATEGORY>
+              <ho:UNIT-REF ID-REF="UNIT_LockState"/>
+              <ho:COMPU-INTERNAL-TO-PHYS>
+                <ho:COMPU-SCALES>
+                  <ho:COMPU-SCALE>
+                    <ho:LOWER-LIMIT INTERVAL-TYPE="CLOSED">3</ho:LOWER-LIMIT>
+                    <ho:UPPER-LIMIT INTERVAL-TYPE="CLOSED">5</ho:UPPER-LIMIT>
+                    <ho:COMPU-RATIONAL-COEFFS>
+                      <ho:COMPU-NUMERATOR>
+                        <ho:V>3</ho:V>
+                        <ho:V>2</ho:V>
+                      </ho:COMPU-NUMERATOR>
+                      <ho:COMPU-DENOMINATOR>
+                        <ho:V>1</ho:V>
+                      </ho:COMPU-DENOMINATOR>
+                    </ho:COMPU-RATIONAL-COEFFS>
+                  </ho:COMPU-SCALE>
+                </ho:COMPU-SCALES>
+              </ho:COMPU-INTERNAL-TO-PHYS>
+            </ho:COMPU-METHOD>
+          </ho:COMPU-METHODS>
+        </fx:CODING>
+        <fx:CODING ID="CODING_EngineRunning">
+          <ho:SHORT-NAME>CODING_EngineRunning</ho:SHORT-NAME>
+          <ho:DESC>Coding for EngineRunning</ho:DESC>
+          <ho:COMPU-METHODS>
+            <ho:COMPU-METHOD>
+              <ho:SHORT-NAME>COMPUMETHOD_EngineRunning</ho:SHORT-NAME>
+              <ho:CATEGORY>LINEAR</ho:CATEGORY>
+              <ho:UNIT-REF ID-REF="UNIT_EngineRunning"/>
+              <ho:COMPU-INTERNAL-TO-PHYS>
+                <ho:COMPU-SCALES>
+                  <ho:COMPU-SCALE>
+                    <ho:LOWER-LIMIT INTERVAL-TYPE="CLOSED">1</ho:LOWER-LIMIT>
+                    <ho:UPPER-LIMIT INTERVAL-TYPE="CLOSED">3</ho:UPPER-LIMIT>
+                    <ho:COMPU-RATIONAL-COEFFS>
+                      <ho:COMPU-NUMERATOR>
+                        <ho:V>0</ho:V>
+                        <ho:V>3</ho:V>
+                      </ho:COMPU-NUMERATOR>
+                      <ho:COMPU-DENOMINATOR>
+                        <ho:V>1</ho:V>
+                      </ho:COMPU-DENOMINATOR>
+                    </ho:COMPU-RATIONAL-COEFFS>
+                  </ho:COMPU-SCALE>
+                </ho:COMPU-SCALES>
+              </ho:COMPU-INTERNAL-TO-PHYS>
+            </ho:COMPU-METHOD>
+          </ho:COMPU-METHODS>
+        </fx:CODING>
+        <fx:CODING ID="CODING_CrashDetected">
+          <ho:SHORT-NAME>CODING_CrashDetected</ho:SHORT-NAME>
+          <ho:DESC>Coding for CrashDetected</ho:DESC>
+          <ho:COMPU-METHODS>
+            <ho:COMPU-METHOD>
+              <ho:SHORT-NAME>COMPUMETHOD_CrashDetected</ho:SHORT-NAME>
+              <ho:CATEGORY>LINEAR</ho:CATEGORY>
+              <ho:UNIT-REF ID-REF="UNIT_CrashDetected"/>
+              <ho:COMPU-INTERNAL-TO-PHYS>
+                <ho:COMPU-SCALES>
+                  <ho:COMPU-SCALE>
+                    <ho:LOWER-LIMIT INTERVAL-TYPE="CLOSED">0</ho:LOWER-LIMIT>
+                    <ho:UPPER-LIMIT INTERVAL-TYPE="CLOSED">0</ho:UPPER-LIMIT>
+                    <ho:COMPU-RATIONAL-COEFFS>
+                      <ho:COMPU-NUMERATOR>
+                        <ho:V>0</ho:V>
+                        <ho:V>1</ho:V>
+                      </ho:COMPU-NUMERATOR>
+                      <ho:COMPU-DENOMINATOR>
+                        <ho:V>1</ho:V>
+                      </ho:COMPU-DENOMINATOR>
+                    </ho:COMPU-RATIONAL-COEFFS>
+                  </ho:COMPU-SCALE>
+                </ho:COMPU-SCALES>
+              </ho:COMPU-INTERNAL-TO-PHYS>
+            </ho:COMPU-METHOD>
+          </ho:COMPU-METHODS>
+        </fx:CODING>
+        <fx:CODING ID="CODING_Velocity">
+          <ho:SHORT-NAME>CODING_Velocity</ho:SHORT-NAME>
+          <ho:DESC>Coding for Velocity</ho:DESC>
+          <ho:COMPU-METHODS>
+            <ho:COMPU-METHOD>
+              <ho:SHORT-NAME>COMPUMETHOD_Velocity</ho:SHORT-NAME>
+              <ho:CATEGORY>LINEAR</ho:CATEGORY>
+              <ho:UNIT-REF ID-REF="UNIT_Velocity"/>
+              <ho:COMPU-INTERNAL-TO-PHYS>
+                <ho:COMPU-SCALES>
+                  <ho:COMPU-SCALE>
+                    <ho:LOWER-LIMIT INTERVAL-TYPE="CLOSED">1</ho:LOWER-LIMIT>
+                    <ho:UPPER-LIMIT INTERVAL-TYPE="CLOSED">4</ho:UPPER-LIMIT>
+                    <ho:COMPU-RATIONAL-COEFFS>
+                      <ho:COMPU-NUMERATOR>
+                        <ho:V>0</ho:V>
+                        <ho:V>3</ho:V>
+                      </ho:COMPU-NUMERATOR>
+                      <ho:COMPU-DENOMINATOR>
+                        <ho:V>1</ho:V>
+                      </ho:COMPU-DENOMINATOR>
+                    </ho:COMPU-RATIONAL-COEFFS>
+                  </ho:COMPU-SCALE>
+                </ho:COMPU-SCALES>
+              </ho:COMPU-INTERNAL-TO-PHYS>
+            </ho:COMPU-METHOD>
+          </ho:COMPU-METHODS>
+        </fx:CODING>
+        <fx:CODING ID="CODING_WindowPosition">
+          <ho:SHORT-NAME>CODING_WindowPosition</ho:SHORT-NAME>
+          <ho:DESC>Coding for WindowPosition</ho:DESC>
+          <ho:COMPU-METHODS>
+            <ho:COMPU-METHOD>
+              <ho:SHORT-NAME>COMPUMETHOD_WindowPosition</ho:SHORT-NAME>
+              <ho:CATEGORY>LINEAR</ho:CATEGORY>
+              <ho:UNIT-REF ID-REF="UNIT_WindowPosition"/>
+              <ho:COMPU-INTERNAL-TO-PHYS>
+                <ho:COMPU-SCALES>
+                  <ho:COMPU-SCALE>
+                    <ho:LOWER-LIMIT INTERVAL-TYPE="CLOSED">0</ho:LOWER-LIMIT>
+                    <ho:UPPER-LIMIT INTERVAL-TYPE="CLOSED">255</ho:UPPER-LIMIT>
+                    <ho:COMPU-RATIONAL-COEFFS>
+                      <ho:COMPU-NUMERATOR>
+                        <ho:V>0</ho:V>
+                        <ho:V>1</ho:V>
+                      </ho:COMPU-NUMERATOR>
+                      <ho:COMPU-DENOMINATOR>
+                        <ho:V>1</ho:V>
+                      </ho:COMPU-DENOMINATOR>
+                    </ho:COMPU-RATIONAL-COEFFS>
+                  </ho:COMPU-SCALE>
+                </ho:COMPU-SCALES>
+              </ho:COMPU-INTERNAL-TO-PHYS>
+            </ho:COMPU-METHOD>
+          </ho:COMPU-METHODS>
+        </fx:CODING>
+        <fx:CODING ID="CODING_WindowMotion">
+          <ho:SHORT-NAME>CODING_WindowMotion</ho:SHORT-NAME>
+          <ho:DESC>Coding for WindowMotion</ho:DESC>
+          <ho:COMPU-METHODS>
+            <ho:COMPU-METHOD>
+              <ho:SHORT-NAME>COMPUMETHOD_WindowMotion</ho:SHORT-NAME>
+              <ho:CATEGORY>LINEAR</ho:CATEGORY>
+              <ho:UNIT-REF ID-REF="UNIT_WindowMotion"/>
+              <ho:COMPU-INTERNAL-TO-PHYS>
+                <ho:COMPU-SCALES>
+                  <ho:COMPU-SCALE>
+                    <ho:LOWER-LIMIT INTERVAL-TYPE="CLOSED">0</ho:LOWER-LIMIT>
+                    <ho:UPPER-LIMIT INTERVAL-TYPE="CLOSED">0</ho:UPPER-LIMIT>
+                    <ho:COMPU-RATIONAL-COEFFS>
+                      <ho:COMPU-NUMERATOR>
+                        <ho:V>0</ho:V>
+                        <ho:V>1</ho:V>
+                      </ho:COMPU-NUMERATOR>
+                      <ho:COMPU-DENOMINATOR>
+                        <ho:V>1</ho:V>
+                      </ho:COMPU-DENOMINATOR>
+                    </ho:COMPU-RATIONAL-COEFFS>
+                  </ho:COMPU-SCALE>
+                </ho:COMPU-SCALES>
+              </ho:COMPU-INTERNAL-TO-PHYS>
+            </ho:COMPU-METHOD>
+          </ho:COMPU-METHODS>
+        </fx:CODING>
+        <fx:CODING ID="CODING_KeyDown">
+          <ho:SHORT-NAME>CODING_KeyDown</ho:SHORT-NAME>
+          <ho:DESC>Coding for KeyDown</ho:DESC>
+          <ho:COMPU-METHODS>
+            <ho:COMPU-METHOD>
+              <ho:SHORT-NAME>COMPUMETHOD_KeyDown</ho:SHORT-NAME>
+              <ho:CATEGORY>LINEAR</ho:CATEGORY>
+              <ho:UNIT-REF ID-REF="UNIT_KeyDown"/>
+              <ho:COMPU-INTERNAL-TO-PHYS>
+                <ho:COMPU-SCALES>
+                  <ho:COMPU-SCALE>
+                    <ho:LOWER-LIMIT INTERVAL-TYPE="CLOSED">0</ho:LOWER-LIMIT>
+                    <ho:UPPER-LIMIT INTERVAL-TYPE="CLOSED">0</ho:UPPER-LIMIT>
+                    <ho:COMPU-RATIONAL-COEFFS>
+                      <ho:COMPU-NUMERATOR>
+                        <ho:V>0</ho:V>
+                        <ho:V>1</ho:V>
+                      </ho:COMPU-NUMERATOR>
+                      <ho:COMPU-DENOMINATOR>
+                        <ho:V>1</ho:V>
+                      </ho:COMPU-DENOMINATOR>
+                    </ho:COMPU-RATIONAL-COEFFS>
+                  </ho:COMPU-SCALE>
+                </ho:COMPU-SCALES>
+              </ho:COMPU-INTERNAL-TO-PHYS>
+            </ho:COMPU-METHOD>
+          </ho:COMPU-METHODS>
+        </fx:CODING>
+        <fx:CODING ID="CODING_KeyUp">
+          <ho:SHORT-NAME>CODING_KeyUp</ho:SHORT-NAME>
+          <ho:DESC>Coding for KeyUp</ho:DESC>
+          <ho:COMPU-METHODS>
+            <ho:COMPU-METHOD>
+              <ho:SHORT-NAME>COMPUMETHOD_KeyUp</ho:SHORT-NAME>
+              <ho:CATEGORY>LINEAR</ho:CATEGORY>
+              <ho:UNIT-REF ID-REF="UNIT_KeyUp"/>
+              <ho:COMPU-INTERNAL-TO-PHYS>
+                <ho:COMPU-SCALES>
+                  <ho:COMPU-SCALE>
+                    <ho:LOWER-LIMIT INTERVAL-TYPE="CLOSED">0</ho:LOWER-LIMIT>
+                    <ho:UPPER-LIMIT INTERVAL-TYPE="CLOSED">1</ho:UPPER-LIMIT>
+                    <ho:COMPU-RATIONAL-COEFFS>
+                      <ho:COMPU-NUMERATOR>
+                        <ho:V>0</ho:V>
+                        <ho:V>1</ho:V>
+                      </ho:COMPU-NUMERATOR>
+                      <ho:COMPU-DENOMINATOR>
+                        <ho:V>1</ho:V>
+                      </ho:COMPU-DENOMINATOR>
+                    </ho:COMPU-RATIONAL-COEFFS>
+                  </ho:COMPU-SCALE>
+                </ho:COMPU-SCALES>
+              </ho:COMPU-INTERNAL-TO-PHYS>
+            </ho:COMPU-METHOD>
+          </ho:COMPU-METHODS>
+        </fx:CODING>
+      </fx:CODINGS>
+    </fx:PROCESSING-INFORMATION>
+  </fx:ELEMENTS>
+</fx:FIBEX>

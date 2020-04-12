@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<testsetup title="Test Cls">
+	<description>testing CLs system</description>
+	<header>
+		<info>
+			<category>Module Name</category>
+			<value>5.1</value>
+		</info>
+		<info>
+			<category>version</category>
+			<value>1.0</value>
+		</info>
+		<info>
+			<category>Engineer Name</category>
+			<value>xyz</value>
+		</info>
+		<info>
+			<category>Engineer Role</category>
+			<value>scripting</value>
+		</info>
+		<list_of_database>
+			<database>..\23-09-2019BUSMASTER\CentralLockingSystem_BusMaster\CentralLockingSystem\DBs\comfort.dbf</database>
+		</list_of_database>
+		<bustype>CAN</bustype>
+		<reportfile>
+			<path>..\..\..\..\update tool\CcentralLockingReport.txt</path>
+			<format>TXT</format>
+			<timemode>ABS</timemode>
+		</reportfile>
+	</header>
+	<list_of_test_cases>
+		<testcase identifier="001" title="AncitCLS1" exp_handler="CONTINUE">
+			<wait purpose="PreCondition">100</wait>
+			<send>
+				<send_message identifier="1" unit="ENG" channel="1" default="0.000000">
+					<signal name="LockRequest">1.000000</signal>
+				</send_message>
+			</send>
+			<wait purpose="for Reaction">500</wait>
+			<verify failure="ERROR">
+				<verify_message identifier="0" unit="RAW" channel="1">
+					<signal name="AntiTheftSystemActive">0</signal>
+					<signal name="LockState">1</signal>
+				</verify_message>
+			</verify>
+		</testcase>
+		<testcase identifier="002" title="CLS2" exp_handler="CONTINUE">
+			<wait purpose="delay">100</wait>
+			<send>
+				<send_message identifier="101" unit="ENG" channel="1" default="0.000000">
+					<signal name="KeyUp">0.000000</signal>
+					<signal name="KeyDown">1.000000</signal>
+				</send_message>
+			</send>
+			<wait purpose="delay">500</wait>
+			<verify failure="ERROR">
+				<verify_message identifier="100" unit="RAW" channel="1">
+					<signal name="WindowMotion">0</signal>
+					<signal name="WindowPosition">1</signal>
+				</verify_message>
+			</verify>
+		</testcase>
+		<testcase identifier="003" title="CLS3" exp_handler="CONTINUE">
+			<wait purpose="">100</wait>
+			<send>
+				<send_message identifier="100" unit="ENG" channel="1" default="0.000000">
+					<signal name="WindowMotion">0.000000</signal>
+					<signal name="WindowPosition">0.000000</signal>
+				</send_message>
+			</send>
+			<wait purpose="">500</wait>
+			<verify failure="ERROR">
+				<verify_message identifier="0" unit="RAW" channel="1">
+					<signal name="AntiTheftSystemActive"/>
+					<signal name="LockState"/>
+				</verify_message>
+			</verify>
+		</testcase>
+	</list_of_test_cases>
+</testsetup>

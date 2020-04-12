@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension-point id="exports" name="Export TSE" schema="schema/exports.exsd"/>
+   <extension-point id="imports" name="import TSE" schema="schema/imports.exsd"/>
+   <extension
+         point="org.eclipse.ui.perspectives">
+      <perspective
+            class="com.ancit.testgenx.ui.perspective.Diagnostic_Perspective"
+            icon="icons/new_testsuite.png"
+            id="com.ancit.diagnostic_tool.perspective.Diagnostic_Perspective"
+            name="TestGenx">
+      </perspective>
+   </extension>
+   <extension
+         point="org.eclipse.ui.views">
+      <view
+            class="com.ancit.testgenx.ui.views.DiagnosticView"
+            id="com.ancit.diagnostic_tool.ui.DiagnosticView"
+            name="RQMView"
+            restorable="true">
+      </view>
+   </extension>
+   <extension
+         point="org.eclipse.ui.editors">
+      <editor
+            class="com.ancit.testgenx.ui.editors.TestSpecificationEditor"
+            default="false"
+            extensions="tcgx"
+            icon="icons/TestSpecification.gif"
+            id="com.ancit.diagnostictool.ui.editor4"
+            name="Test Case GenX">
+      </editor>
+   </extension>
+   <extension
+         point="org.eclipse.ui.handlers">
+      <handler
+            commandId="com.ancit.diagnostictool.ui.handlers.ImportDBCHandler">
+      </handler>
+      <handler
+            commandId="com.ancit.diagnostictool.ui.commands.opentestspec">
+      </handler>
+      <handler
+            commandId="com.ancit.diagnostictool.ui.commands.importcanoetestspect">
+      </handler>
+   </extension>
+   <extension
+         point="org.eclipse.ui.bindings">
+      <key
+            commandId="com.ancit.diagnostictool.ui.commands.importxlstestspect"
+            contextId="org.eclipse.ui.contexts.dialogAndWindow"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+            sequence="M1+M2+X">
+      </key>
+      <key
+            commandId="com.ancit.diagnostictool.ui.commands.importcanoetestspect"
+            contextId="org.eclipse.ui.contexts.dialogAndWindow"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+            sequence="M1+M2+C">
+      </key>
+      <key
+            commandId="com.ancit.diagnostictool.ui.commands.opentestspec"
+            contextId="org.eclipse.ui.contexts.dialogAndWindow"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+            sequence="M1+M2+O">
+      </key>
+      <key
+            commandId="com.ancit.diagnostictool.ui.handlers.ImportDBCHandler"
+            contextId="org.eclipse.ui.contexts.dialogAndWindow"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+            sequence="M1+M2+N">
+      </key>
+      <key
+            commandId="org.eclipse.ui.file.exit"
+            contextId="org.eclipse.ui.contexts.dialogAndWindow"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+            sequence="M1+Q">
+      </key>
+      <key
+            commandId="org.eclipse.ui.file.restartWorkbench"
+            contextId="org.eclipse.ui.contexts.dialogAndWindow"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+            sequence="M1+R">
+      </key>
+   </extension>
+   <extension
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            locationURI="menu:file?before=additions">
+         <menu
+               id="com.ancit.diagnostictool.ui.menus.sampleMenu"
+               label="Test Specification"
+               mnemonic="M">
+            <menu
+                  id="com.ancit.diagnostictool.ui.menus.newmenu"
+                  label="New">
+               <command
+                     commandId="com.ancit.diagnostictool.ui.handlers.ImportDBCHandler"
+                     icon="icons/New.png"
+                     id="com.ancit.diagnostictool.ui.handlers.ImportDBCHandler"
+                     mnemonic="S">
+               </command>
+            </menu>
+            <menu
+                  id="com.ancit.diagnostictool.ui.menus.openmenu"
+                  label="Open">
+               <command
+                     commandId="com.ancit.diagnostictool.ui.commands.opentestspec"
+                     icon="icons/open.png"
+                     id="com.ancit.diagnostictool.ui.menus.opentestspec"
+                     mnemonic="O">
+               </command>
+            </menu>
+            <menu
+                  id="com.ancit.diagnostictool.ui.menus.importmenu"
+                  label="Import">
+               <command
+                     commandId="com.ancit.diagnostictool.ui.commands.importxlstestspect"
+                     icon="icons/excel-3-16.png"
+                     label="XLS TestSpecification"
+                     style="push">
+               </command>
+            </menu>
+            <menu
+                  id="com.ancit.diagnostictool.ui.menus.othersmenu"
+                  label="Others">
+               <command
+                     commandId="com.ancit.diagnostictool.ui.convertxmlcmd"
+                     label="Convert To XML"
+                     style="push"
+                     tooltip="Convert To XML">
+               </command>
+            </menu>
+         </menu>
+      </menuContribution>
+      <menuContribution
+            locationURI="toolbar:org.eclipse.ui.main.toolbar?after=additions">
+         <toolbar
+               id="com.ancit.diagnostictool.ui.toolbar1">
+            <command
+                  commandId="com.ancit.diagnostictool.ui.homecommand"
+                  icon="icons/home_nav.png"
+                  label="Home"
+                  style="push">
+            </command>
+            <command
+                  commandId="com.ancit.diagnostictool.ui.handlers.ImportDBCHandler"
+                  icon="icons/New.png"
+                  id="com.ancit.diagnostictool.ui.handlers.ImportDBCHandlercom.ancit.diagnostictool.ui.toolbars.sampleCommand"
+                  tooltip="New Test Specification">
+            </command>
+            <command
+                  commandId="com.ancit.diagnostictool.ui.commands.opentestspec"
+                  icon="icons/open.png"
+                  id="com.ancit.diagnostictool.ui.toolbars.opentestspec"
+                  tooltip="Open Test Specification">
+            </command>
+         </toolbar>
+      </menuContribution>
+   </extension>
+   <extension
+         point="org.eclipse.ui.commands">
+      <category
+            id="com.ancit.diagnostictool.ui.commands.category"
+            name="TestSpecification Category">
+      </category>
+      <command
+            categoryId="com.ancit.diagnostictool.ui.commands.category"
+            defaultHandler="com.ancit.testgenx.ui.handlers.ImportDBCHandler"
+            id="com.ancit.diagnostictool.ui.handlers.ImportDBCHandler"
+            name="New Test Specification">
+      </command>
+      <command
+            categoryId="com.ancit.diagnostictool.ui.commands.category"
+            defaultHandler="com.ancit.testgenx.ui.handlers.OpenTestSpecificationHandler"
+            id="com.ancit.diagnostictool.ui.commands.opentestspec"
+            name="Open Test Specification">
+      </command>
+      <command
+            categoryId="com.ancit.diagnostictool.ui.commands.category"
+            defaultHandler="com.ancit.testgenx.ui.handlers.ImportCANOETestSpecificationHandler"
+            id="com.ancit.diagnostictool.ui.commands.importcanoetestspect"
+            name="VXT TestSpecification">
+      </command>
+      <command
+            categoryId="com.ancit.diagnostictool.ui.commands.category"
+            defaultHandler="com.ancit.testgenx.ui.handlers.ImportXLSTestSpecificationHandler"
+            id="com.ancit.diagnostictool.ui.commands.importxlstestspect"
+            name="XLS TestSpecification">
+      </command>
+      <command
+            defaultHandler="com.ancit.testgenx.ui.handlers.HomeHandler"
+            id="com.ancit.diagnostictool.ui.homecommand"
+            name="Home">
+      </command>
+      <command
+            categoryId="com.ancit.diagnostictool.ui.commands.category"
+            defaultHandler="com.ancit.testgenx.ui.handlers.ConvertToXMLHandler"
+            id="com.ancit.diagnostictool.ui.convertxmlcmd"
+            name="Convert XML">
+      </command>
+      <command
+            defaultHandler="com.ancit.testgenx.ui.handlers.ReceiveHandler"
+            id="com.ancit.diagnostictool.ui.receivecommand"
+            name="Receive">
+      </command>
+   </extension>
+   <extension
+         point="org.eclipse.ui.newWizards">
+      <wizard
+            class="com.ancit.testgenx.ui.wizards.NewTestSpecificationWizard"
+            id="com.ancit.diagnostic_tool.wizards.NewTestSpecificationWizard"
+            name="New Test Specification">
+      </wizard>
+      <wizard
+            category="com.ancit.diagnostictool.ui.viewcat"
+            class="com.ancit.diagnostictool.ui.wizards.NewTestSpecificationWizard"
+            icon="icons/sample.png"
+            id="com.ancit.diagnostictool.ui.wizards.NewTestSpecificationWizard"
+            name="ECU Test Specification">
+      </wizard>
+      <category
+            id="com.ancit.diagnostictool.ui.viewcat"
+            name="ANCIT GenX">
+      </category>
+   </extension>
+
+</plugin>

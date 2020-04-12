@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DiagonosticModel:TestSpecification
+    xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:DiagonosticModel="http://www.ancit.com"
+    xsi:schemaLocation="http://www.ancit.com DiagonasticModel.ecore">
+  <testGroups>
+    <testCases>
+      <testSteps
+          xsi:type="DiagonosticModel:WaitAction"/>
+      <testSteps
+          xsi:type="DiagonosticModel:SetAction"/>
+      <testSteps
+          xsi:type="DiagonosticModel:CheckAction"/>
+      <testSteps
+          xsi:type="DiagonosticModel:ForLoop"/>
+      <testSteps
+          xsi:type="DiagonosticModel:WhileLoop"/>
+    </testCases>
+  </testGroups>
+</DiagonosticModel:TestSpecification>

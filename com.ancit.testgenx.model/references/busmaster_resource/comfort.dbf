@@ -1,0 +1,170 @@
+//******************************BUSMASTER Messages and signals Database ******************************//
+
+[DATABASE_VERSION] 1.3
+
+[PROTOCOL] CAN
+
+[BUSMASTER_VERSION] [3.2.2]
+[NUMBER_OF_MESSAGES] 7
+
+[START_MSG] DiagResponse,1536,8,0,1,S,
+[END_MSG]
+
+[START_MSG] DiagRequest,1792,8,0,1,S,
+[END_MSG]
+
+[START_MSG] LockingRemoteControlRequest,1,1,1,1,S,SUT_Driver
+[START_SIGNALS] LockRequest,2,1,0,U,3,0,1,0,1,,,SUT
+[VALUE_DESCRIPTION] "Comfort_lock",3
+[VALUE_DESCRIPTION] "Request_unlock",2
+[VALUE_DESCRIPTION] "Request_lock",1
+[VALUE_DESCRIPTION] "idle",0
+[END_MSG]
+
+[START_MSG] CentralLockingSystemState,0,1,2,1,S,SUT
+[START_SIGNALS] AntiTheftSystemActive,1,1,1,B,1,0,1,0,1,,,
+[START_SIGNALS] LockState,1,1,0,B,1,0,1,0,1,,,
+[VALUE_DESCRIPTION] "Locked",1
+[VALUE_DESCRIPTION] "Unlocked",0
+[END_MSG]
+
+[START_MSG] VehicleMotion,50,3,3,1,S,SUT_Driver
+[START_SIGNALS] EngineRunning,1,3,1,B,1,0,1,0,1,,,
+[START_SIGNALS] CrashDetected,1,3,0,B,1,0,1,0,1,,,SUT
+[START_SIGNALS] Velocity,16,1,0,I,3500,-1000,1,0,0.1,km/h,,SUT
+[END_MSG]
+
+[START_MSG] WindowState,100,2,2,1,S,SUT
+[START_SIGNALS] WindowPosition,8,1,0,U,255,0,1,0,1,,,
+[START_SIGNALS] WindowMotion,2,2,6,U,3,0,1,0,1,,,
+[VALUE_DESCRIPTION] "currently_opening",2
+[VALUE_DESCRIPTION] "currently_closing",1
+[VALUE_DESCRIPTION] "not_moving",0
+[END_MSG]
+
+[START_MSG] WindowControl,101,1,2,1,S,SUT_Driver
+[START_SIGNALS] KeyDown,1,1,1,B,1,0,1,0,1,,,SUT
+[START_SIGNALS] KeyUp,1,1,0,B,1,0,1,0,1,,,SUT
+[END_MSG]
+
+[START_VALUE_TABLE]
+[END_VALUE_TABLE]
+
+[NODE] SUT_Driver,SUT
+
+[START_DESC]
+[START_DESC_NET]
+[END_DESC_NET]
+
+[START_DESC_NODE]
+[END_DESC_NODE]
+
+[START_DESC_MSG]
+[END_DESC_MSG]
+
+[START_DESC_SIG]
+[END_DESC_SIG]
+[END_DESC]
+
+[START_PARAM]
+[START_PARAM_NET]
+"NmMessageCount",INT,0,0,0
+"NmBaseAddress",HEX,1024,1024,1087
+"BusType",STRING,"CAN"
+[END_PARAM_NET]
+
+[START_PARAM_NODE]
+"NmNode",ENUM,"no","no","yes"
+"NmStationAddress",INT,0,0,63
+[END_PARAM_NODE]
+
+[START_PARAM_MSG]
+"DiagResponse",ENUM,"No","No","Yes"
+"DiagRequest",ENUM,"No","No","Yes"
+"GenMsgFastOnStart",INT,0,0,0
+"GenMsgStartDelayTime",INT,0,0,0
+"NmMessage",ENUM,"no","no","yes"
+"GenMsgILSupport",ENUM,"Yes","No","Yes"
+"GenMsgCycleTimeFast",INT,0,0,50000
+"GenMsgCycleTime",INT,100,0,50000
+"GenMsgDelayTime",INT,0,0,1000
+"GenMsgNrOfRepetition",INT,0,0,999999
+"GenMsgSendType",ENUM,"NoMsgSendType","Cyclic","NotUsed","NotUsed","NotUsed","NotUsed","Cyclic","NotUsed","IfActive","NoMsgSendType","NotUsed","vector_leerstring"
+[END_PARAM_MSG]
+
+[START_PARAM_SIG]
+"NWM-WakeupAllowed",ENUM,"","No","Yes"
+"GenSigInactiveValue",INT,0,0,100000
+"GenSigSendType",ENUM,"Cyclic","Cyclic","OnWrite","OnWriteWithRepetition","OnChange","OnChangeWithRepetition","IfActive","IfActiveWithRepetition","NoSigSendType","NotUsed","NotUsed","NotUsed","NotUsed","NotUsed"
+"GenSigStartValue",FLOAT,1.17549e-038,1.17549e-038,1e+011
+[END_PARAM_SIG]
+
+[START_PARAM_NODE_RX_SIG]
+[END_PARAM_NODE_RX_SIG]
+
+[START_PARAM_NODE_TX_MSG]
+[END_PARAM_NODE_TX_MSG]
+[END_PARAM]
+
+[START_PARAM_VAL]
+[START_PARAM_NET_VAL]
+[END_PARAM_NET_VAL]
+
+[START_PARAM_NODE_VAL]
+[END_PARAM_NODE_VAL]
+
+[START_PARAM_MSG_VAL]
+1536,S,"DiagResponse","1"
+1792,S,"DiagRequest","1"
+101,S,"GenMsgCycleTimeFast",20
+101,S,"GenMsgCycleTime",500
+101,S,"GenMsgDelayTime",18
+101,S,"GenMsgNrOfRepetition",2
+101,S,"GenMsgSendType","0"
+[END_PARAM_MSG_VAL]
+
+[START_PARAM_SIG_VAL]
+1,S,LockRequest,"GenSigSendType","1"
+50,S,CrashDetected,"GenSigSendType","1"
+100,S,WindowMotion,"GenSigSendType","1"
+101,S,KeyDown,"GenSigSendType","6"
+101,S,KeyUp,"GenSigSendType","6"
+[END_PARAM_SIG_VAL]
+
+[END_PARAM_VAL]
+
+
+[START_NOT_SUPPORTED]
+[END_NOT_SUPPORTED]
+
+[START_NOT_PROCESSED]
+	PZ_
+	ON_QRS_
+	ON_
+	INY_
+	PNG_QRS_
+	PNG_
+	SVYGRE
+	ON_QRS_QRS_
+	RI_QNGN_
+	RAIINE_QNGN_
+	FTGLCR_
+	FTGLCR_INY_
+	ON_QRS_FTGLCR_
+	ON_FTGLCR_
+	FVT_GLCR_ERS_
+	INY_GNOYR_
+	FVT_TEBHC_
+	FVT_INYGLCR_
+	FVTGLCR_INYGLCR_
+	OB_GK_OH_
+	ON_QRS_ERY_
+	ON_ERY_
+	ON_QRS_QRS_ERY_
+	OH_FT_ERY_
+	OH_RI_ERY_
+	OH_OB_ERY_
+	FT_ZHY_INY_
+OF_:
+
+[END_NOT_PROCESSED]
