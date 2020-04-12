@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+   <feature url="features/com.ancit.genxtools.feature_1.0.0.qualifier.jar" id="com.ancit.genxtools.feature" version="1.0.0.qualifier">
+      <category name="new_category_1"/>
+   </feature>
+   <category-def name="new_category_1" label="ANCIT GenX"/>
+</site>

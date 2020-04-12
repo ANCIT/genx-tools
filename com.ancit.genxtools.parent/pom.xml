@@ -32,11 +32,10 @@
 		<module>../com.ancit.ecusimx.simulation</module>
 		<module>../com.ancit.genxtools.dbc</module>
 		<module>../com.ancit.genxtools.feature</module>
+		<module>../com.ancit.genxtools.site</module>
 		<module>../com.ancit.testgenx.exports.pycan</module>
 		<module>../com.ancit.testgenx.model</module>
 		<module>../com.ancit.testgenx.model.edit</module>
 		<module>../com.ancit.testgenx.ui</module>
-		
-		<module>../com.ancit.genxtools.site</module>
 	</modules>
 </project>
