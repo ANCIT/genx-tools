@@ -7,6 +7,6 @@
   	<groupId>com.ancit.genxtools.parent</groupId>
   	<artifactId>com.ancit.genxtools.parent</artifactId>
   	<version>1.0.0-SNAPSHOT</version>
-  	<relativePath>C:/Users/ANICET/git/genx-tools/com.ancit.genxtools.parent</relativePath>
+  	<relativePath>../com.ancit.genxtools.parent</relativePath>
   </parent>
 </project>
