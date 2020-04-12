@@ -36,5 +36,8 @@
 		<module>../com.ancit.testgenx.model</module>
 		<module>../com.ancit.testgenx.model.edit</module>
 		<module>../com.ancit.testgenx.ui</module>
+		<module>
+			E:/ancit-projects/testgenx/ecux-workspace/com.ancit.genxtools.site
+		</module>
 	</modules>
 </project>
