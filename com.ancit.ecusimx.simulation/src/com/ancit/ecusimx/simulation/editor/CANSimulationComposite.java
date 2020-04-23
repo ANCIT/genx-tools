@@ -565,9 +565,9 @@ public class CANSimulationComposite extends Composite {
 			protected Object getValue(Object element) {
 				if (element instanceof SignalData) {
 					if (((SignalData) element).getSignal().getLabelSet() != null) {
-						return ((SignalData) element).getSignal().getLabelSet();
+						return Integer.parseInt(((SignalData) element).getData());
 					} else {
-						return "";
+						return ((SignalData) element).getData();
 					}
 				} else if (element instanceof MessageRowData) {
 					if (((MessageRowData) element).getData() != null) {
