@@ -89,7 +89,7 @@ public class TSEExportDialog extends TitleAreaDialog {
 		IExtensionRegistry extensionRegistry = Platform.getExtensionRegistry();
 
 		IConfigurationElement[] configurationElementsFor = extensionRegistry
-				.getConfigurationElementsFor("com.ancit.diagnostictool.ui.exports");
+				.getConfigurationElementsFor("com.ancit.testgenx.ui.exports");
 		for (IConfigurationElement iConfigurationElement : configurationElementsFor) {
 			String id = iConfigurationElement.getAttribute("id");
 			String name = iConfigurationElement.getAttribute("name");
