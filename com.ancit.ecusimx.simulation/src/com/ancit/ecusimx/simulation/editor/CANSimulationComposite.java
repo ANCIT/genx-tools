@@ -131,12 +131,13 @@ public class CANSimulationComposite extends Composite {
 	private Composite composite1;
 	private CANSimulationEditor editor;
 	IFile file;
+
 	public CANSimulationComposite(FormEditor editor, CanSimulationBlock canSimulationModelBlock, Composite parent,
 			int style, IFile file) {
 		super(parent, style);
 		this.editor = (CANSimulationEditor) editor;
 		this.canSimulationModelBlock = canSimulationModelBlock;
-		this.file =file;
+		this.file = file;
 		addDisposeListener(new DisposeListener() {
 			public void widgetDisposed(DisposeEvent e) {
 				toolkit.dispose();
@@ -385,7 +386,8 @@ public class CANSimulationComposite extends Composite {
 
 		txtPythonExportPath = new Text(compositePythonBlock, SWT.SINGLE | SWT.LEAD | SWT.BORDER | SWT.READ_ONLY);
 		txtPythonExportPath.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false));
-		String fileLocal = file.getLocation().toOSString().substring(0, file.getLocation().toOSString().lastIndexOf('\\'));
+		String fileLocal = file.getLocation().toOSString().substring(0,
+				file.getLocation().toOSString().lastIndexOf('\\'));
 		txtPythonExportPath.setText(fileLocal);
 
 //		Button btnBrowseExportPath = new Button(compositePythonBlock, SWT.PUSH);
@@ -567,7 +569,11 @@ public class CANSimulationComposite extends Composite {
 					if (((SignalData) element).getSignal().getLabelSet() != null) {
 						return Integer.parseInt(((SignalData) element).getData());
 					} else {
-						return ((SignalData) element).getData();
+						if (((SignalData) element).getData() != null) {
+							return ((SignalData) element).getData();
+						} else {
+							return "";
+						}
 					}
 				} else if (element instanceof MessageRowData) {
 					if (((MessageRowData) element).getData() != null) {
@@ -636,7 +642,7 @@ public class CANSimulationComposite extends Composite {
 				new TextCellEditor(messageInfoTblViewer.getTree()), new TextCellEditor(messageInfoTblViewer.getTree()),
 				new TextCellEditor(messageInfoTblViewer.getTree()) });
 
-		EditingSupportForMessageInfoTreeViewer.enableEditingForDataColumn(messageInfoTblViewer,editor);
+		EditingSupportForMessageInfoTreeViewer.enableEditingForDataColumn(messageInfoTblViewer, editor);
 		messageInfoTblViewer.addSelectionChangedListener(new ISelectionChangedListener() {
 
 			@Override
@@ -1386,8 +1392,7 @@ public class CANSimulationComposite extends Composite {
 		};
 		ISharedImages sharedImages = PlatformUI.getWorkbench().getSharedImages();
 		ImageDescriptor addMessageImageDesc = sharedImages.getImageDescriptor(ISharedImages.IMG_OBJ_ADD);
-		addMessageAction
-				.setImageDescriptor(addMessageImageDesc);
+		addMessageAction.setImageDescriptor(addMessageImageDesc);
 		addMessageAction.setEnabled(false);
 
 		addMessageRowDataAction = new Action("Add RowData") {
@@ -1443,7 +1448,7 @@ public class CANSimulationComposite extends Composite {
 							canSimulationModelBlock.getMessageData().remove(message);
 							editor.setDirty(true);
 							messageInfoTblViewer.refresh();
-						}else if (element instanceof MessageRowData) {
+						} else if (element instanceof MessageRowData) {
 							MessageRowData message = (MessageRowData) element;
 							canSimulationModelBlock.getMessageData().remove(message);
 							editor.setDirty(true);
@@ -1460,8 +1465,7 @@ public class CANSimulationComposite extends Composite {
 			}
 		};
 		deleteMessageAction.setEnabled(false);
-		deleteMessageAction
-				.setImageDescriptor(sharedImages.getImageDescriptor(ISharedImages.IMG_ETOOL_DELETE));
+		deleteMessageAction.setImageDescriptor(sharedImages.getImageDescriptor(ISharedImages.IMG_ETOOL_DELETE));
 
 		generateCodeAction = new Action("Generate Code") {
 
