@@ -7,6 +7,10 @@ Contains Eclipse Plugins for Generation of Python based Automotive ECU Simulatio
 
 # Installation Steps
 - Recommended Eclipse 4.x with PyDev Installation
+  - Download Eclipse from https://www.eclipse.org/downloads/packages/release/2020-03/r/eclipse-ide-java-developers
+  - UpdateSite of PyDev : http://www.pydev.org/updates
+    - Installation Guide for PyDev : http://www.pydev.org/manual_101_install.html
+    
 - Currently Genx Tools are available as Offline Installation
   - Go to Releases > Download the UpdateSite
   - Launch Eclipse and Install using Help > Install New Software > Add > Local
