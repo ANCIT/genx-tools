@@ -387,7 +387,7 @@ public class CANSimulationComposite extends Composite {
 		txtPythonExportPath = new Text(compositePythonBlock, SWT.SINGLE | SWT.LEAD | SWT.BORDER | SWT.READ_ONLY);
 		txtPythonExportPath.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false));
 		String fileLocal = file.getLocation().toOSString().substring(0,
-				file.getLocation().toOSString().lastIndexOf('\\'));
+				file.getLocation().toOSString().lastIndexOf(File.separator));
 		txtPythonExportPath.setText(fileLocal);
 
 //		Button btnBrowseExportPath = new Button(compositePythonBlock, SWT.PUSH);
